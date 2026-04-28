@@ -3,23 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-RON Notary | Remote Online Notary Services</title>
-<meta name="description" content="Secure remote online notarization services. Bonded and insured. Serving clients nationwide. Commissioned in Washington State.">
+<title>E-RON Notary | Remote Online Notary</title>
+<meta name="description" content="Secure remote online notarization. No travel required. Bonded and insured, serving clients nationwide.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 
 :root{
-  --navy:#061b3d;
-  --navy-soft:#0b2a57;
-  --gold:#b88a2a;
-  --gold-soft:#d7b15f;
-  --ink:#101828;
-  --muted:#667085;
-  --line:rgba(6,27,61,.12);
-  --white:#fff;
-  --cloud:#f7f8fb;
-  --shadow:0 24px 70px rgba(6,27,61,.10);
+  --navy:#24364B;
+  --gold:#B89A58;
+  --ink:#1F2933;
+  --muted:#6B7280;
+  --line:rgba(36,54,75,.14);
+  --page:#F4F1EC;
+  --cream:#F8F4EC;
+  --footer:#1E2F46;
 }
 
 *{box-sizing:border-box}
@@ -28,654 +29,389 @@ html{scroll-behavior:smooth}
 
 body{
   margin:0;
+  font-family:"Lato",sans-serif;
   color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  background:#fff;
-  line-height:1.6;
-  overflow-x:hidden;
+  background:var(--page);
+  -webkit-font-smoothing:antialiased;
 }
 
+/* HEADER */
 .site-header{
-  position:sticky;
-  top:0;
-  z-index:50;
+  height:96px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:24px;
-  padding:16px clamp(18px,5vw,72px);
-  background:rgba(255,255,255,.86);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(6,27,61,.08);
-  animation:navDrop .7s ease both;
+  padding:0 clamp(22px,5vw,70px);
+  background:rgba(248,244,236,.88);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:20;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:18px;
   text-decoration:none;
+  color:var(--navy);
 }
 
 .brand img{
-  width:44px;
-  height:44px;
+  width:70px;
+  height:70px;
   object-fit:contain;
-  transition:transform .25s ease;
 }
 
-.brand:hover img{transform:scale(1.06) rotate(-2deg)}
-
-.brand-text{display:grid;line-height:1.05}
-
-.brand-text strong{
+.brand span{
+  font-size:30px;
+  font-weight:900;
   color:var(--navy);
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:1.15rem;
-  letter-spacing:.05em;
+  letter-spacing:.02em;
 }
 
-.brand-text span{
-  color:var(--gold);
-  font-size:.68rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
+.brand:hover{opacity:.88}
 
-.nav{
-  display:flex;
-  align-items:center;
-  gap:26px;
-}
-
-.nav a{
-  position:relative;
-  color:var(--navy);
-  text-decoration:none;
-  font-size:.95rem;
-  font-weight:650;
-  opacity:.88;
-}
-
-.nav a:not(.button)::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-7px;
-  width:100%;
-  height:2px;
-  background:var(--gold);
-  transform:scaleX(0);
-  transform-origin:right;
-  transition:transform .25s ease;
-}
-
-.nav a:not(.button):hover::after{
-  transform:scaleX(1);
-  transform-origin:left;
-}
-
-.nav a:hover{opacity:1}
-
-.button{
-  position:relative;
-  overflow:hidden;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:46px;
-  padding:0 22px;
-  border-radius:999px;
+.nav-button{
   background:var(--navy);
-  color:white!important;
+  color:white;
   text-decoration:none;
-  font-weight:750;
-  box-shadow:0 10px 26px rgba(6,27,61,.18);
-  transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
+  padding:16px 34px;
+  border-radius:999px;
+  font-weight:900;
+  box-shadow:0 10px 24px rgba(36,54,75,.16);
+  transition:transform .2s ease, box-shadow .2s ease;
 }
 
-.button::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,.38),transparent);
-  transform:translateX(-130%);
-  transition:transform .65s ease;
-}
-
-.button:hover{
+.nav-button:hover{
   transform:translateY(-2px);
-  box-shadow:0 18px 38px rgba(6,27,61,.24);
-  background:var(--navy-soft);
+  box-shadow:0 16px 34px rgba(36,54,75,.22);
 }
 
-.button:hover::after{transform:translateX(130%)}
-
-.button:active{transform:scale(.98)}
-
-.button.gold{
-  background:var(--gold);
-  box-shadow:0 10px 26px rgba(184,138,42,.22);
-}
-
-.button.gold:hover{
-  background:#a87a20;
-  box-shadow:0 18px 38px rgba(184,138,42,.28);
-}
-
+/* HERO */
 .hero{
   position:relative;
   overflow:hidden;
-  min-height:720px;
-  display:grid;
-  place-items:center;
   text-align:center;
-  padding:96px clamp(18px,5vw,72px);
+  padding:70px 20px 55px;
   background:
-    radial-gradient(circle at 50% 18%,rgba(215,177,95,.18),transparent 28%),
-    radial-gradient(circle at 85% 40%,rgba(6,27,61,.10),transparent 28%),
-    linear-gradient(180deg,#fff 0%,#f7f8fb 100%);
+    radial-gradient(circle at 16% 70%, rgba(184,154,88,.14), transparent 28%),
+    radial-gradient(circle at 90% 70%, rgba(36,54,75,.10), transparent 25%),
+    linear-gradient(180deg,#FBF8F1 0%,#F4F1EC 100%);
 }
 
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
-  background-image:
-    linear-gradient(rgba(6,27,61,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(6,27,61,.035) 1px,transparent 1px);
-  background-size:54px 54px;
-  mask-image:radial-gradient(circle at center,black,transparent 68%);
+  background:radial-gradient(circle at 50% 12%, rgba(255,255,255,.7), transparent 35%);
   pointer-events:none;
-  animation:gridDrift 18s linear infinite;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 70% 30%, rgba(212,175,55,.15), transparent 38%),
-    radial-gradient(circle at 25% 70%, rgba(6,27,61,.08), transparent 34%);
-  pointer-events:none;
-  animation:lightBreath 8s ease-in-out infinite;
 }
 
 .hero-inner{
   position:relative;
   z-index:1;
-  max-width:920px;
-  margin:auto;
+  max-width:900px;
+  margin:0 auto;
 }
 
 .hero-logo{
-  width:min(280px,56vw);
-  margin:0 auto 28px;
-  display:block;
-  border-radius:28px;
-  filter:drop-shadow(0 24px 45px rgba(6,27,61,.10));
-  animation:logoEntrance .9s ease both, floatLogo 6s ease-in-out 1s infinite;
-}
-
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:20px;
-  padding:8px 14px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  color:var(--navy);
-  background:rgba(255,255,255,.72);
-  font-size:.83rem;
-  font-weight:800;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  opacity:0;
-  animation:fadeUp .75s ease .2s forwards;
-}
-
-h1,h2,h3{
-  margin:0;
-  color:var(--navy);
-  line-height:1.05;
-}
-
-h1{
-  font-size:clamp(3.1rem,8vw,7rem);
-  letter-spacing:-.07em;
+  width:220px;
+  height:auto;
+  object-fit:contain;
+  margin-bottom:22px;
+  filter:drop-shadow(0 10px 22px rgba(36,54,75,.10));
 }
 
 .hero h1{
-  opacity:0;
-  transform:translateY(24px);
-  animation:fadeUp .85s ease .35s forwards;
+  font-size:clamp(42px,6vw,58px);
+  line-height:1.05;
+  margin:0 0 16px;
+  color:var(--navy);
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:700;
 }
 
 .hero p{
-  max-width:680px;
-  margin:24px auto 34px;
+  font-size:clamp(18px,2.1vw,22px);
   color:var(--muted);
-  font-size:clamp(1.08rem,2vw,1.35rem);
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeUp .85s ease .55s forwards;
+  margin:0 auto 34px;
+  max-width:700px;
 }
 
-.hero-actions{
+.hero-buttons{
   display:flex;
   justify-content:center;
+  gap:22px;
   flex-wrap:wrap;
-  gap:14px;
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeUp .85s ease .75s forwards;
 }
 
-.trust-strip{
+.button{
+  min-width:220px;
+  padding:16px 30px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  font-size:18px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.button:hover{
+  transform:translateY(-2px);
+}
+
+.primary{
+  background:var(--navy);
+  color:white;
+  box-shadow:0 14px 28px rgba(36,54,75,.18);
+}
+
+.secondary{
+  background:rgba(255,255,255,.35);
+  color:var(--navy);
+  border:1px solid var(--navy);
+}
+
+/* TRUST BAR */
+.trust{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--line);
+  grid-template-columns:repeat(3,1fr);
+  background:rgba(255,255,255,.35);
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
 }
 
-.trust-item{
-  background:#fff;
+.trust div{
   padding:26px 20px;
   text-align:center;
   color:var(--navy);
-  font-weight:800;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  transform:translateY(12px);
-  opacity:0;
-  animation:fadeUp .7s ease forwards;
+  font-size:18px;
+  font-weight:900;
 }
 
-.trust-item:nth-child(1){animation-delay:.05s}
-.trust-item:nth-child(2){animation-delay:.16s}
-.trust-item:nth-child(3){animation-delay:.27s}
-.trust-item:nth-child(4){animation-delay:.38s}
-
-.section{
-  padding:96px clamp(18px,5vw,72px);
+/* HOW IT WORKS */
+#how{
+  padding:80px 20px 88px;
 }
 
-.section.alt{
-  background:
-    radial-gradient(circle at 15% 10%,rgba(184,138,42,.10),transparent 25%),
-    linear-gradient(180deg,#f8f9fb 0%,#fff 100%);
+#how h2{
+  text-align:center;
+  color:var(--navy);
+  font-size:clamp(36px,5vw,46px);
+  margin:0 0 10px;
+  font-family:Georgia,"Times New Roman",serif;
 }
 
-.section-header{
-  max-width:760px;
-  margin:0 auto 46px;
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  max-width:1100px;
+  margin:54px auto 0;
+}
+
+.step{
+  background:rgba(255,255,255,.65);
+  border:1px solid var(--line);
+  padding:30px 22px;
+  border-radius:20px;
+  text-align:center;
+  min-height:260px;
+}
+
+.step span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--navy);
+  color:white;
+  font-weight:900;
+  margin:0 auto 16px;
+}
+
+.step h3{
+  margin:0 0 10px;
+  color:var(--navy);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:24px;
+}
+
+.step p{
+  margin:0 auto;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.55;
+  max-width:225px;
+}
+
+/* CTA */
+.cta{
+  background:var(--navy);
+  color:white;
+  padding:64px 20px;
   text-align:center;
 }
 
-.section-header h2{
-  font-size:clamp(2.3rem,5vw,4.4rem);
-  letter-spacing:-.05em;
+.cta h2{
+  margin:0 0 22px;
+  font-size:clamp(30px,4vw,42px);
+  font-family:Georgia,"Times New Roman",serif;
 }
 
-.section-header p{
-  margin:18px auto 0;
+.cta a{
+  background:white;
+  color:var(--navy);
+  padding:14px 24px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  display:inline-block;
+}
+
+/* FOOTER */
+.site-footer{
+  background:var(--footer);
+  color:rgba(255,255,255,.85);
+  padding:60px 20px;
+  text-align:center;
+}
+
+.footer-inner{
+  max-width:800px;
+  margin:auto;
+}
+
+.site-footer img{
+  width:74px;
+  height:74px;
+  object-fit:contain;
+  margin-bottom:16px;
+}
+
+.footer-brand{
+  font-weight:900;
+  font-size:20px;
+  margin:6px 0;
+}
+
+.footer-meta{
+  font-size:14px;
+  margin-bottom:18px;
+  opacity:.82;
+}
+
+.disclaimer{
+  border-top:1px solid rgba(255,255,255,.15);
+  padding-top:20px;
+  font-size:12px;
+  line-height:1.6;
+  color:rgba(255,255,255,.62);
+  max-width:700px;
+  margin:20px auto 0;
+}
+
+/* BOOKING PAGE */
+.booking-hero{
+  text-align:center;
+  padding:80px 20px 40px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(184,154,88,.14), transparent 35%),
+    var(--page);
+}
+
+.booking-hero img{
+  width:190px;
+  height:auto;
+  object-fit:contain;
+  margin-bottom:22px;
+}
+
+.booking-hero h1{
+  margin:0 0 12px;
+  color:var(--navy);
+  font-size:clamp(38px,5vw,54px);
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+.booking-hero p{
   color:var(--muted);
-  font-size:1.1rem;
+  font-size:18px;
 }
 
+.booking-box{
+  max-width:980px;
+  margin:0 auto 90px;
+  padding:24px;
+  background:rgba(255,255,255,.6);
+  border:1px solid var(--line);
+  border-radius:24px;
+}
+
+/* ANIMATION */
 .reveal{
   opacity:0;
-  transform:translateY(24px);
-  transition:opacity .75s ease, transform .75s ease;
+  transform:translateY(16px);
+  transition:opacity .7s ease, transform .7s ease;
 }
 
 .reveal.visible{
   opacity:1;
-  transform:translateY(0);
+  transform:none;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-  max-width:1180px;
-  margin:auto;
-}
-
-.card{
-  position:relative;
-  min-height:220px;
-  padding:30px;
-  border:1px solid var(--line);
-  border-radius:24px;
-  background:rgba(255,255,255,.82);
-  box-shadow:0 10px 34px rgba(6,27,61,.06);
-  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
-}
-
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:24px;
-  background:radial-gradient(circle at 30% 0%, rgba(215,177,95,.14), transparent 42%);
-  opacity:0;
-  transition:opacity .25s ease;
-  pointer-events:none;
-}
-
-.card:hover{
-  transform:translateY(-7px);
-  box-shadow:var(--shadow);
-  border-color:rgba(184,138,42,.34);
-}
-
-.card:hover::before{opacity:1}
-
-.card .number{
-  color:var(--gold);
-  font-weight:900;
-  margin-bottom:16px;
-  font-size:.9rem;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-
-.card h3{
-  margin-bottom:12px;
-  font-size:1.35rem;
-}
-
-.card p{
-  margin:0;
-  color:var(--muted);
-}
-
-.grid.reveal.visible .card{
-  animation:cardLift .65s ease both;
-}
-
-.grid.reveal.visible .card:nth-child(1){animation-delay:.04s}
-.grid.reveal.visible .card:nth-child(2){animation-delay:.14s}
-.grid.reveal.visible .card:nth-child(3){animation-delay:.24s}
-.grid.reveal.visible .card:nth-child(4){animation-delay:.34s}
-
-.feature{
-  max-width:1180px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:.95fr 1.05fr;
-  gap:40px;
-  align-items:center;
-  padding:34px;
-  border:1px solid var(--line);
-  border-radius:34px;
-  background:#fff;
-  box-shadow:var(--shadow);
-}
-
-.feature-visual{
-  min-height:420px;
-  border-radius:26px;
-  display:grid;
-  place-items:center;
-  background:
-    radial-gradient(circle at 55% 40%,rgba(184,138,42,.18),transparent 30%),
-    linear-gradient(145deg,#f8f9fb,#fff);
-  border:1px solid var(--line);
-  overflow:hidden;
-}
-
-.feature-visual img{
-  width:min(360px,80%);
-  border-radius:18px;
-  filter:drop-shadow(0 22px 36px rgba(6,27,61,.14));
-  animation:floatLogo 7s ease-in-out infinite;
-}
-
-.feature-copy h2{
-  font-size:clamp(2.3rem,4.5vw,4rem);
-  letter-spacing:-.055em;
-}
-
-.feature-copy p{
-  color:var(--muted);
-  font-size:1.1rem;
-}
-
-.bullet-list{
-  list-style:none;
-  padding:0;
-  margin:24px 0 30px;
-  display:grid;
-  gap:12px;
-}
-
-.bullet-list li{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  color:var(--navy);
-  font-weight:650;
-}
-
-.bullet-list li::before{
-  content:"✓";
-  color:var(--gold);
-  font-weight:900;
-}
-
-.cta-band{
-  position:relative;
-  overflow:hidden;
-  max-width:980px;
-  margin:auto;
-  text-align:center;
-  padding:62px 34px;
-  border-radius:34px;
-  background:
-    radial-gradient(circle at 70% 20%,rgba(215,177,95,.22),transparent 28%),
-    linear-gradient(135deg,var(--navy),#0b2a57);
-  box-shadow:0 28px 80px rgba(6,27,61,.20);
-}
-
-.cta-band::before{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  background:conic-gradient(from 180deg, transparent, rgba(215,177,95,.18), transparent 30%);
-  animation:slowSpin 10s linear infinite;
-  pointer-events:none;
-}
-
-.cta-band > *{
-  position:relative;
-  z-index:1;
-}
-
-.cta-band h2{
-  color:#fff;
-  font-size:clamp(2.3rem,5vw,4rem);
-  letter-spacing:-.05em;
-}
-
-.cta-band p{
-  max-width:620px;
-  margin:16px auto 28px;
-  color:rgba(255,255,255,.78);
-  font-size:1.1rem;
-}
-
-.site-footer{
-  padding:56px clamp(18px,5vw,72px);
-  background:#04142d;
-  color:rgba(255,255,255,.82);
-  text-align:center;
-}
-
-.site-footer img{
-  width:88px;
-  height:88px;
-  object-fit:contain;
-  margin-bottom:18px;
-  border-radius:18px;
-}
-
-.footer-title{
-  color:#fff;
-  font-family:Georgia,"Times New Roman",serif;
-  font-size:1.3rem;
-  letter-spacing:.08em;
-}
-
-.disclaimer{
-  max-width:820px;
-  margin:24px auto 0;
-  color:rgba(255,255,255,.58);
-  font-size:.86rem;
-}
-
-.booking-page{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(184,138,42,.14),transparent 30%),
-    linear-gradient(180deg,#fff,#f6f7f9);
-}
-
-.booking-hero{
-  text-align:center;
-  padding:74px clamp(18px,5vw,72px) 34px;
-}
-
-.booking-hero img{
-  width:min(210px,54vw);
-  margin-bottom:22px;
-  border-radius:24px;
-  filter:drop-shadow(0 20px 42px rgba(6,27,61,.12));
-  animation:logoEntrance .8s ease both, floatLogo 6s ease-in-out 1s infinite;
-}
-
-.booking-hero h1{
-  font-size:clamp(2.6rem,7vw,5.8rem);
-  letter-spacing:-.065em;
-  opacity:0;
-  animation:fadeUp .8s ease .22s forwards;
-}
-
-.booking-hero p{
-  max-width:680px;
-  margin:18px auto 0;
-  color:var(--muted);
-  font-size:1.12rem;
-  opacity:0;
-  animation:fadeUp .8s ease .38s forwards;
-}
-
-.booking-box{
-  max-width:1040px;
-  min-height:680px;
-  margin:0 auto 90px;
-  padding:clamp(14px,3vw,34px);
-  background:rgba(255,255,255,.88);
-  border:1px solid var(--line);
-  border-radius:30px;
-  box-shadow:var(--shadow);
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(22px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes logoEntrance{
-  from{opacity:0;transform:translateY(18px) scale(.96)}
-  to{opacity:1;transform:translateY(0) scale(1)}
-}
-
-@keyframes floatLogo{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
-
-@keyframes cardLift{
-  from{opacity:0;transform:translateY(22px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes navDrop{
-  from{opacity:0;transform:translateY(-12px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes gridDrift{
-  from{background-position:0 0,0 0}
-  to{background-position:54px 54px,54px 54px}
-}
-
-@keyframes lightBreath{
-  0%,100%{opacity:.55}
-  50%{opacity:1}
-}
-
-@keyframes slowSpin{
-  to{transform:rotate(360deg)}
-}
-
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    scroll-behavior:auto!important;
-    transition-duration:.01ms!important;
+/* MOBILE */
+@media(max-width:800px){
+  .site-header{
+    height:auto;
+    padding:18px 22px;
   }
-}
 
-@media(max-width:920px){
-  .site-header{align-items:flex-start;flex-direction:column}
-  .nav{width:100%;justify-content:space-between;gap:10px;flex-wrap:wrap}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .feature{grid-template-columns:1fr}
-  .feature-visual{min-height:300px}
-  .trust-strip{grid-template-columns:repeat(2,1fr)}
-}
+  .brand img{
+    width:48px;
+    height:48px;
+  }
 
-@media(max-width:560px){
-  .brand-text strong{font-size:1rem}
-  .brand-text span{font-size:.58rem}
-  .nav a:not(.button){font-size:.88rem}
-  .grid{grid-template-columns:1fr}
-  .trust-strip{grid-template-columns:1fr}
-  .hero{min-height:620px}
-  .card{min-height:auto}
-}
+  .brand span{
+    font-size:20px;
+  }
 
+  .nav-button{
+    padding:12px 20px;
+  }
 
-/* Logo alignment fixes */
-.hero-logo,
-.booking-logo,
-.brand img,
-.site-footer img {
-  object-fit: contain;
-  object-position: center;
-}
+  .hero{
+    padding:60px 20px;
+  }
 
-.hero-logo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: min(280px, 56vw);
-  height: auto;
-}
+  .hero-logo{
+    width:170px;
+  }
 
-.feature-visual img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  object-fit: contain;
-  object-position: center;
+  .trust{
+    grid-template-columns:1fr;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+    max-width:560px;
+  }
+
+  .step{
+    min-height:auto;
+  }
+
+  .button{
+    min-width:0;
+    width:100%;
+    max-width:320px;
+  }
 }
 
 </style>
@@ -683,112 +419,93 @@ h1{
 <body>
 
 <header class="site-header">
-  <a class="brand" href="index.html" aria-label="E-RON Notary Home">
-    <img src="assets/favicon.png" alt="RN logo">
-    <span class="brand-text"><strong>E-RON Notary</strong><span>Remote Online Notary</span></span>
+  <a href="index.html" class="brand">
+    <img src="assets/logo.png" alt="E-RON Notary logo">
+    <span>E-RON Notary</span>
   </a>
-  <nav class="nav" aria-label="Main navigation">
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#process">How It Works</a>
-    <a href="index.html#trust">Trust</a>
-    <a href="book.html" class="button">Book Appointment</a>
-  </nav>
+
+  <a href="book.html" class="nav-button">Book</a>
 </header>
 
+
 <main>
-<section class="hero">
-  <div class="hero-inner">
-    <img class="hero-logo" src="assets/rn-logo-primary.jpg" alt="RN Remote Online Notary logo">
-    <div class="eyebrow">Bonded & Insured • Nationwide</div>
-    <h1>Notarize Documents<br>From Anywhere.</h1>
-    <p>Secure remote online notarization designed around your schedule. Fast, professional, and built for modern document signing.</p>
-    <div class="hero-actions">
-      <a href="book.html" class="button gold">Book Appointment</a>
-      <a href="#process" class="button">See How It Works</a>
+  <section class="hero reveal">
+    <div class="hero-inner">
+      <img class="hero-logo" src="assets/logo.png" alt="E-RON Notary logo">
+      <h1>Notarize documents online.</h1>
+      <p>Secure remote online notarization. No travel required.</p>
+
+      <div class="hero-buttons">
+        <a href="book.html" class="button primary">Book Appointment</a>
+        <a href="#how" class="button secondary">How it works</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="trust-strip">
-  <div class="trust-item">Trusted</div>
-  <div class="trust-item">Secure</div>
-  <div class="trust-item">Nationwide</div>
-  <div class="trust-item">Professional</div>
-</section>
+  <section class="trust reveal">
+    <div>Bonded & Insured</div>
+    <div>Commissioned in Washington</div>
+    <div>Nationwide Service</div>
+  </section>
 
-<section id="services" class="section">
-  <div class="section-header reveal">
-    <h2>Notary services, simplified.</h2>
-    <p>Clear, efficient support for common notarization needs without the extra friction of an in-person appointment.</p>
-  </div>
-  <div class="grid reveal">
-    <article class="card"><div class="number">01</div><h3>Acknowledgments</h3><p>Verify identity and confirm a signature was made willingly for qualifying documents.</p></article>
-    <article class="card"><div class="number">02</div><h3>Jurat / Oaths</h3><p>Sworn statements completed with the proper oath or affirmation during the session.</p></article>
-    <article class="card"><div class="number">03</div><h3>Remote Online Notary</h3><p>Complete your notarization through a secure audio-video appointment from where you are.</p></article>
-    <article class="card"><div class="number">04</div><h3>Business Documents</h3><p>Professional handling for routine business, personal, and administrative documents.</p></article>
-  </div>
-</section>
+  <section id="how" class="reveal">
+    <h2>How it works</h2>
 
-<section id="process" class="section alt">
-  <div class="section-header reveal">
-    <h2>Four steps. Done.</h2>
-    <p>A clean process built to keep the appointment simple from booking to completion.</p>
-  </div>
-  <div class="grid reveal">
-    <article class="card"><div class="number">Step 1</div><h3>Book Your Appointment</h3><p>Choose the appointment time that works best for your schedule.</p></article>
-    <article class="card"><div class="number">Step 2</div><h3>Verify Your Identity</h3><p>Confirm your identity through the approved online process before the session.</p></article>
-    <article class="card"><div class="number">Step 3</div><h3>Join Your Session</h3><p>Connect through a secure live audio-video appointment from your device.</p></article>
-    <article class="card"><div class="number">Step 4</div><h3>Sign & Complete</h3><p>Finalize and receive your completed notarized document.</p></article>
-  </div>
-</section>
+    <div class="steps">
+      <div class="step">
+        <span>01</span>
+        <h3>Book</h3>
+        <p>Select a date and time that works best for your schedule. A $10 booking fee applies to hold appointments.</p>
+      </div>
 
-<section id="trust" class="section">
-  <div class="feature reveal">
-    <div class="feature-visual"><img src="assets/rn-logo-mark.png" alt="RN simplified logo mark"></div>
-    <div class="feature-copy">
-      <h2>Modern notary service with a professional finish.</h2>
-      <p>Remote online notarization should feel secure, simple, and polished. E-RON Notary keeps the experience clear from the first click.</p>
-      <ul class="bullet-list">
-        <li>Bonded and insured</li>
-        <li>Serving clients nationwide</li>
-        <li>Commissioned in Washington State</li>
-        <li>Secure audio-video notarization process</li>
-      </ul>
-      <a href="book.html" class="button gold">Start Booking</a>
+      <div class="step">
+        <span>02</span>
+        <h3>Verify</h3>
+        <p>Complete identity verification using secure KBA (Knowledge-Based Authentication) and valid government-issued ID.</p>
+      </div>
+
+      <div class="step">
+        <span>03</span>
+        <h3>Connect</h3>
+        <p>Join a live video session with a Washington State commissioned notary through an approved notary platform.</p>
+      </div>
+
+      <div class="step">
+        <span>04</span>
+        <h3>Complete</h3>
+        <p>Finalize your document, submit payment, and receive your completed secure documents electronically.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="cta-band reveal">
-    <h2>Ready when you are.</h2>
-    <p>Book a secure remote online notarization appointment in just a few clicks.</p>
-    <a href="book.html" class="button gold">Book Appointment</a>
-  </div>
-</section>
+  <section class="cta reveal">
+    <h2>Ready to notarize?</h2>
+    <a href="book.html">Book Appointment</a>
+  </section>
 </main>
 
+
 <footer class="site-footer">
-  <img src="assets/favicon.png" alt="RN logo">
-  <div class="footer-title">E-RON Notary</div>
-  <p>Bonded & Insured • Serving Nationwide • Commissioned in Washington State</p>
-  <p class="disclaimer">I am not an attorney licensed to practice law and may not give legal advice or accept fees for legal advice.<br><br>This notarial act may be performed using audio-visual communication technology when completed as a remote online notarization.</p>
+  <div class="footer-inner">
+    <img src="assets/logo.png" alt="E-RON Notary logo">
+    <p class="footer-brand">E-RON Notary</p>
+    <p class="footer-meta">Bonded & Insured • Serving Nationwide • Commissioned in Washington State</p>
+    <p class="disclaimer">
+      I am not an attorney licensed to practice law in the State of Washington and may not give legal advice or accept fees for legal advice.
+      This notarial act may be performed using audio-visual communication technology when completed as a remote online notarization.
+    </p>
+  </div>
 </footer>
 
 
 <script>
-const revealElements = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.14 });
-
-revealElements.forEach(el => observer.observe(el));
+const els=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(e=>{
+  e.forEach(i=>{
+    if(i.isIntersecting){i.target.classList.add('visible')}
+  })
+},{threshold:.15});
+els.forEach(el=>obs.observe(el));
 </script>
 
 </body>
