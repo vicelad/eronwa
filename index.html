@@ -99,11 +99,9 @@
 
     header{
       position:absolute;
-      top:0;
-      left:0;
       width:100%;
-      z-index:10;
       padding:26px 0;
+      z-index:10;
       color:white;
     }
 
@@ -111,7 +109,6 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:30px;
     }
 
     .brand{
@@ -122,45 +119,11 @@
       text-decoration:none;
     }
 
-    .brand img{
-      width:56px;
-      height:56px;
-      object-fit:contain;
-    }
-
-    .brand-title{
-      font-family:"Cormorant Garamond",serif;
-      font-size:28px;
-      font-weight:700;
-    }
-
-    .brand-subtitle{
-      display:block;
-      font-size:10px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      font-weight:900;
-      opacity:.85;
-      margin-top:4px;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:28px;
-      font-size:14px;
-      font-weight:900;
-    }
-
-    .nav-links a{
-      color:white;
-      text-decoration:none;
-    }
-
     .hero{
       min-height:720px;
       color:white;
       background:
-        linear-gradient(90deg,rgba(7,29,63,.98),rgba(7,29,63,.6)),
+        linear-gradient(90deg,rgba(7,29,63,.98),rgba(7,29,63,.5)),
         url("assets/hero-notary.png");
       background-size:cover;
       padding:160px 0 70px;
@@ -174,6 +137,11 @@
       display:flex;
       gap:32px;
       flex-wrap:wrap;
+    }
+
+    .trust-icon{
+      font-size:22px;
+      margin-right:8px;
     }
 
     .steps{
@@ -208,10 +176,23 @@
       padding:26px 14px;
     }
 
+    .booking{
+      background:#fffdf8;
+      padding:74px 0;
+    }
+
+    .booking-container{
+      background:white;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 20px 55px rgba(7,29,63,.13);
+      min-height:720px;
+    }
+
     footer{
       background:#06172f;
       color:white;
-      padding:24px 0;
+      padding:24px;
       text-align:center;
     }
   </style>
@@ -222,18 +203,11 @@
 <header>
   <div class="container nav">
     <a class="brand" href="#">
-      <img src="assets/logo.png">
-      <span>
-        <span class="brand-title">EXPRESS NOTARY</span>
-        <span class="brand-subtitle">Remote Online Notary</span>
-      </span>
+      <img src="assets/logo.png" width="50">
+      <strong>EXPRESS NOTARY</strong>
     </a>
 
-    <nav class="nav-links">
-      <a href="#how">How It Works</a>
-      <a href="#services">Services</a>
-      <a class="btn btn-primary" href="#book">Book Appointment</a>
-    </nav>
+    <a class="btn btn-primary" href="#book">Book Appointment</a>
   </div>
 </header>
 
@@ -246,15 +220,15 @@
     <h1>Express Online Notary</h1>
 
     <p class="hero-copy">
-      Get your documents notarized securely from anywhere.
+      Secure, fast, and fully online notarization.
     </p>
 
     <a class="btn btn-primary" href="#book">Book Appointment</a>
 
     <div class="trust-row">
-      <div>🛡️ Secure & Compliant</div>
-      <div>⚖️ State Compliant</div>
-      <div>⏱️ Fast & Convenient</div>
+      <div><span class="trust-icon">🛡️</span>Secure & Compliant</div>
+      <div><span class="trust-icon">⚖️</span>State Compliant</div>
+      <div><span class="trust-icon">⏱️</span>Fast & Convenient</div>
     </div>
   </div>
 </section>
@@ -289,7 +263,7 @@
     <div class="service-grid">
       <div class="service">🖊️ Acknowledgments</div>
       <div class="service">✋ Jurats</div>
-      <div class="service">📜 Trust Docs</div>
+      <div class="service">📜 Trust Documents</div>
       <div class="service">🗝️ Power of Attorney</div>
       <div class="service">📄 General Notary</div>
       <div class="service">➕ More</div>
@@ -297,12 +271,14 @@
   </div>
 </section>
 
-<section id="book">
+<section id="book" class="booking">
   <div class="container">
-    <h2>Book Appointment</h2>
+    <h2>Book Your Appointment</h2>
 
-    <div class="tidycal-embed" data-path="e-ronwa"></div>
-    <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+    <div class="booking-container">
+      <div class="tidycal-embed" data-path="e-ronwa"></div>
+      <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+    </div>
 
   </div>
 </section>
