@@ -460,6 +460,27 @@
       text-align:right;
     }
 
+    .booking{
+      background:#fffdf8;
+      border-top:1px solid var(--line);
+      padding:74px 0;
+    }
+
+    .booking-container{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:0 20px 55px rgba(7,29,63,.13);
+      overflow:hidden;
+      padding:20px;
+      min-height:720px;
+    }
+
+    .tidycal-embed{
+      width:100%;
+      min-height:700px;
+    }
+
     .final-cta{
       text-align:center;
       background:
@@ -527,7 +548,7 @@
         padding:80px 0 60px;
         background:
           linear-gradient(90deg,rgba(7,29,63,.98),rgba(7,29,63,.78)),
-          url("assets/hero-notary.jpg");
+          url("assets/hero-notary.png");
         background-size:cover;
         background-position:center;
       }
@@ -593,227 +614,242 @@
 
 <body>
 
-  <header>
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="EXPRESS RON logo" />
-        <span>
-          <span class="brand-title">EXPRESS NOTARY</span>
-          <span class="brand-subtitle">Remote Online Notary</span>
-        </span>
-      </a>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="EXPRESS RON logo" />
+      <span>
+        <span class="brand-title">EXPRESS NOTARY</span>
+        <span class="brand-subtitle">Remote Online Notary</span>
+      </span>
+    </a>
 
-      <nav class="nav-links">
-        <a href="#how">How It Works</a>
-        <a href="#services">Services</a>
-        <a href="#trust">Why Choose Us</a>
-        <a href="#pricing">Pricing</a>
-        <a class="btn btn-primary" href="book.html">Book Appointment</a>
-      </nav>
-    </div>
-  </header>
+    <nav class="nav-links">
+      <a href="#how">How It Works</a>
+      <a href="#services">Services</a>
+      <a href="#trust">Why Choose Us</a>
+      <a href="#pricing">Pricing</a>
+      <a class="btn btn-primary" href="#book">Book Appointment</a>
+    </nav>
+  </div>
+</header>
 
-  <main>
+<main>
 
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <p class="eyebrow">Commissioned in Washington State</p>
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="eyebrow">Commissioned in Washington State</p>
 
-          <h1>
-            Express Online Notary
-            <span class="accent">Nationwide Service</span>
-          </h1>
+      <h1>
+        Express Online Notary
+        <span class="accent">Nationwide Service</span>
+      </h1>
 
-          <p class="hero-copy">
-            Get your important documents notarized from the comfort of your home or office.
-            Secure, convenient, and 100% online.
-          </p>
+      <p class="hero-copy">
+        Get your important documents notarized from the comfort of your home or office.
+        Secure, convenient, and 100% online.
+      </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="book.html"> Book Appointment</a>
-            <a class="btn btn-secondary" href="#how">▷ How It Works</a>
-          </div>
-
-          <div class="trust-row">
-            <div class="trust-item">
-              <div class="trust-icon">🔒</div>
-              <div>
-                <strong>Secure & Compliant</strong>
-                Audio-Visual Notarization
-              </div>
-            </div>
-
-            <div class="trust-item">
-              <div class="trust-icon">✓</div>
-              <div>
-                <strong>State Compliant</strong>
-                Washington Law
-              </div>
-            </div>
-
-            <div class="trust-item">
-              <div class="trust-icon">◷</div>
-              <div>
-                <strong>Fast & Convenient</strong>
-                Same-Day Appointments
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#book">Book Appointment</a>
+        <a class="btn btn-secondary" href="#how">How It Works</a>
       </div>
-    </section>
 
-    <section id="how">
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">Simple. Secure. Online.</p>
-          <h2>How It Works</h2>
-        </div>
-
-        <div class="steps">
-          <article class="step">
-            <div class="icon">💾</div>
-            <div class="step-number">1</div>
-            <h3>Upload Your Document</h3>
-            <p>Send us your document securely through the approved online notarization platform.</p>
-          </article>
-
-          <article class="step">
-            <div class="icon">🪪</div>
-            <div class="step-number">2</div>
-            <h3>Verify Your Identity</h3>
-            <p>Complete the required identity verification steps with your valid government ID.</p>
-          </article>
-
-          <article class="step">
-            <div class="icon">🖥️</div>
-            <div class="step-number">3</div>
-            <h3>Meet Live & Get Notarized</h3>
-            <p>Join a quick video call, sign your document, and complete the notarization online.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="services" class="services">
-      <div class="container">
-        <div class="section-intro">
-          <p class="eyebrow">What We Notarize</p>
-          <h2>Services Offered</h2>
-        </div>
-
-        <div class="service-grid">
-          <div class="service">
-            <div class="service-icon">▤</div>
-            <strong>Acknowledgments</strong>
-          </div>
-
-          <div class="service">
-            <div class="service-icon">✎</div>
-            <strong>Jurats<br><small>Oaths & Affirmations</small></strong>
-          </div>
-
-          <div class="service">
-            <div class="service-icon">📃</div>
-            <strong>Trust Documents</strong>
-          </div>
-
-          <div class="service">
-            <div class="service-icon">👥</div>
-            <strong>Power of Attorney</strong>
-          </div>
-
-          <div class="service">
-            <div class="service-icon">📑</div>
-            <strong>General Notary Work</strong>
-          </div>
-
-          <div class="service">
-            <div class="service-icon">＋</div>
-            <strong>And More</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="trust" class="proof">
-      <div class="container proof-grid">
-        <div>
-          <p class="eyebrow">Why Choose EXPRESS RON</p>
-          <h2>Trusted. Reliable. Professional.</h2>
-
-          <div class="check-list">
-            <div><span>✓</span> Commissioned Notary Public in Washington State</div>
-            <div><span>✓</span> Secure Audio-Visual Notarization</div>
-            <div><span>✓</span> Compliant with State Regulations</div>
-            <div><span>✓</span> Fast, Friendly & Professional Service</div>
-            <div><span>✓</span> Flexible Appointments</div>
-          </div>
-        </div>
-
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p class="quote">
-            “Brian was super friendly and very helpful though the whole signing prosses. not having to leave the house is a huge plus!.”
-          </p>
-          <p class="quote-name">— EXPRESS RON Client Experience</p>
-
-          <div class="badge-row">
-            <div>🔒 Secure</div>
-            <div>✓ Verified</div>
-            <div>🌎 Nationwide Service</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing" class="pricing">
-      <div class="container pricing-grid">
-        <div class="price-card">
-          <div class="price">$10</div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <div class="trust-icon">▣</div>
           <div>
-            <strong>Bookings Starting at</strong>
-            <p class="fine">Additional fees may apply for complex documents or platform costs.</p>
+            <strong>Secure & Compliant</strong>
+            Audio-Visual Notarization
           </div>
         </div>
 
-        <div>
-          <p class="eyebrow">Simple & Transparent</p>
-          <h2>Pricing</h2>
-          <p>Book online in minutes and receive clear guidance before your session begins.</p>
+        <div class="trust-item">
+          <div class="trust-icon">✓</div>
+          <div>
+            <strong>State Compliant</strong>
+            Washington Law
+          </div>
         </div>
 
-        <div class="pricing-cta">
-          <a class="btn btn-primary" href="book.html">Book Your Appointment</a>
+        <div class="trust-item">
+          <div class="trust-icon">◷</div>
+          <div>
+            <strong>Fast & Convenient</strong>
+            Same-Day Appointments
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="container">
-        <h2>Ready to Get Your Document Notarized?</h2>
-        <p>Fast, secure, and convenient. Let’s get it done.</p>
-
-        <div class="final-actions">
-          <a class="btn btn-primary" href="book.html">Book Appointment</a>
-          <a class="btn btn-outline" href="mailto:notary@eronwa.com">Contact Me</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>© 2026 EXPRESS RON. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="book.html">Book</a>
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <div class="section-intro">
+      <p class="eyebrow">Simple. Secure. Online.</p>
+      <h2>How It Works</h2>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="icon">⇧</div>
+        <div class="step-number">1</div>
+        <h3>Upload Your Document</h3>
+        <p>Send us your document securely through the approved online notarization platform.</p>
+      </article>
+
+      <article class="step">
+        <div class="icon">▣</div>
+        <div class="step-number">2</div>
+        <h3>Verify Your Identity</h3>
+        <p>Complete the required identity verification steps with your valid government ID.</p>
+      </article>
+
+      <article class="step">
+        <div class="icon">✓</div>
+        <div class="step-number">3</div>
+        <h3>Meet Live & Get Notarized</h3>
+        <p>Join a quick video call, sign your document, and complete the notarization online.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-intro">
+      <p class="eyebrow">What We Notarize</p>
+      <h2>Services Offered</h2>
+    </div>
+
+    <div class="service-grid">
+      <div class="service">
+        <div class="service-icon">▤</div>
+        <strong>Acknowledgments</strong>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">✎</div>
+        <strong>Jurats<br><small>Oaths & Affirmations</small></strong>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">◇</div>
+        <strong>Trust Documents</strong>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">◈</div>
+        <strong>Power of Attorney</strong>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">□</div>
+        <strong>General Notary Work</strong>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">＋</div>
+        <strong>And More</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trust" class="proof">
+  <div class="container proof-grid">
+    <div>
+      <p class="eyebrow">Why Choose EXPRESS RON</p>
+      <h2>Trusted. Reliable. Professional.</h2>
+
+      <div class="check-list">
+        <div><span>✓</span> Commissioned Notary Public in Washington State</div>
+        <div><span>✓</span> Secure Audio-Visual Notarization</div>
+        <div><span>✓</span> Compliant with State Regulations</div>
+        <div><span>✓</span> Fast, Friendly & Professional Service</div>
+        <div><span>✓</span> Flexible Appointments</div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="quote">
+        “Brian was super friendly and very helpful throughout the whole signing process. Not having to leave the house was a huge plus.”
+      </p>
+      <p class="quote-name">— EXPRESS RON Client Experience</p>
+
+      <div class="badge-row">
+        <div>▣ Secure</div>
+        <div>✓ Verified</div>
+        <div>◷ Nationwide Service</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing">
+  <div class="container pricing-grid">
+    <div class="price-card">
+      <div class="price">$10</div>
+      <div>
+        <strong>Bookings Starting at</strong>
+        <p class="fine">Additional fees may apply for complex documents or platform costs.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="eyebrow">Simple & Transparent</p>
+      <h2>Pricing</h2>
+      <p>Book online in minutes and receive clear guidance before your session begins.</p>
+    </div>
+
+    <div class="pricing-cta">
+      <a class="btn btn-primary" href="#book">Book Your Appointment</a>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="booking">
+  <div class="container">
+    <div class="section-intro">
+      <p class="eyebrow">Book Online</p>
+      <h2>Schedule Your Notary Appointment</h2>
+      <p>Choose a time that works for you and complete your booking below.</p>
+    </div>
+
+    <div class="booking-container">
+      <div class="tidycal-embed" data-path="e-ronwa"></div>
+      <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to Get Your Document Notarized?</h2>
+    <p>Fast, secure, and convenient. Let’s get it done.</p>
+
+    <div class="final-actions">
+      <a class="btn btn-primary" href="#book">Book Appointment</a>
+      <a class="btn btn-outline" href="mailto:notary@eronwa.com">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>© 2026 EXPRESS RON. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#book">Book</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
