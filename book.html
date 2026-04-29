@@ -4,152 +4,181 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Book Appointment | E-RON Notary</title>
-<meta name="description" content="Schedule your secure remote online notarization appointment.">
+<title>Book Appointment | EXPRESS RON</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --primary: #0b1c2c;
-  --accent: #c8a96a;
-  --text: #1a1a1a;
-  --light: #f8f9fb;
+:root{
+  --navy:#071d3f;
+  --gold:#c7a052;
+  --gold2:#e0c27b;
+  --cream:#fbf7ef;
+  --ink:#162033;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Lato,Arial,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
 }
 
-body {
-  background: white;
-  color: var(--text);
+/* NAVBAR (MATCH INDEX) */
+header{
+  background:var(--navy);
+  padding:20px 0;
 }
 
-/* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: white;
-  border-bottom: 1px solid #eee;
+.container{
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
 }
 
-.logo {
-  font-weight: 900;
-  font-size: 20px;
-  color: var(--primary);
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.nav-links {
-  display: flex;
-  gap: 25px;
-  align-items: center;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:white;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
+.brand img{
+  width:48px;
 }
 
-.nav-btn {
-  background: var(--primary);
-  color: white;
-  padding: 10px 18px;
-  border-radius: 6px;
+.brand-title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:26px;
+  font-weight:700;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.btn{
+  padding:10px 18px;
+  border-radius:5px;
+  text-decoration:none;
+  font-weight:900;
+}
+
+.btn-primary{
+  background:linear-gradient(180deg,var(--gold2),var(--gold));
+  color:white;
 }
 
 /* HERO */
-.hero {
-  padding: 80px 8% 40px;
-  text-align: center;
+.hero{
+  background:linear-gradient(rgba(7,29,63,.9),rgba(7,29,63,.9)),
+  url("assets/hero-notary.png");
+  background-size:cover;
+  background-position:center;
+  padding:100px 0 60px;
+  text-align:center;
+  color:white;
 }
 
-.hero h1 {
-  font-size: 38px;
-  margin-bottom: 10px;
+.hero h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:52px;
+  margin-bottom:10px;
 }
 
-.hero p {
-  color: #555;
-  max-width: 500px;
-  margin: 0 auto;
+.hero p{
+  opacity:.9;
 }
 
-/* BOOKING SECTION */
-.booking {
-  padding: 40px 8% 80px;
-  display: flex;
-  justify-content: center;
+/* BOOKING SECTION (MAIN FOCUS) */
+.booking{
+  padding:60px 0;
 }
 
-.booking-container {
-  width: 100%;
-  max-width: 900px;
-  background: var(--light);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+.booking-container{
+  background:white;
+  border-radius:14px;
+  padding:25px;
+  box-shadow:0 20px 50px rgba(0,0,0,.1);
+  max-width:1000px;
+  margin:auto;
+}
+
+/* makes tidycal feel full-width and premium */
+.tidycal-embed{
+  width:100%;
+  min-height:650px;
 }
 
 /* FOOTER */
-.footer {
-  background: var(--primary);
-  color: white;
-  padding: 40px 8%;
-  text-align: center;
-}
-
-.footer p {
-  opacity: 0.8;
-  font-size: 14px;
+footer{
+  background:#06172f;
+  color:white;
+  text-align:center;
+  padding:25px;
+  margin-top:40px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="logo">E-RON Notary</div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png">
+      <span class="brand-title">EXPRESS RON</span>
+    </a>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="#">Services</a>
-    <a href="#">How It Works</a>
-    <a href="#">Contact</a>
-    <a href="book.html" class="nav-btn">Book Now</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#how">How It Works</a>
+      <a class="btn btn-primary" href="book.html">Book</a>
+    </nav>
   </div>
-</div>
+</header>
 
-<!-- HERO -->
 <section class="hero">
-  <h1>Book Your Appointment</h1>
-  <p>Schedule your secure remote notarization session in just a few clicks.</p>
-</section>
-
-<!-- BOOKING -->
-<section class="booking">
-  <div class="booking-container">
-
-    <!-- TIDYCAL EMBED (FIXED) -->
-    <div class="tidycal-embed" data-path="e-ronwa"></div>
-    <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
-
+  <div class="container">
+    <h1>Book Your Appointment</h1>
+    <p>Secure your remote notarization session in minutes.</p>
   </div>
 </section>
 
-<!-- FOOTER -->
-<div class="footer">
-  <p>© 2026 E-RON Notary — Secure Remote Online Notarization</p>
-</div>
+<section class="booking">
+  <div class="container">
+    <div class="booking-container">
+
+      <!-- TIDYCAL EMBED -->
+      <div class="tidycal-embed" data-path="e-ronwa"></div>
+      <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 EXPRESS RON — Remote Online Notary</p>
+</footer>
 
 </body>
 </html>
