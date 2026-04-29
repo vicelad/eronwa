@@ -1,118 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EXPRESS Remote Online Notary</title>
-<meta name="description" content="Secure remote online notarization. No travel required. Bonded and insured, serving clients nationwide.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
-<style>
-:root{--navy:#071d3f;--gold:#c39a2d;--ink:#101827;--muted:#4f5561;--line:rgba(7,29,63,.14);--page:#f7f3ec;--cream:#fbf8f2;--footer:#061f42}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Lato",Arial,sans-serif;color:var(--ink);background:var(--page);-webkit-font-smoothing:antialiased}.site-header{height:106px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(28px,7vw,112px);background:rgba(251,248,242,.96);border-bottom:1px solid rgba(195,154,45,.32);position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:20px;text-decoration:none;color:var(--navy)}.brand img{width:92px;height:92px;object-fit:contain;display:block}.brand span{font-size:38px;font-weight:900;letter-spacing:-.03em;color:var(--navy)}.nav-button{background:var(--navy);color:white;text-decoration:none;padding:18px 44px;border-radius:999px;font-size:20px;font-weight:900;box-shadow:0 14px 28px rgba(7,29,63,.18)}.hero{position:relative;overflow:hidden;text-align:center;padding:22px 20px 34px;background:radial-gradient(circle at 17% 73%,rgba(195,154,45,.17) 0 14%,rgba(195,154,45,.09) 14% 27%,transparent 27%),radial-gradient(circle at 90% 83%,rgba(7,29,63,.09) 0 15%,rgba(7,29,63,.06) 15% 29%,transparent 29%),linear-gradient(180deg,#fbf8f2 0%,#f8f4ee 100%);border-bottom:1px solid var(--line)}.hero-inner{position:relative;z-index:1;max-width:940px;margin:0 auto}.hero-logo{width:188px;height:188px;object-fit:contain;display:block;margin:0 auto 6px;filter:drop-shadow(0 10px 18px rgba(7,29,63,.08))}.hero h1{font-size:clamp(46px,5.6vw,64px);line-height:1.02;margin:0 0 20px;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:-.035em}.hero p{font-size:24px;color:var(--muted);margin:0 auto 30px;max-width:760px;letter-spacing:.01em}.hero-buttons{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}.button{min-width:250px;padding:18px 32px;border-radius:999px;text-decoration:none;font-weight:900;font-size:19px;display:inline-flex;justify-content:center;align-items:center;transition:.2s ease}.button:hover,.nav-button:hover{transform:translateY(-2px)}.primary{background:var(--navy);color:white;box-shadow:0 14px 28px rgba(7,29,63,.18)}.secondary{background:rgba(255,255,255,.38);color:var(--navy);border:1.4px solid var(--navy)}.trust{display:grid;grid-template-columns:repeat(3,1fr);background:rgba(251,248,242,.96);border-bottom:1px solid var(--line);min-height:74px}.trust div{padding:18px 20px;text-align:center;color:var(--navy);font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:14px;border-right:1px solid var(--line)}.trust div:last-child{border-right:0}.trust-icon{color:var(--gold);font-size:32px;line-height:1}#how{padding:24px 20px 12px;background:#fbf8f2}#how h2{text-align:center;color:var(--navy);font-size:40px;margin:0 0 10px;font-family:Georgia,"Times New Roman",serif;letter-spacing:-.02em}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1210px;margin:8px auto 0}.step{background:rgba(255,255,255,.50);border:1px solid rgba(7,29,63,.12);padding:14px 22px 18px;border-radius:14px;text-align:center;min-height:160px;box-shadow:0 12px 30px rgba(7,29,63,.025)}.step span{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--navy);color:white;font-weight:900;font-size:25px;margin:0 auto 8px}.step h3{margin:0 0 9px;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.05}.step p{margin:0 auto;font-size:15px;color:#313843;line-height:1.38;max-width:245px}.cta{display:none}.site-footer{background:var(--footer);color:rgba(255,255,255,.92);padding:14px 20px 18px;text-align:center;border-top:1px solid rgba(255,255,255,.08)}.footer-inner{max-width:1180px;margin:auto}.footer-top{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:8px}.site-footer img{width:58px;height:58px;object-fit:contain;margin:0}.footer-brand{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:29px;margin:0;color:white}.footer-meta{font-size:15px;margin:4px 0 10px;opacity:.94}.footer-meta span{color:var(--gold);padding:0 16px;font-weight:900}.disclaimer{border-top:2px solid var(--gold);padding-top:10px;font-size:14px;line-height:1.35;color:rgba(255,255,255,.88);max-width:1060px;margin:0 auto}.booking-hero{text-align:center;padding:80px 20px 40px;background:radial-gradient(circle at 50% 0%,rgba(195,154,45,.14),transparent 35%),var(--page)}.booking-hero img{width:190px;height:190px;object-fit:contain;margin-bottom:22px}.booking-hero h1{margin:0 0 12px;color:var(--navy);font-size:clamp(38px,5vw,54px);font-family:Georgia,"Times New Roman",serif}.booking-hero p{color:var(--muted);font-size:18px}.booking-box{max-width:980px;margin:0 auto 90px;padding:24px;background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:24px}.reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}.reveal.visible{opacity:1;transform:none}@media(max-width:900px){.site-header{height:auto;padding:14px 18px}.brand img{width:54px;height:54px}.brand span{font-size:22px}.nav-button{padding:12px 22px;font-size:16px}.hero{padding:38px 18px}.hero-logo{width:150px;height:150px}.hero p{font-size:18px}.trust{grid-template-columns:1fr}.trust div{border-right:0;border-bottom:1px solid var(--line)}.steps{grid-template-columns:1fr;max-width:560px}.button{min-width:0;width:100%;max-width:320px}.footer-top{flex-direction:column;gap:5px}.footer-meta span{display:none}}
-</style>
-</head>
-<body>
-
-<header class="site-header">
-  <a href="index.html" class="brand">
-    <img src="assets/logo.png" alt="E-RON Notary logo">
-    <span> EXPRESS Remote Online Notary</span>
-  </a>
-
-  <a href="book.html" class="nav-button">Book</a>
-</header>
-
-
-<main>
-  <section class="hero reveal">
-    <div class="hero-inner">
-      <img class="hero-logo" src="assets/logo.png" alt="E-RON Notary logo">
-      <h1>Notarize Documents Online.</h1>
-      <p>Secure remote online notarization. No travel required.</p>
-
-      <div class="hero-buttons">
-        <a href="book.html" class="button primary">Book Appointment</a>
-        <a href="#how" class="button secondary">How it works</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="trust reveal">
-    <div><span class="trust-icon">🛡️</span>Bonded & Insured</div>
-    <div><span class="trust-icon">🏛️</span>Commissioned in Washington</div>
-    <div><span class="trust-icon">🌎</span>Nationwide Service</div>
-  </section>
-
-  <section id="how" class="reveal">
-    <h2>How it works</h2>
-
-
-
-    
-    <div class="steps">
-      <div class="step">
-        <span>01</span>
-        <h3>Book</h3>
-        <p>Select a date and time that works best for you.</p>
-      </div>
-
-      <div class="step">
-        <span>02</span>
-        <h3>Verify</h3>
-        <p>Complete identity verification using a few simple steps via KBA and valid ID.</p>
-      </div>
-
-      <div class="step">
-        <span>03</span>
-        <h3>Connect</h3>
-        <p>Join a live video session with a commissioned notary.</p>
-      </div>
-
-      <div class="step">
-        <span>04</span>
-        <h3>Complete</h3>
-        <p>Pay & Receive your Notarized documents, and you’re all set.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta reveal">
-  
-    <h2>Ready to notarize?</h2>
-    <a href="book.html">Book Appointment</a>
-  </section>
-</main>
-
-
-
-  
-
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="assets/logo.png" alt="E-RON Notary logo">
-    <p class="footer-brand">E-RON WA Notary Public</p>
-    <p class="footer-meta">Bonded & Insured • Serving Nationwide • Commissioned in Washington State</p>
-    <p class="disclaimer">
-      E-RON WA is not an attorney licensed to practice law in the State of Washington and may not give legal advice or accept fees for legal advice.
-      Notarial acts may be performed using audio-visual communication technology when completed as a remote online notarization.
-    </p>
-  </div>
-</footer>
-
-
-<script>
-const els=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(e=>{
-  e.forEach(i=>{
-    if(i.isIntersecting){i.target.classList.add('visible')}
-  })
-},{threshold:.15});
-els.forEach(el=>obs.observe(el));
-</script>
-
-</body>
-</html>
+EXPRESS RON
+REMOTE ONLINE NOTARY
+Book Appointment
+COMMISSIONED IN WASHINGTON STATE
+Remote Online Notary — Fast, Secure, Nationwide
+Get your important documents notarized from the comfort of your home or office. Secure, convenient, and handled through a live audio-video session.
+▣ Book Appointment ▷ How It Works
+🔒
+Secure & Compliant
+✓
+Washington Notary
+⏱
+Same-Day Options
+✓
+Appointment Type
+Online Video Session
+Identity Check
+Valid ID Required
+Availability
+Book Online
+SIMPLE. SECURE. ONLINE.
+How It Works
+A clean process designed to make online notarization feel clear, professional, and easy from start to finish.
+⇧1
+Upload Your Document
+Send your document securely through the appointment process or approved platform.
+▣2
+Verify Your Identity
+Complete the required identity verification steps with your valid government ID.
+◉3
+Meet Live & Get Notarized
+Join a live audio-video session, sign your document, and complete the notarization.
+WHAT WE NOTARIZE
+Services Offered
+▤
+Acknowledgments
+✎
+Jurats
+Oaths & Affirmations
+⌂
+Real Estate Documents
+👥
+Power of Attorney
+▰
+General Notary Work
+＋
+And More
+View Booking Options
+WHY CHOOSE EXPRESS RON
+Trusted. Reliable. Professional.
+✓ Commissioned Notary Public in Washington State ✓ Remote online notarization using audio-visual communication ✓ Secure, guided process from booking to completion ✓ Convenient online appointments without unnecessary travel ✓ Clear communication before, during, and after your session
+★★★★★
+“A smooth, professional process designed for people who need documents notarized without leaving home.”
+EXPRESS Remote Online Notary
+🔒 Secure ✓ Verified 🌎 Nationwide Service
+$10
+Starting at
+Per Notarization
+Washington State compliant. Additional platform or convenience fees may apply.
+SIMPLE & TRANSPARENT
+Pricing
+Book online in minutes and receive guidance on any required fees before your session begins.
+Book Your Appointment
+Ready to Get Your Document Notarized?
+Fast, secure, and convenient. Let’s get it done.
+Book Appointment Contact Me
+© 2026 EXPRESS Remote Online Notary. Commissioned in Washington State.
+Book
+Services
+Pricing
