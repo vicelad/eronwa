@@ -1,14 +1,14 @@
+Done — I fixed the footer disclaimer CSS issue and improved the disclaimer language. Copy/paste this into GitHub:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EXPRESS NOTARY | Remote Online Notary</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
-
   <style>
     :root{
       --navy:#071d3f;
@@ -19,41 +19,33 @@
       --muted:#5f6673;
       --line:rgba(7,29,63,.13);
     }
-
     *{box-sizing:border-box}
-
     body{
       margin:0;
       font-family:Lato,Arial,sans-serif;
       background:var(--cream);
       color:var(--ink);
     }
-
     .container{
       width:min(1180px,calc(100% - 40px));
       margin:auto;
     }
-
     h1,h2,h3{
       font-family:"Cormorant Garamond",serif;
       margin:0;
       color:var(--navy);
       line-height:1;
     }
-
     h1{
       font-size:clamp(48px,7vw,82px);
       color:white;
       max-width:620px;
     }
-
     h2{
       font-size:clamp(38px,5vw,58px);
       text-align:center;
     }
-
     p{margin:0;line-height:1.6}
-
     .eyebrow{
       color:var(--gold2);
       text-transform:uppercase;
@@ -62,7 +54,6 @@
       font-size:13px;
       margin-bottom:14px;
     }
-
     .btn{
       display:inline-flex;
       align-items:center;
@@ -76,21 +67,17 @@
       letter-spacing:.03em;
       transition:.2s ease;
     }
-
     .btn:hover{transform:translateY(-2px)}
-
     .btn-primary{
       background:linear-gradient(180deg,var(--gold2),var(--gold));
       color:white;
       box-shadow:0 12px 28px rgba(199,160,82,.32);
     }
-
     .btn-secondary{
       border:1px solid rgba(255,255,255,.5);
       color:white;
       background:rgba(255,255,255,.05);
     }
-
     header{
       position:absolute;
       top:0;
@@ -100,14 +87,12 @@
       padding:26px 0;
       color:white;
     }
-
     .nav{
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:30px;
     }
-
     .brand{
       display:flex;
       align-items:center;
@@ -115,20 +100,17 @@
       color:white;
       text-decoration:none;
     }
-
     .brand img{
       width:56px;
       height:56px;
       object-fit:contain;
     }
-
     .brand-title{
       font-family:"Cormorant Garamond",serif;
       font-size:28px;
       font-weight:700;
       line-height:1;
     }
-
     .brand-subtitle{
       display:block;
       font-size:10px;
@@ -138,7 +120,6 @@
       opacity:.85;
       margin-top:4px;
     }
-
     .nav-links{
       display:flex;
       align-items:center;
@@ -146,14 +127,11 @@
       font-size:14px;
       font-weight:900;
     }
-
     .nav-links a{
       color:white;
       text-decoration:none;
     }
-
     .nav-links a:hover{color:var(--gold2)}
-
     .hero{
       min-height:720px;
       position:relative;
@@ -166,7 +144,6 @@
       background-position:center right;
       padding:160px 0 70px;
     }
-
     .hero::before{
       content:"";
       position:absolute;
@@ -175,36 +152,30 @@
       opacity:.08;
       pointer-events:none;
     }
-
     .hero-content{
       position:relative;
       z-index:1;
       max-width:660px;
     }
-
     .hero h1 .accent{color:var(--gold2)}
-
     .hero-copy{
       color:rgba(255,255,255,.9);
       font-size:18px;
       max-width:560px;
       margin:24px 0 30px;
     }
-
     .hero-actions{
       display:flex;
       gap:16px;
       flex-wrap:wrap;
       margin-bottom:40px;
     }
-
     .trust-row{
       display:flex;
       gap:32px;
       flex-wrap:wrap;
       color:white;
     }
-
     .trust-item{
       display:flex;
       gap:12px;
@@ -212,7 +183,6 @@
       font-size:14px;
       max-width:210px;
     }
-
     .theme-icon{
       width:48px;
       height:48px;
@@ -224,7 +194,6 @@
       color:var(--gold2);
       flex:0 0 48px;
     }
-
     .theme-icon svg{
       width:24px;
       height:24px;
@@ -234,42 +203,33 @@
       stroke-linecap:round;
       stroke-linejoin:round;
     }
-
     .trust-item strong{
       display:block;
       margin-bottom:2px;
     }
-
     section{padding:74px 0}
-
     .section-intro{
       text-align:center;
       max-width:720px;
       margin:0 auto 44px;
     }
-
     .section-intro .eyebrow{color:var(--gold)}
-
     .section-intro p{
       color:var(--muted);
       margin-top:14px;
       font-size:17px;
     }
-
     .steps{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:28px;
     }
-
     .step{
       text-align:center;
       padding:20px 30px;
       border-right:1px solid var(--line);
     }
-
     .step:last-child{border-right:none}
-
     .icon{
       width:72px;
       height:72px;
@@ -281,7 +241,6 @@
       margin:0 auto 16px;
       box-shadow:0 10px 25px rgba(7,29,63,.2);
     }
-
     .icon svg{
       width:34px;
       height:34px;
@@ -291,7 +250,6 @@
       stroke-linecap:round;
       stroke-linejoin:round;
     }
-
     .step-number{
       width:34px;
       height:34px;
@@ -303,73 +261,60 @@
       margin:0 auto 14px;
       font-weight:900;
     }
-
     .step p{
       color:var(--muted);
       margin-top:12px;
     }
-
     .services{
       background:#fffaf2;
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
-
     .service-grid{
       display:grid;
       grid-template-columns:repeat(6,1fr);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
-
     .service{
       text-align:center;
       padding:26px 14px;
       border-right:1px solid var(--line);
     }
-
     .service:last-child{border-right:none}
-
     .service .theme-icon{
       margin:0 auto 14px;
       background:white;
       color:var(--navy);
       border-color:rgba(199,160,82,.45);
     }
-
     .service strong{
       font-family:"Cormorant Garamond",serif;
       font-size:21px;
       color:var(--navy);
       line-height:1.1;
     }
-
     .proof{
       background:linear-gradient(135deg,#f8f0e5,#fffdf8);
     }
-
     .proof-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:54px;
       align-items:center;
     }
-
     .proof h2{text-align:left}
-
     .check-list{
       display:grid;
       gap:14px;
       margin-top:26px;
     }
-
     .check-list div{
       display:flex;
       gap:12px;
       align-items:flex-start;
       font-weight:700;
     }
-
     .check-list span{
       width:24px;
       height:24px;
@@ -381,7 +326,6 @@
       flex:0 0 24px;
       font-size:13px;
     }
-
     .testimonial{
       background:white;
       border:1px solid var(--line);
@@ -389,27 +333,23 @@
       padding:34px;
       box-shadow:0 20px 55px rgba(7,29,63,.13);
     }
-
     .stars{
       color:var(--gold);
       letter-spacing:.16em;
       font-size:20px;
       margin-bottom:18px;
     }
-
     .quote{
       font-family:"Cormorant Garamond",serif;
       color:var(--navy);
       font-size:30px;
       line-height:1.12;
     }
-
     .quote-name{
       margin-top:20px;
       color:var(--ink);
       font-weight:900;
     }
-
     .badge-row{
       display:flex;
       gap:16px;
@@ -418,13 +358,11 @@
       font-weight:900;
       color:var(--navy);
     }
-
     .badge{
       display:flex;
       align-items:center;
       gap:8px;
     }
-
     .badge svg{
       width:18px;
       height:18px;
@@ -434,34 +372,28 @@
       stroke-linecap:round;
       stroke-linejoin:round;
     }
-
     .pricing{
       background:var(--navy);
       color:white;
       padding:56px 0;
     }
-
     .pricing-grid{
       display:grid;
       grid-template-columns:1fr 1fr 1fr;
       align-items:center;
       gap:30px;
     }
-
     .pricing h2{
       color:white;
       text-align:left;
       font-size:44px;
     }
-
     .pricing p{color:rgba(255,255,255,.78)}
-
     .price-card{
       display:flex;
       gap:18px;
       align-items:center;
     }
-
     .price{
       font-family:"Cormorant Garamond",serif;
       font-size:66px;
@@ -469,33 +401,28 @@
       color:var(--gold2);
       line-height:1;
     }
-
     .fine{
       font-size:13px;
       margin-top:8px;
       color:rgba(255,255,255,.62);
     }
-
     .pricing-cta{text-align:right}
-
-.booking{
-  background:#fffdf8;
-}
-
-.booking-container{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 18px 50px rgba(7,29,63,.12);
-  overflow:hidden;
-  padding:20px;
-  min-height:720px;
-}
-
-.tidycal-embed{
-  width:100%;
-  min-height:700px;
-}
+    .booking{
+      background:#fffdf8;
+    }
+    .booking-container{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:0 18px 50px rgba(7,29,63,.12);
+      overflow:hidden;
+      padding:20px;
+      min-height:720px;
+    }
+    .tidycal-embed{
+      width:100%;
+      min-height:700px;
+    }
     .final-cta{
       text-align:center;
       background:
@@ -505,12 +432,10 @@
       background-position:center;
       padding:58px 0;
     }
-
     .final-cta p{
       color:var(--muted);
       margin-top:10px;
     }
-
     .final-actions{
       display:flex;
       justify-content:center;
@@ -518,54 +443,51 @@
       flex-wrap:wrap;
       margin-top:26px;
     }
-
     .btn-outline{
       border:1px solid rgba(199,160,82,.65);
       background:white;
       color:var(--navy);
     }
-
     footer{
       background:#06172f;
       color:rgba(255,255,255,.82);
       padding:24px 0;
       font-size:14px;
     }
-     
-    footer-disclaimer{
-  width:100%;
-  margin-top:14px;
-  padding-top:14px;
-  border-top:1px solid rgba(255,255,255,.14);
-  color:rgba(255,255,255,.62);
-  font-size:12px;
-  line-height:1.5;
-}
     .footer-grid{
       display:flex;
       justify-content:space-between;
+      align-items:flex-start;
       gap:18px;
       flex-wrap:wrap;
     }
-
     .footer-links{
       display:flex;
       gap:22px;
     }
-
     .footer-links a{
       color:rgba(255,255,255,.78);
       text-decoration:none;
     }
-
+    .footer-links a:hover{
+      color:var(--gold2);
+    }
+    .footer-disclaimer{
+      flex-basis:100%;
+      width:100%;
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.14);
+      color:rgba(255,255,255,.62);
+      font-size:12px;
+      line-height:1.55;
+    }
     @media(max-width:900px){
       header{
         position:relative;
         background:var(--navy);
       }
-
       .nav-links a:not(.btn){display:none}
-
       .hero{
         padding:80px 0 60px;
         background:
@@ -574,31 +496,24 @@
         background-size:cover;
         background-position:center;
       }
-
       .steps,
       .proof-grid,
       .pricing-grid{
         grid-template-columns:1fr;
       }
-
       .step{
         border-right:none;
         border-bottom:1px solid var(--line);
       }
-
       .service-grid{
         grid-template-columns:repeat(2,1fr);
       }
-
       .pricing-cta{text-align:left}
-
-      .booking-frame,
-      .booking-frame iframe{
+      .booking-container,
+      .tidycal-embed{
         min-height:760px;
-        height:760px;
       }
     }
-
     @media(max-width:600px){
       .brand-title{font-size:23px}
       .brand-subtitle{display:none}
@@ -614,22 +529,23 @@
         text-align:center;
         justify-content:center;
       }
+      .footer-links{
+        justify-content:center;
+        flex-wrap:wrap;
+      }
     }
   </style>
 </head>
-
 <body>
-
 <header>
   <div class="container nav">
     <a class="brand" href="index.html">
-      <img src="assets/logo.png" alt="EXPRESS RON logo" />
+      <img src="assets/logo.png" alt="EXPRESS NOTARY logo" />
       <span>
         <span class="brand-title">EXPRESS NOTARY</span>
         <span class="brand-subtitle">Remote Online Notary</span>
       </span>
     </a>
-
     <nav class="nav-links">
       <a href="#how">How It Works</a>
       <a href="#services">Services</a>
@@ -639,29 +555,23 @@
     </nav>
   </div>
 </header>
-
 <main>
-
 <section class="hero">
   <div class="container">
     <div class="hero-content">
       <p class="eyebrow">Commissioned in Washington State</p>
-
       <h1>
         Express Online Notary
         <span class="accent">Nationwide Service</span>
       </h1>
-
       <p class="hero-copy">
         Get your important documents notarized from the comfort of your home or office.
         Secure, convenient, and 100% online.
       </p>
-
       <div class="hero-actions">
         <a class="btn btn-primary" href="#book">Book Appointment</a>
         <a class="btn btn-secondary" href="#how">How It Works</a>
       </div>
-
       <div class="trust-row">
         <div class="trust-item">
           <div class="theme-icon">
@@ -672,7 +582,6 @@
             Audio-visual notarization
           </div>
         </div>
-
         <div class="trust-item">
           <div class="theme-icon">
             <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
@@ -682,7 +591,6 @@
             Washington commissioned
           </div>
         </div>
-
         <div class="trust-item">
           <div class="theme-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -696,14 +604,12 @@
     </div>
   </div>
 </section>
-
 <section id="how">
   <div class="container">
     <div class="section-intro">
       <p class="eyebrow">Simple. Secure. Online.</p>
       <h2>How It Works</h2>
     </div>
-
     <div class="steps">
       <article class="step">
         <div class="icon">
@@ -713,7 +619,6 @@
         <h3>Upload Your Document</h3>
         <p>Send your document securely through the approved online notarization platform.</p>
       </article>
-
       <article class="step">
         <div class="icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M6 16c.8-2 5.2-2 6 0"/><path d="M14 9h4"/><path d="M14 13h4"/><path d="M14 17h3"/></svg>
@@ -722,7 +627,6 @@
         <h3>Verify Your Identity</h3>
         <p>Complete the required identity verification steps with your valid government ID.</p>
       </article>
-
       <article class="step">
         <div class="icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M9 11l2 2 4-4"/></svg>
@@ -734,40 +638,33 @@
     </div>
   </div>
 </section>
-
 <section id="services" class="services">
   <div class="container">
     <div class="section-intro">
       <p class="eyebrow">What We Notarize</p>
       <h2>Services Offered</h2>
     </div>
-
     <div class="service-grid">
       <div class="service">
         <div class="theme-icon"><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6z"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h4"/></svg></div>
         <strong>Acknowledgments</strong>
       </div>
-
       <div class="service">
         <div class="theme-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M7 7l-3 6h6z"/><path d="M17 7l-3 6h6z"/></svg></div>
         <strong>Jurats<br><small>Oaths & Affirmations</small></strong>
       </div>
-
       <div class="service">
         <div class="theme-icon"><svg viewBox="0 0 24 24"><path d="M7 3h10l2 4v14H5V7z"/><path d="M7 3v4h10V3"/><path d="M8 12h8"/><path d="M8 16h6"/></svg></div>
         <strong>Trust Documents</strong>
       </div>
-
       <div class="service">
         <div class="theme-icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c1-4 9-4 10 0"/><path d="M11 20c1-3 8-3 10 0"/></svg></div>
         <strong>Power of Attorney</strong>
       </div>
-
       <div class="service">
         <div class="theme-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></div>
         <strong>General Notary Work</strong>
       </div>
-
       <div class="service">
         <div class="theme-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
         <strong>And More</strong>
@@ -775,13 +672,11 @@
     </div>
   </div>
 </section>
-
 <section id="trust" class="proof">
   <div class="container proof-grid">
     <div>
-      <p class="eyebrow">Why Choose EXPRESS RON</p>
+      <p class="eyebrow">Why Choose EXPRESS NOTARY</p>
       <h2>Trusted. Reliable. Professional.</h2>
-
       <div class="check-list">
         <div><span>✓</span> Commissioned Notary Public in Washington State</div>
         <div><span>✓</span> Secure audio-visual notarization</div>
@@ -790,14 +685,12 @@
         <div><span>✓</span> Flexible appointments</div>
       </div>
     </div>
-
     <div class="testimonial">
       <div class="stars">★★★★★</div>
       <p class="quote">
         “Brian was super friendly and very helpful throughout the whole signing process. Not having to leave home with my toddler was a huge plus.”
       </p>
-      <p class="quote-name">— EXPRESS RON Client Experience</p>
-
+      <p class="quote-name">— EXPRESS NOTARY Client Experience</p>
       <div class="badge-row">
         <div class="badge"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure</div>
         <div class="badge"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Verified</div>
@@ -806,29 +699,25 @@
     </div>
   </div>
 </section>
-
 <section id="pricing" class="pricing">
   <div class="container pricing-grid">
     <div class="price-card">
       <div class="price">$10</div>
       <div>
         <strong>Bookings Starting at</strong>
-        <p class="fine">Additional fees may apply for complex documents or platform costs.</p>
+        <p class="fine">Additional fees may apply for complex documents, added notarial acts, or platform costs.</p>
       </div>
     </div>
-
     <div>
       <p class="eyebrow">Simple & Transparent</p>
       <h2>Pricing</h2>
       <p>Book online in minutes and receive clear guidance before your session begins.</p>
     </div>
-
     <div class="pricing-cta">
       <a class="btn btn-primary" href="#book">Book Your Appointment</a>
     </div>
   </div>
 </section>
-
 <section id="book" class="booking">
   <div class="container">
     <div class="section-intro">
@@ -836,47 +725,34 @@
       <h2>Schedule Your Notary Appointment</h2>
       <p>Choose a time that works for you and complete your booking below.</p>
     </div>
-
     <div class="booking-container">
-      <!-- TIDYCAL EMBED -->
       <div class="tidycal-embed" data-path="e-ronwa"></div>
       <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
     </div>
   </div>
 </section>
-
 <section class="final-cta">
   <div class="container">
     <h2>Ready to Get Your Document Notarized?</h2>
     <p>Fast, secure, and convenient. Let’s get it done.</p>
-
     <div class="final-actions">
       <a class="btn btn-primary" href="#book">Book Appointment</a>
       <a class="btn btn-outline" href="mailto:notary@eronwa.com">Contact Me</a>
     </div>
   </div>
 </section>
-
 </main>
-
 <footer>
   <div class="container footer-grid">
-    
     <div>© 2026 EXPRESS NOTARY WA. All rights reserved.</div>
-
     <div class="footer-links">
       <a href="#book">Book</a>
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
     </div>
-
     <div class="footer-disclaimer">
-      EXPRESS NOTARY WA is a commissioned Notary Public in the State of Washington and performs remote online notarizations in compliance with applicable laws and regulations. 
-      EXPRESS NOTARY WA is not an attorney and does not provide legal advice, legal opinions, or representation. 
-      Notarial services are limited to the verification of identity and the witnessing of signatures, and do not constitute a review or validation of the contents, legality, or enforceability of any document. 
-      All clients are solely responsible for the accuracy, completeness, and legal sufficiency of their documents and should consult qualified legal counsel for guidance.
+      EXPRESS NOTARY WA provides remote online notarial services performed by a commissioned Washington State Notary Public in accordance with applicable Washington notary laws and regulations. Remote online notarizations may be available to clients located outside Washington, provided the notary is physically located in Washington State at the time of the notarial act. EXPRESS NOTARY WA is not a law firm, does not employ attorneys for the purpose of providing legal advice, and does not provide legal advice, legal opinions, document drafting, legal representation, or recommendations about whether a document is appropriate for a client’s needs. Notarial services are limited to identity verification, witnessing signatures when required, administering oaths or affirmations when applicable, and completing the appropriate notarial certificate. Clients are solely responsible for the accuracy, completeness, legality, and effectiveness of their documents and should consult a qualified attorney or other appropriate professional with any legal questions.
     </div>
-
   </div>
 </footer>
   
