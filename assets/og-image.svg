@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Express Notary WA — remote online notary">
+  <title>Express Notary WA — remote online notary</title>
+  <rect width="1200" height="630" fill="#071d3f"/>
+  <rect width="1200" height="630" fill="none" stroke="#c7a052" stroke-width="8" opacity="0.35"/>
+
+  <g transform="translate(140, 315) scale(1.5) translate(-50,-50)">
+    <circle cx="50" cy="50" r="50" fill="#0b2c59"/>
+    <circle cx="50" cy="50" r="45.5" fill="none" stroke="#c7a052" stroke-width="2.5" stroke-dasharray="1.6 5.4" stroke-linecap="round"/>
+    <circle cx="50" cy="50" r="40" fill="none" stroke="#c7a052" stroke-width="1.8"/>
+    <path d="M50 78 L34 41 L50 22 L66 41 Z" fill="#c7a052"/>
+    <circle cx="50" cy="44" r="5.6" fill="#0b2c59"/>
+    <path d="M50 50 L50 78" stroke="#0b2c59" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <text x="300" y="270" font-family="Georgia, 'Times New Roman', serif" font-size="84" fill="#ffffff">EXPRESS NOTARY</text>
+  <text x="303" y="330" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="bold" letter-spacing="9" fill="#c7a052">WASHINGTON ONLINE NOTARY</text>
+  <line x1="303" y1="376" x2="700" y2="376" stroke="#c7a052" stroke-width="2" opacity="0.5"/>
+  <text x="303" y="428" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#cfd6e2">Remote online notarization, commissioned</text>
+  <text x="303" y="470" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#cfd6e2">in Washington State.</text>
+</svg>
