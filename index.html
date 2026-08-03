@@ -9,7 +9,7 @@
 
   <meta
     name="description"
-    content="Remote online notarization by a Washington State commissioned notary public. Book online for acknowledgments, jurats, trust documents, and power of attorney forms. Starting at $25."
+    content="Remote online notarization by Brian Stewart, a Washington State commissioned notary public. Book online for acknowledgments, jurats, trust documents, and power of attorney forms. Open Sunday to Friday, 6am to 8pm."
   />
 
   <meta name="robots" content="index, follow" />
@@ -71,6 +71,27 @@
           "@type": "State",
           "name": "Washington"
         },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "notary@eronwa.com",
+          "availableLanguage": "English"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "06:00",
+            "closes": "20:00"
+          }
+        ],
         "availableChannel": {
           "@type": "ServiceChannel",
           "serviceUrl": "https://eronwa.com/#book",
@@ -91,6 +112,22 @@
         "@type": "FAQPage",
         "@id": "https://eronwa.com/#faq",
         "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much will I pay in total?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A single-document appointment during standard hours totals $35: $25 for the notarial act plus a $10 booking fee. Each additional notarial seal is $10. Appointments outside standard hours may carry additional charges."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are your hours?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard appointment hours are Sunday through Friday, 6am to 8pm Pacific. Appointments outside these hours can be arranged and may carry an additional charge."
+            }
+          },
           {
             "@type": "Question",
             "name": "Can every document be notarized online?",
@@ -599,9 +636,20 @@
       line-height:1;
     }
 
+    .price-breakdown{
+      margin:0 0 24px;
+      padding:16px 18px;
+      border-radius:var(--radius-sm);
+      background:rgba(199,160,82,.10);
+      border:1px solid rgba(199,160,82,.3);
+      color:var(--ink);
+      font-size:15px;
+      line-height:1.6;
+    }
+
     .price-sub{
       color:var(--muted);
-      margin-bottom:28px;
+      margin-bottom:20px;
     }
 
     .price-list{
@@ -645,8 +693,7 @@
       white-space:nowrap;
     }
 
-    .pricing-note,
-    .booking-note{
+    .pricing-note{
       margin:40px auto 0;
       max-width:850px;
       text-align:center;
@@ -654,8 +701,6 @@
       font-size:14px;
       line-height:1.7;
     }
-
-    .booking-note{ margin-top:14px; }
 
     /* TRUST */
 
@@ -724,6 +769,61 @@
     .trust-panel p{
       margin-top:18px;
       color:rgba(255,255,255,.8);
+    }
+
+    /* CONTACT */
+
+    .contact{
+      background:#fffdf8;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin-top:48px;
+    }
+
+    .contact-card{
+      padding:32px;
+      border-radius:var(--radius-sm);
+      background:var(--white);
+      border:1px solid var(--line);
+    }
+
+    .contact-card h3{ font-size:24px; }
+
+    .contact-card p{
+      margin-top:12px;
+      color:var(--muted);
+    }
+
+    .contact-card a{
+      color:var(--gold-ink);
+      font-weight:700;
+    }
+
+    .hours-list{
+      list-style:none;
+      padding:0;
+      margin:16px 0 0;
+    }
+
+    .hours-list li{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      color:var(--ink);
+    }
+
+    .hours-list li span:last-child{
+      font-weight:900;
+      color:var(--gold-ink);
+      white-space:nowrap;
     }
 
     /* FAQ */
@@ -831,6 +931,13 @@
 
     .footer-grid{ display:grid; gap:18px; }
 
+    .footer-contact{
+      color:rgba(255,255,255,.85);
+      line-height:1.9;
+    }
+
+    .footer-contact a{ font-weight:700; }
+
     .footer-links{
       display:flex;
       flex-wrap:wrap;
@@ -861,6 +968,7 @@
       .steps-grid,
       .service-grid,
       .pricing-grid,
+      .contact-grid,
       .trust-layout{
         grid-template-columns:1fr;
       }
@@ -942,6 +1050,7 @@
 
       .step,
       .service-card,
+      .contact-card,
       .trust-panel{ padding:26px; }
     }
 
@@ -990,6 +1099,7 @@
         <a href="#how">How it works</a>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
         <a href="#faq">FAQ</a>
         <a class="btn btn-primary" href="#book">Book now</a>
       </nav>
@@ -1015,9 +1125,9 @@
           <h1 id="hero-title">Online notarization simplified</h1>
 
           <p class="hero-copy">
-            Secure remote online notarization by a Washington State commissioned notary.
-            Book online, verify your identity, and complete eligible notarizations
-            from wherever you are.
+            Secure remote online notarization with Brian Stewart, a Washington State
+            commissioned notary. Book online, verify your identity, and complete
+            eligible notarizations from wherever you are.
           </p>
 
           <div class="hero-actions">
@@ -1027,16 +1137,16 @@
 
           <div class="hero-proof">
             <div class="proof-pill">
-              <strong>Remote online service</strong>
-              <span>Complete eligible notarizations online.</span>
+              <strong>$35 for one document</strong>
+              <span>Full price, standard hours. No surprises.</span>
+            </div>
+            <div class="proof-pill">
+              <strong>Open Sun&ndash;Fri, 6am&ndash;8pm</strong>
+              <span>Early mornings and evenings included.</span>
             </div>
             <div class="proof-pill">
               <strong>Washington commissioned</strong>
               <span>Performed by a Washington State notary public.</span>
-            </div>
-            <div class="proof-pill">
-              <strong>Simple booking</strong>
-              <span>Choose a time and receive guided next steps.</span>
             </div>
           </div>
 
@@ -1170,7 +1280,8 @@
           <p class="eyebrow">Transparent pricing</p>
           <h2 id="pricing-title">Simple, upfront pricing</h2>
           <p class="lead">
-            Competitive pricing, with you in mind. Your total is confirmed after your appointment ends.
+            One document during standard hours costs $35 all in. Everything that could
+            change that is listed below.
           </p>
         </div>
 
@@ -1178,12 +1289,17 @@
 
           <article class="price-card featured">
 
-            <span class="price-label">Most common service charge</span>
+            <span class="price-label">Most common appointment</span>
 
-            <h3>Online notarization</h3>
+            <h3>One document, standard hours</h3>
 
             <p class="price">
-              Starting at <strong>$25</strong>
+              Total <strong>$35</strong>
+            </p>
+
+            <p class="price-breakdown">
+              $25 notarial act + $10 booking fee. That is the full amount for a
+              single-document appointment Sunday to Friday, 6am to 8pm.
             </p>
 
             <p class="price-sub">
@@ -1204,15 +1320,14 @@
 
           <article class="price-card">
 
-            <h3>Additional fees</h3>
+            <h3>What can change the price</h3>
 
             <table class="price-table">
               <caption class="sr-only">Additional fees that may apply to your appointment</caption>
               <tbody>
-                <tr><th scope="row">Booking fee*</th><td>$10</td></tr>
-                <tr><th scope="row">Additional notarial seal</th><td>$10</td></tr>
-                <tr><th scope="row">After-hours appointments</th><td>From $25</td></tr>
-                <tr><th scope="row">Holidays and weekends</th><td>From $25</td></tr>
+                <tr><th scope="row">Additional notarial seal</th><td>$10 each</td></tr>
+                <tr><th scope="row">Outside standard hours</th><td>From $25</td></tr>
+                <tr><th scope="row">Holidays</th><td>From $25</td></tr>
                 <tr><th scope="row">Rush appointments</th><td>Contact for quote</td></tr>
                 <tr><th scope="row">Identity verification</th><td>Included</td></tr>
                 <tr><th scope="row">Digital copies</th><td>Included</td></tr>
@@ -1226,11 +1341,10 @@
         <p class="pricing-note">
           <strong>Pricing disclaimer:</strong> Final pricing is determined at the completion of your
           appointment based on Washington State notarial fees, the number of notarial acts performed,
-          and any optional premium scheduling services requested. A personalized price estimate is
-          available before your appointment upon request.
+          and any optional premium scheduling services requested. Any charge beyond the $35 standard
+          appointment is confirmed with you in advance. A personalized estimate is available before
+          your appointment on request.
         </p>
-
-        <p class="booking-note">* Booking fee subject to discounts and promotions.</p>
 
       </div>
     </section>
@@ -1267,16 +1381,56 @@
 
           <p class="eyebrow">Your notary</p>
 
-          <h3>Notarize from wherever you are.</h3>
+          <h3>Hi, I'm Brian Stewart.</h3>
 
           <p>
-            You'll meet the same commissioned notary every time. Avoid unnecessary
-            travel and complete eligible notarizations from home, work, or while
-            traveling.
+            I'm a commissioned notary public in Washington State, and I run every
+            appointment personally &mdash; you'll deal with me start to finish, not a
+            call centre. Notarize from home, work, or wherever you happen to be.
           </p>
 
         </aside>
 
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="container">
+
+        <div class="center">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Hours and how to reach me</h2>
+          <p class="lead">
+            Booking is fastest online. For anything else, email is the quickest way to me.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <article class="contact-card">
+            <h3>Appointment hours</h3>
+            <p>All times Pacific.</p>
+            <ul class="hours-list">
+              <li><span>Sunday &ndash; Friday</span><span>6am &ndash; 8pm</span></li>
+              <li><span>Saturday</span><span>Closed</span></li>
+            </ul>
+            <p>Outside these hours? Email me and I'll tell you what's possible.</p>
+          </article>
+
+          <article class="contact-card">
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:notary@eronwa.com">notary@eronwa.com</a>
+            </p>
+            <p>
+              Questions about whether your document qualifies, or what your appointment
+              will cost, are welcome before you book.
+            </p>
+          </article>
+
+        </div>
       </div>
     </section>
 
@@ -1291,6 +1445,25 @@
         </div>
 
         <div class="faq-list">
+
+          <details>
+            <summary>How much will I pay in total?</summary>
+            <p>
+              A single-document appointment during standard hours totals $35:
+              $25 for the notarial act plus a $10 booking fee. Each additional
+              notarial seal is $10. Appointments outside standard hours may carry
+              additional charges, confirmed with you before your session.
+            </p>
+          </details>
+
+          <details>
+            <summary>What are your hours?</summary>
+            <p>
+              Sunday through Friday, 6am to 8pm Pacific. Saturday is closed.
+              Appointments outside these hours can sometimes be arranged and may
+              carry an additional charge.
+            </p>
+          </details>
 
           <details>
             <summary>Can every document be notarized online?</summary>
@@ -1350,16 +1523,23 @@
   <footer>
     <div class="container footer-grid">
 
-      <p>&copy; <span id="year">2026</span> EXPRESS NOTARY WA. All rights reserved.</p>
+      <p class="footer-contact">
+        <strong>EXPRESS NOTARY WA</strong><br />
+        Brian Stewart, Washington State Notary Public<br />
+        <a href="mailto:notary@eronwa.com">notary@eronwa.com</a><br />
+        Sunday &ndash; Friday, 6am &ndash; 8pm Pacific
+      </p>
 
       <ul class="footer-links">
         <li><a href="#book">Book</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
 
       <p class="footer-disclaimer">
+        &copy; <span id="year">2026</span> EXPRESS NOTARY WA. All rights reserved.
         EXPRESS NOTARY WA provides remote online notarial services
         by a commissioned Washington State Notary Public.
         EXPRESS NOTARY WA is not a law firm and does not provide legal advice.
