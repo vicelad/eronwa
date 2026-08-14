@@ -103,3 +103,1689 @@
       },
       {
         "@type": "FAQPage",
+        "@id": "https://eronwa.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much will I pay in total?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A single-document appointment during standard hours totals $35: $25 for the notarial act plus a $10 booking fee. Each additional notarial seal is $15. Witnesses provided through the platform are $10 each. Appointments outside standard hours may carry additional charges."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you provide witnesses?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Witnesses can be provided through the notarization platform at $10 each, billed at cost as a non-notarial service. You are also welcome to bring your own witnesses at no additional charge."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you handle estate planning and multi-document packages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Estate planning and other multi-document packages are quoted in advance so you have a fixed number before the session. Email notary@eronwa.com with the document list and number of signers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are your hours?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard appointment hours are Sunday through Friday, 6am to 8pm Pacific, and Saturday is closed. Additional hours are available at request, including evenings, Saturdays, and holidays, and may carry an additional charge confirmed before booking."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can every document be notarized online?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Eligibility depends on the document type, platform requirements, and applicable law."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you provide legal advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. EXPRESS NOTARY WA is not a law firm and does not provide legal advice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do I need for the appointment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You generally need your document, a valid government-issued ID, and a stable internet connection."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root{
+      --navy:#050f22;
+      --navy2:#0b2c59;
+      --navy3:#0e3a72;
+      --gold:#c7a052;
+      --gold2:#f0d799;
+      --gold3:#9c7a34;
+      /* Darker gold reserved for text on light backgrounds — passes WCAG AA */
+      --gold-ink:#7d5c19;
+      --cream:#faf6ec;
+      --white:#ffffff;
+      --ink:#141c2c;
+      --muted:#5a6272;
+      --line:rgba(7,29,63,.12);
+      --line-gold:rgba(199,160,82,.35);
+      --shadow-sm:0 8px 24px rgba(7,20,45,.08);
+      --shadow:0 30px 80px rgba(6,17,40,.14);
+      --shadow-lg:0 40px 110px rgba(5,15,34,.22);
+      --radius:24px;
+      --radius-sm:16px;
+      --container:1160px;
+      --ease:260ms cubic-bezier(.2,.7,.3,1);
+      --header-h:88px;
+      --serif:"Cormorant Garamond", Georgia, serif;
+      --noise-bg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:Lato, Arial, sans-serif;
+      background:
+        var(--noise-bg),
+        radial-gradient(1100px 600px at 100% -10%, rgba(199,160,82,.06), transparent 60%),
+        var(--cream);
+      background-repeat:repeat, no-repeat;
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    img{ max-width:100%; display:block; }
+    a{ color:inherit; }
+    ::selection{ background:rgba(199,160,82,.32); color:var(--navy); }
+    :focus-visible{
+      outline:3px solid var(--gold);
+      outline-offset:3px;
+      border-radius:4px;
+    }
+    .sr-only{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;
+      clip:rect(0 0 0 0);
+      white-space:nowrap;
+      border:0;
+    }
+    .skip-link{
+      position:absolute;
+      left:14px;
+      top:-100px;
+      z-index:100;
+      padding:12px 18px;
+      border-radius:999px;
+      background:var(--gold);
+      color:var(--navy);
+      font-weight:900;
+      text-decoration:none;
+      transition:top var(--ease);
+    }
+    .skip-link:focus{ top:14px; }
+    .container{
+      width:min(var(--container), calc(100% - 34px));
+      margin:0 auto;
+    }
+    .section{
+      padding:100px 0;
+      scroll-margin-top:var(--header-h);
+    }
+    .kicker{
+      margin:0 0 16px;
+    }
+    .ornament{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      max-width:240px;
+      margin:0 auto 44px;
+    }
+    .ornament::before,
+    .ornament::after{
+      content:"";
+      flex:1;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--line-gold));
+    }
+    .ornament::after{
+      background:linear-gradient(90deg, var(--line-gold), transparent);
+    }
+    .ornament svg{
+      width:9px;
+      height:9px;
+      flex:none;
+      fill:var(--gold);
+    }
+    .eyebrow{
+      margin:0;
+      color:var(--gold-ink);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.26em;
+    }
+    h1,h2,h3{
+      margin:0;
+      font-family:var(--serif);
+      font-weight:600;
+      line-height:1.02;
+      letter-spacing:-.01em;
+      color:var(--navy);
+    }
+    h1{
+      max-width:780px;
+      font-size:clamp(50px,8vw,98px);
+      font-weight:600;
+      color:var(--white);
+    }
+    h1 em{
+      font-style:italic;
+      font-weight:500;
+      background:linear-gradient(100deg, var(--gold2) 10%, var(--gold) 55%, var(--gold2) 90%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    h2{ font-size:clamp(38px,5vw,64px); font-weight:600; }
+    h3{ font-size:26px; font-weight:600; }
+    p{ margin:0; line-height:1.75; }
+    .lead{
+      max-width:660px;
+      margin:20px auto 0;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.7;
+    }
+    .lead-left{ margin-left:0; }
+    .center{ text-align:center; }
+    .btn{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:56px;
+      padding:0 28px;
+      border-radius:999px;
+      text-decoration:none;
+      font-size:12.5px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      transition:transform var(--ease), box-shadow var(--ease), background var(--ease), border-color var(--ease);
+    }
+    .btn:hover{ transform:translateY(-2px); }
+    .btn:active{ transform:translateY(0); }
+    .btn-primary{
+      color:var(--navy);
+      background:linear-gradient(180deg,var(--gold2),var(--gold) 70%);
+      box-shadow:0 3px 0 rgba(124,92,25,.3) inset, 0 8px 18px rgba(124,92,25,.16);
+    }
+    .btn-primary:hover{
+      box-shadow:0 3px 0 rgba(124,92,25,.3) inset, 0 12px 24px rgba(124,92,25,.22);
+    }
+    .btn-light{
+      color:var(--white);
+      border:1px solid rgba(255,255,255,.3);
+      background:rgba(255,255,255,.06);
+      backdrop-filter:blur(6px);
+    }
+    .btn-light:hover{
+      border-color:rgba(240,215,153,.55);
+      background:rgba(240,215,153,.08);
+    }
+    .btn-ghost{
+      color:var(--navy);
+      border:1px solid var(--line-gold);
+      background:transparent;
+    }
+    .btn-ghost:hover{
+      background:rgba(199,160,82,.08);
+      border-color:var(--gold);
+    }
+    /* reveal-on-scroll */
+    .reveal{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity 760ms var(--ease), transform 760ms var(--ease);
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform:none;
+    }
+    /* HEADER */
+    .site-header{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:50;
+      padding:16px 0;
+      background:rgba(5,15,34,.82);
+      backdrop-filter:blur(20px) saturate(140%);
+      border-bottom:1px solid rgba(240,215,153,.12);
+      transition:padding var(--ease), background var(--ease), box-shadow var(--ease);
+    }
+    .site-header.is-scrolled{
+      padding:11px 0;
+      background:rgba(5,15,34,.94);
+      box-shadow:0 18px 40px rgba(4,10,24,.35);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+      color:var(--white);
+    }
+    .brand img{
+      width:46px;
+      height:46px;
+      object-fit:contain;
+      filter:drop-shadow(0 2px 8px rgba(199,160,82,.35));
+    }
+    .brand-title{
+      display:block;
+      font-family:var(--serif);
+      font-weight:600;
+      font-size:26px;
+      letter-spacing:.01em;
+      line-height:1;
+    }
+    .brand-subtitle{
+      display:block;
+      margin-top:6px;
+      color:var(--gold2);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      opacity:.85;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      color:var(--white);
+      font-size:12.5px;
+      font-weight:900;
+      letter-spacing:.02em;
+    }
+    .nav-links a:not(.btn){
+      position:relative;
+      text-decoration:none;
+      opacity:.82;
+      padding:6px 0;
+    }
+    .nav-links a:not(.btn)::after{
+      content:"";
+      position:absolute;
+      left:0; right:100%;
+      bottom:0;
+      height:1px;
+      background:var(--gold2);
+      transition:right var(--ease);
+    }
+    .nav-links a:not(.btn):hover{
+      opacity:1;
+      color:var(--gold2);
+    }
+    .nav-links a:not(.btn):hover::after{ right:0; }
+    .nav-toggle{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.3);
+      background:rgba(255,255,255,.08);
+      color:var(--white);
+      font-family:inherit;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    .nav-toggle svg{
+      width:18px;height:18px;
+      stroke:currentColor;fill:none;
+      stroke-width:2;stroke-linecap:round;
+    }
+    .nav-toggle .icon-close{ display:none; }
+    .nav-toggle[aria-expanded="true"] .icon-open{ display:none; }
+    .nav-toggle[aria-expanded="true"] .icon-close{ display:block; }
+    /* HERO */
+    .hero{
+      position:relative;
+      display:grid;
+      align-items:center;
+      min-height:740px;
+      overflow:hidden;
+      color:var(--white);
+      background:
+        radial-gradient(900px 520px at 88% 8%, rgba(199,160,82,.16), transparent 60%),
+        linear-gradient(150deg,#0c3468 0%,#071f42 46%,#050f22 82%);
+      padding:156px 0 96px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      opacity:.5;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:64px 64px;
+      -webkit-mask-image:radial-gradient(760px 480px at 78% 20%, #000, transparent 72%);
+      mask-image:radial-gradient(760px 480px at 78% 20%, #000, transparent 72%);
+    }
+    .hero-mark{
+      position:absolute;
+      right:-70px;
+      top:50%;
+      width:600px;
+      height:600px;
+      transform:translateY(-50%);
+      opacity:.09;
+      z-index:1;
+      pointer-events:none;
+    }
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:780px;
+    }
+    @keyframes heroRise{
+      from{ opacity:0; transform:translateY(26px); }
+      to{ opacity:1; transform:none; }
+    }
+    .hero-content > *{
+      opacity:0;
+      animation:heroRise 900ms var(--ease) forwards;
+    }
+    .hero-content > *:nth-child(1){ animation-delay:.05s; }
+    .hero-content > *:nth-child(2){ animation-delay:.18s; }
+    .hero-content > *:nth-child(3){ animation-delay:.32s; }
+    .hero-content > *:nth-child(4){ animation-delay:.46s; }
+    .hero-content > *:nth-child(5){ animation-delay:.6s; }
+    .hero .eyebrow{ color:var(--gold2); }
+    .hero-copy{
+      max-width:620px;
+      margin-top:28px;
+      color:rgba(255,255,255,.86);
+      font-size:19px;
+      line-height:1.75;
+    }
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:36px;
+    }
+    .hero-proof{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:52px;
+      max-width:780px;
+    }
+    .proof-pill{
+      padding:20px;
+      border-radius:var(--radius-sm);
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      transition:border-color var(--ease), background var(--ease), transform var(--ease);
+    }
+    .proof-pill:hover{
+      border-color:rgba(240,215,153,.4);
+      background:rgba(255,255,255,.08);
+      transform:translateY(-3px);
+    }
+    .proof-pill strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:14.5px;
+      font-family:var(--serif);
+      font-weight:600;
+      letter-spacing:.01em;
+      font-feature-settings:"onum" 1, "kern" 1;
+      font-variant-numeric:oldstyle-nums;
+    }
+    .proof-pill span{
+      color:rgba(255,255,255,.72);
+      font-size:13px;
+      line-height:1.5;
+    }
+    /* BOOKING */
+    .booking{
+      padding-top:0;
+      margin-top:-76px;
+      position:relative;
+      z-index:10;
+    }
+    .booking-shell{
+      padding:20px;
+      border-radius:var(--radius);
+      background:var(--white);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-lg);
+      overflow:hidden;
+      position:relative;
+    }
+    .booking-shell::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:4px;
+      background:linear-gradient(90deg, var(--gold3), var(--gold2), var(--gold3));
+    }
+    .tidycal-embed{
+      width:100%;
+      min-height:620px;
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .embed-fallback{
+      padding:48px 24px;
+      text-align:center;
+      color:var(--muted);
+    }
+    /* HOW */
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:52px;
+    }
+    .step{
+      position:relative;
+      padding:34px 32px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:var(--white);
+      box-shadow:var(--shadow-sm);
+      transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+    }
+    .step:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--shadow);
+      border-color:var(--line-gold);
+    }
+    .step-num{
+      display:block;
+      margin-bottom:12px;
+      color:var(--gold-ink);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.24em;
+    }
+    .icon-box{
+      width:64px;
+      height:64px;
+      display:grid;
+      place-items:center;
+      margin-bottom:24px;
+      border-radius:50%;
+      background:linear-gradient(160deg, var(--navy2), var(--navy) 70%);
+      color:var(--gold2);
+      box-shadow:0 12px 26px rgba(7,29,63,.28), inset 0 0 0 1px rgba(199,160,82,.3);
+    }
+    .icon-box svg{
+      width:28px;height:28px;
+      stroke:currentColor;fill:none;
+      stroke-width:1.7;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .step h3{ letter-spacing:0; }
+    .step p{
+      margin-top:14px;
+      color:var(--muted);
+    }
+    /* SERVICES */
+    .services{
+      position:relative;
+      background:var(--noise-bg), #fffdf7;
+      background-repeat:repeat, no-repeat;
+    }
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin-top:52px;
+    }
+    .service-card{
+      padding:30px 28px;
+      border-radius:var(--radius-sm);
+      background:var(--white);
+      border:1px solid var(--line);
+      transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+    }
+    .service-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-sm);
+      border-color:var(--line-gold);
+    }
+    .service-card h3{ font-size:24px; }
+    .service-card p{
+      margin-top:12px;
+      color:var(--muted);
+    }
+    /* PRICING */
+    .pricing{
+      background:var(--noise-bg), #fffdf7;
+      background-repeat:repeat, no-repeat;
+    }
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:28px;
+      margin-top:54px;
+      align-items:start;
+    }
+    .price-card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:42px;
+      box-shadow:var(--shadow-sm);
+    }
+    .price-card.featured{
+      position:relative;
+      border:1px solid rgba(199,160,82,.4);
+      box-shadow:0 30px 80px rgba(124,92,25,.16);
+    }
+    .price-card.featured::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      padding:1px;
+      background:linear-gradient(160deg, var(--gold2), transparent 40%, transparent 60%, var(--gold3));
+      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      pointer-events:none;
+    }
+    .price-label{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 16px;
+      border-radius:999px;
+      background:linear-gradient(120deg, rgba(199,160,82,.16), rgba(199,160,82,.24));
+      color:var(--gold-ink);
+      font-size:11.5px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+    .price{
+      margin:20px 0;
+      font-size:22px;
+      font-weight:700;
+      color:var(--navy);
+    }
+    .price strong{
+      display:block;
+      font-family:var(--serif);
+      font-weight:700;
+      font-size:76px;
+      background:linear-gradient(160deg, var(--gold3), var(--gold-ink) 60%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color:transparent;
+      line-height:1.25;
+      padding-top:.06em;
+      overflow:visible;
+      font-feature-settings:"lnum" 1, "kern" 1;
+      font-variant-numeric:lining-nums;
+    }
+    .price-breakdown{
+      margin:0 0 24px;
+      padding:16px 18px;
+      border-radius:var(--radius-sm);
+      background:rgba(199,160,82,.09);
+      border:1px solid rgba(199,160,82,.28);
+      color:var(--ink);
+      font-size:15px;
+      line-height:1.6;
+    }
+    .price-sub{
+      color:var(--muted);
+      margin-bottom:22px;
+    }
+    .price-list{
+      list-style:none;
+      padding:0;
+      margin:0 0 32px;
+    }
+    .price-list li{
+      display:grid;
+      grid-template-columns:22px 1fr;
+      gap:10px;
+      padding:13px 0;
+      border-bottom:1px solid rgba(0,0,0,.07);
+      color:var(--ink);
+    }
+    .price-list li::before{
+      content:"✔";
+      color:var(--gold-ink);
+      font-size:13px;
+    }
+    /* Grouped add-on tables */
+    .price-group{
+      margin:0 0 6px;
+      padding-top:28px;
+      font-family:Lato, Arial, sans-serif;
+      font-size:11.5px;
+      font-weight:900;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--navy);
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    .price-group:first-of-type{ padding-top:22px; border-top:0; }
+    .price-note-inline{
+      margin-top:22px;
+      padding-top:20px;
+      border-top:1px solid rgba(0,0,0,.08);
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .price-note-inline a{
+      color:var(--gold-ink);
+      font-weight:700;
+    }
+    .price-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+    }
+    .price-table th,
+    .price-table td{
+      padding:15px 0;
+      border-bottom:1px solid rgba(0,0,0,.07);
+      text-align:left;
+      font-weight:400;
+      vertical-align:top;
+    }
+    .price-table td{
+      text-align:right;
+      font-weight:900;
+      color:var(--gold-ink);
+      white-space:nowrap;
+      font-variant-numeric:tabular-nums lining-nums;
+    }
+    .price-table .fee-detail{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:400;
+      line-height:1.55;
+    }
+    .price-table td.fee-included{
+      color:var(--muted);
+      font-weight:700;
+    }
+    .pricing-note{
+      margin:44px auto 0;
+      max-width:850px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+    }
+    /* TRUST */
+    .trust-layout{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:52px;
+      align-items:start;
+    }
+    .check-list{
+      display:grid;
+      gap:16px;
+      margin-top:30px;
+      padding:0;
+      list-style:none;
+    }
+    .check-item{
+      display:grid;
+      grid-template-columns:30px 1fr;
+      gap:14px;
+      align-items:start;
+      font-weight:700;
+      color:var(--navy);
+    }
+    .check-item::before{
+      content:"✓";
+      width:30px;height:30px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:linear-gradient(160deg, var(--gold2), var(--gold));
+      color:var(--navy);
+      font-size:14px;
+      font-weight:900;
+      box-shadow:0 6px 16px rgba(199,160,82,.35);
+    }
+    .trust-panel{
+      position:relative;
+      padding:44px;
+      border-radius:var(--radius);
+      background:linear-gradient(160deg, var(--navy2), var(--navy) 75%);
+      color:var(--white);
+      box-shadow:var(--shadow-lg);
+      overflow:hidden;
+    }
+    .trust-panel::after{
+      content:"";
+      position:absolute;
+      right:-60px; top:-60px;
+      width:220px; height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(199,160,82,.22), transparent 70%);
+    }
+    .notary-seal{
+      position:absolute;
+      top:28px;
+      right:28px;
+      width:92px;
+      height:92px;
+      z-index:2;
+      opacity:.85;
+      animation:sealSpin 46s linear infinite;
+      pointer-events:none;
+    }
+    .notary-seal svg{ width:100%; height:100%; display:block; }
+    .notary-seal .seal-ring{ fill:none; stroke:var(--gold2); }
+    .notary-seal .seal-ring-outer{ stroke-width:1; opacity:.5; }
+    .notary-seal .seal-ring-inner{ stroke-width:1; opacity:.8; }
+    .notary-seal .seal-text{
+      fill:var(--gold2);
+      font-family:Lato, Arial, sans-serif;
+      font-size:9.6px;
+      font-weight:900;
+      letter-spacing:.2em;
+    }
+    .notary-seal .seal-mark{ fill:var(--gold2); }
+    @keyframes sealSpin{ to{ transform:rotate(360deg); } }
+    .trust-portrait{
+      width:100%;
+      max-width:260px;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      object-position:center 20%;
+      border-radius:var(--radius-sm);
+      border:1px solid rgba(199,160,82,.45);
+      margin-bottom:28px;
+      box-shadow:0 20px 46px rgba(0,0,0,.35);
+      position:relative;
+      z-index:1;
+    }
+    .trust-panel .eyebrow{ color:var(--gold2); }
+    .trust-panel h3{
+      color:var(--white);
+      font-size:38px;
+      position:relative;
+      z-index:1;
+    }
+    .trust-panel p{
+      margin-top:18px;
+      color:rgba(255,255,255,.78);
+      position:relative;
+      z-index:1;
+    }
+    /* CONTACT */
+    .contact{
+      background:var(--noise-bg), #fffdf7;
+      background-repeat:repeat, no-repeat;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin-top:52px;
+    }
+    .contact-card{
+      padding:34px 32px;
+      border-radius:var(--radius-sm);
+      background:var(--white);
+      border:1px solid var(--line);
+      transition:box-shadow var(--ease), border-color var(--ease);
+    }
+    .contact-card:hover{
+      box-shadow:var(--shadow-sm);
+      border-color:var(--line-gold);
+    }
+    .contact-card h3{ font-size:24px; }
+    .contact-card p{
+      margin-top:12px;
+      color:var(--muted);
+    }
+    .contact-card a{
+      color:var(--gold-ink);
+      font-weight:700;
+    }
+    .hours-list{
+      list-style:none;
+      padding:0;
+      margin:18px 0 0;
+    }
+    .hours-list li{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      padding:11px 0;
+      border-bottom:1px solid rgba(0,0,0,.07);
+      color:var(--ink);
+    }
+    .hours-list li span:last-child{
+      font-weight:900;
+      color:var(--gold-ink);
+      white-space:nowrap;
+      font-variant-numeric:tabular-nums lining-nums;
+    }
+    /* FAQ */
+    .faq-list{
+      display:grid;
+      gap:14px;
+      max-width:860px;
+      margin:52px auto 0;
+    }
+    details{
+      border-radius:var(--radius-sm);
+      border:1px solid var(--line);
+      background:var(--white);
+      overflow:hidden;
+      transition:border-color var(--ease), box-shadow var(--ease);
+    }
+    details[open]{
+      border-color:var(--line-gold);
+      box-shadow:var(--shadow-sm);
+    }
+    summary{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:23px 26px;
+      cursor:pointer;
+      list-style:none;
+      font-weight:700;
+      color:var(--navy);
+      font-family:var(--serif);
+      font-size:19px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    summary::after{
+      content:"+";
+      flex:none;
+      width:30px; height:30px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(199,160,82,.12);
+      font-size:20px;
+      font-weight:400;
+      font-family:Lato, sans-serif;
+      color:var(--gold-ink);
+      transition:transform var(--ease), background var(--ease);
+    }
+    details[open] summary::after{
+      content:"−";
+      background:rgba(199,160,82,.22);
+    }
+    details p{
+      padding:0 26px 26px;
+      color:var(--muted);
+    }
+    /* CTA */
+    .final-cta{
+      position:relative;
+      overflow:hidden;
+      color:var(--white);
+      background:
+        radial-gradient(760px 460px at 50% 0%, rgba(199,160,82,.14), transparent 65%),
+        linear-gradient(150deg,#0c3468 0%,#071f42 55%,#050f22 90%);
+    }
+    .cta-mark{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:540px;
+      height:540px;
+      transform:translate(-50%,-50%);
+      opacity:.07;
+      z-index:1;
+      pointer-events:none;
+    }
+    .final-cta .container{
+      position:relative;
+      z-index:2;
+    }
+    .final-cta .eyebrow{ color:var(--gold2); }
+    .final-cta h2{
+      color:var(--white);
+      max-width:760px;
+      margin:0 auto;
+    }
+    .final-cta p{
+      max-width:640px;
+      margin:20px auto 0;
+      color:rgba(255,255,255,.82);
+      font-size:18px;
+    }
+    .final-actions{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:14px;
+      margin-top:32px;
+    }
+    /* FOOTER */
+    footer{
+      position:relative;
+      padding:40px 0;
+      background:#04101f;
+      color:rgba(255,255,255,.72);
+      font-size:14px;
+    }
+    footer::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(199,160,82,.45), transparent);
+    }
+    .footer-grid{ display:grid; gap:20px; }
+    .footer-contact{
+      color:rgba(255,255,255,.85);
+      line-height:1.9;
+    }
+    .footer-contact strong{
+      font-family:var(--serif);
+      font-size:19px;
+      font-weight:600;
+      color:var(--gold2);
+      letter-spacing:.01em;
+    }
+    .footer-contact a{ font-weight:700; }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      padding:0;
+      margin:0;
+      list-style:none;
+    }
+    .footer-links a{
+      text-decoration:none;
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.02em;
+      opacity:.85;
+    }
+    .footer-links a:hover{ opacity:1; color:var(--gold2); }
+    .footer-disclaimer{
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,.1);
+      color:rgba(255,255,255,.5);
+      font-size:12px;
+      line-height:1.75;
+    }
+    /* RESPONSIVE */
+    @media (max-width:980px){
+      .hero-proof,
+      .steps-grid,
+      .service-grid,
+      .pricing-grid,
+      .contact-grid,
+      .trust-layout{
+        grid-template-columns:1fr;
+      }
+      .hero-mark{
+        right:-190px;
+        width:520px;
+        height:520px;
+        opacity:.05;
+      }
+      .trust-portrait{
+        max-width:220px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .notary-seal{
+        width:76px;
+        height:76px;
+        top:20px;
+        right:20px;
+      }
+      .nav-toggle{ display:inline-flex; }
+      .nav-links{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        padding:10px 17px 20px;
+        background:rgba(5,15,34,.98);
+        backdrop-filter:blur(18px);
+        border-bottom:1px solid rgba(255,255,255,.1);
+      }
+      .nav-links.is-open{ display:flex; }
+      .nav-links a:not(.btn){
+        padding:16px 4px;
+        border-bottom:1px solid rgba(255,255,255,.1);
+        font-size:15px;
+      }
+      .nav-links a:not(.btn)::after{ display:none; }
+      .nav-links .btn{ margin-top:16px; }
+    }
+    @media (max-width:680px){
+      .section{ padding:68px 0; }
+      .hero{
+        min-height:0;
+        padding:132px 0 92px;
+      }
+      h1{ font-size:clamp(42px,12vw,66px); }
+      .hero-actions .btn{ width:100%; }
+      .price-card{ padding:26px; }
+      .price strong{ font-size:56px; }
+      .price-table th,
+      .price-table td{
+        display:block;
+        width:100%;
+      }
+      .price-table th{
+        padding:14px 0 0;
+        border-bottom:0;
+      }
+      .price-table td{
+        text-align:left;
+        padding-top:2px;
+        font-size:18px;
+      }
+      .step,
+      .service-card,
+      .contact-card,
+      .trust-panel{ padding:26px; }
+    }
+    @media (max-width:560px){
+      .notary-seal{ display:none; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *,*::before,*::after{
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
+      }
+      .btn:hover{ transform:none; }
+      .reveal{ opacity:1; transform:none; }
+      .hero-content > *{ opacity:1; animation:none; }
+      .notary-seal{ animation:none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#main">
+        <img src="assets/logo.svg" alt="" width="46" height="46" />
+        <span>
+          <span class="brand-title">EXPRESS NOTARY</span>
+          <span class="brand-subtitle">Washington Online Notary</span>
+        </span>
+      </a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <svg class="icon-open" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+        Menu
+      </button>
+      <nav class="nav-links" id="primary-nav" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-primary" href="#book">Book now</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <svg class="hero-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M28 75 L28 25 L40 25 L60 58 L60 25 L72 25 L72 75 L60 75 L40 42 L40 75 Z" fill="#c7a052"/>
+      </svg>
+      <div class="container">
+        <div class="hero-content">
+          <p class="kicker"><span class="eyebrow">Washington State commissioned notary public</span></p>
+          <h1 id="hero-title">Online notarization, <em>simplified</em></h1>
+          <p class="hero-copy">
+            Secure remote online notarization with a Washington State
+            commissioned notary. Book online, verify your identity, and complete
+            eligible notarizations from wherever you are.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#book">Book an appointment</a>
+            <a class="btn btn-light" href="#how">See how it works</a>
+          </div>
+          <div class="hero-proof">
+            <div class="proof-pill">
+              <strong>$35 for one document</strong>
+              <span>Full price, standard hours. No surprises.</span>
+            </div>
+            <div class="proof-pill">
+              <strong>Open Sun&ndash;Fri, 6am&ndash;8pm</strong>
+              <span>Additional hours available at request.</span>
+            </div>
+            <div class="proof-pill">
+              <strong>Washington commissioned</strong>
+              <span>Performed by a Washington State notary public.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- BOOKING -->
+    <section id="book" class="section booking" aria-label="Book an appointment">
+      <div class="container">
+        <div class="booking-shell reveal">
+          <div class="tidycal-embed" data-path="e-ronwa">
+            <noscript>
+              <p class="embed-fallback">
+                Online booking needs JavaScript enabled.
+                You can also email
+                <a href="mailto:notary@eronwa.com">notary@eronwa.com</a>
+                to schedule an appointment.
+              </p>
+            </noscript>
+          </div>
+          <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+        </div>
+      </div>
+    </section>
+    <!-- HOW -->
+    <section id="how" class="section" aria-labelledby="how-title">
+      <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">Simple. Secure. Online.</span></p>
+          <h2 id="how-title">How it works</h2>
+          <p class="lead">
+            Upload, verify, meet live, and complete your eligible notarization online.
+          </p>
+        </div>
+        <div class="steps-grid">
+          <article class="step reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+            </div>
+            <span class="step-num">Step 1</span>
+            <h3>Prepare your documents</h3>
+            <p>Have your unsigned documents and ID ready before the session begins.</p>
+          </article>
+          <article class="step reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2"/>
+                <circle cx="9" cy="10" r="2"/>
+              </svg>
+            </div>
+            <span class="step-num">Step 2</span>
+            <h3>Verify your identity</h3>
+            <p>Complete identity verification using an acceptable government-issued ID.</p>
+          </article>
+          <article class="step reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="M9 11l2 2 4-4"/>
+              </svg>
+            </div>
+            <span class="step-num">Step 3</span>
+            <h3>Meet live online</h3>
+            <p>Join the session and complete your notarization online.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- SERVICES -->
+    <section id="services" class="section services" aria-labelledby="services-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
+      <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">Services</span></p>
+          <h2 id="services-title">Online notary services</h2>
+          <p class="lead">
+            Professional online notarization for common eligible documents.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <h3>Acknowledgments</h3>
+            <p>For signers acknowledging documents willingly.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Jurats</h3>
+            <p>For documents requiring an oath or affirmation.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Trust documents</h3>
+            <p>Support for eligible estate and trust documents.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Power of attorney</h3>
+            <p>For eligible POA documents requiring notarization.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- PRICING -->
+    <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">Transparent pricing</span></p>
+          <h2 id="pricing-title">Simple, upfront pricing</h2>
+          <p class="lead">
+            One document during standard hours costs $35 all in. Everything that could
+            change that is listed below.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card featured reveal">
+            <span class="price-label">Most common appointment</span>
+            <h3>One document, standard hours</h3>
+            <p class="price">
+              Total <strong>$35</strong>
+            </p>
+            <p class="price-breakdown">
+              $25 notarial act + $10 booking fee. That is the full amount for a
+              single-document appointment Sunday to Friday, 6am to 8pm.
+            </p>
+            <p class="price-sub">
+              Includes your first notarial seal and secure online session.
+            </p>
+            <ul class="price-list">
+              <li>First notarial seal included</li>
+              <li>Secure identity verification</li>
+              <li>Audio and video recording</li>
+              <li>Digital document processing</li>
+              <li>Fast, convenient online appointment</li>
+            </ul>
+            <a href="#book" class="btn btn-primary">Book an appointment</a>
+          </article>
+          <article class="price-card reveal">
+            <h3>What can change the price</h3>
+            <h4 class="price-group" id="fees-notarial">Notarial fees</h4>
+            <table class="price-table" aria-labelledby="fees-notarial">
+              <caption class="sr-only">Notarial fees, set by Washington State</caption>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Additional notarial seal
+                    <span class="fee-detail">Each seal beyond the first one in your appointment.</span>
+                  </th>
+                  <td>$15 each</td>
+                </tr>
+              </tbody>
+            </table>
+            <h4 class="price-group" id="fees-session">Session add-ons</h4>
+            <table class="price-table" aria-labelledby="fees-session">
+              <caption class="sr-only">Optional session services, charged at cost</caption>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Witness provided for you
+                    <span class="fee-detail">Arranged through the notarization platform. Billed at cost.</span>
+                  </th>
+                  <td>$10 each</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Witness you bring yourself
+                    <span class="fee-detail">Invite your own witness to the session at no charge.</span>
+                  </th>
+                  <td class="fee-included">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Additional signer
+                    <span class="fee-detail">More than one person signing in the same session.</span>
+                  </th>
+                  <td class="fee-included">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">Identity verification</th>
+                  <td class="fee-included">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">Digital copies</th>
+                  <td class="fee-included">Included</td>
+                </tr>
+              </tbody>
+            </table>
+            <h4 class="price-group" id="fees-scheduling">Scheduling</h4>
+            <table class="price-table" aria-labelledby="fees-scheduling">
+              <caption class="sr-only">Charges for appointments outside standard hours</caption>
+              <tbody>
+                <tr><th scope="row">Outside standard hours</th><td>From $25</td></tr>
+                <tr><th scope="row">Holidays</th><td>From $25</td></tr>
+                <tr><th scope="row">Rush appointments</th><td>Contact for quote</td></tr>
+              </tbody>
+            </table>
+            <p class="price-note-inline">
+              Estate planning and other multi-document packages are quoted in advance, so you
+              have a fixed number before the session.
+              <a href="mailto:notary@eronwa.com">Email me</a> your document list and the number
+              of signers.
+            </p>
+          </article>
+        </div>
+        <p class="pricing-note">
+          <strong>Pricing disclaimer:</strong> Final pricing is determined at the completion of your
+          appointment based on Washington State notarial fees, the number of notarial acts performed,
+          and any optional services or premium scheduling requested. Witness services are provided by
+          the notarization platform and billed to you at cost. Any charge beyond the $35 standard
+          appointment is confirmed with you in advance. A personalized estimate is available before
+          your appointment on request.
+        </p>
+      </div>
+    </section>
+    <!-- TRUST -->
+    <section class="section" aria-labelledby="trust-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
+      <div class="container trust-layout">
+        <div class="reveal">
+          <p class="kicker"><span class="eyebrow">Why choose EXPRESS NOTARY WA</span></p>
+          <h2 id="trust-title">Professional service without the in-person hassle.</h2>
+          <p class="lead lead-left">A cleaner, calmer online notarization experience.</p>
+          <ul class="check-list">
+            <li class="check-item">Washington State commissioned notary public</li>
+            <li class="check-item">Remote online notarization technology</li>
+            <li class="check-item">Clear guidance before your appointment</li>
+            <li class="check-item">Ideal for busy and time-sensitive schedules</li>
+          </ul>
+        </div>
+        <aside class="trust-panel reveal">
+          <div class="notary-seal" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs>
+                <path id="sealCirclePath" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+              </defs>
+              <circle class="seal-ring seal-ring-outer" cx="100" cy="100" r="96" />
+              <circle class="seal-ring seal-ring-inner" cx="100" cy="100" r="68" />
+              <text class="seal-text">
+                <textPath href="#sealCirclePath" startOffset="2%">WASHINGTON STATE &#8226; COMMISSIONED NOTARY &#8226; </textPath>
+              </text>
+              <g class="seal-mark" transform="translate(100,100) scale(1.55) translate(-50,-50)">
+                <path d="M28 75 L28 25 L40 25 L60 58 L60 25 L72 25 L72 75 L60 75 L40 42 L40 75 Z" />
+              </g>
+            </svg>
+          </div>
+          <img
+            class="trust-portrait"
+            src="assets/portrait.jpg"
+            alt="Brian, Washington State commissioned notary public"
+            width="260"
+            height="325"
+          />
+          <p class="kicker"><span class="eyebrow">Your notary</span></p>
+          <h3>Hi, I'm Brian.</h3>
+          <p>
+            I'm a commissioned notary public in Washington State, and I run every
+            appointment personally &mdash; you'll deal with me start to finish, not a
+            call centre. Notarize from home, work, or wherever you happen to be.
+          </p>
+        </aside>
+      </div>
+    </section>
+    <!-- CONTACT -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
+      <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">Contact</span></p>
+          <h2 id="contact-title">Hours and how to reach me</h2>
+          <p class="lead">
+            Booking is fastest online. For anything else, email is the quickest way to me.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <article class="contact-card reveal">
+            <h3>Appointment hours</h3>
+            <p>All times Pacific.</p>
+            <ul class="hours-list">
+              <li><span>Sunday &ndash; Friday</span><span>6am &ndash; 8pm</span></li>
+              <li><span>Saturday</span><span>Closed</span></li>
+              <li><span>Additional hours</span><span>Available at request</span></li>
+            </ul>
+            <p>
+              Need a time outside standard hours, including Saturdays? Email me and
+              I'll tell you what's possible. Additional hours are available at request
+              and may carry an additional charge.
+            </p>
+          </article>
+          <article class="contact-card reveal">
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:notary@eronwa.com">notary@eronwa.com</a>
+            </p>
+            <p>
+              Questions about whether your document qualifies, or what your appointment
+              will cost, are welcome before you book.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">FAQ</span></p>
+          <h2 id="faq-title">Questions before booking</h2>
+        </div>
+        <div class="faq-list reveal">
+          <details>
+            <summary>How much will I pay in total?</summary>
+            <p>
+              A single-document appointment during standard hours totals $35:
+              $25 for the notarial act plus a $10 booking fee. Each additional
+              notarial seal is $15. Witnesses provided through the platform are
+              $10 each. Appointments outside standard hours may carry additional
+              charges, confirmed with you before your session.
+            </p>
+          </details>
+          <details>
+            <summary>Do you provide witnesses?</summary>
+            <p>
+              Yes. Witnesses can be arranged through the notarization platform for
+              $10 each, billed to you at cost as a non-notarial service. You are
+              also welcome to bring your own witnesses to the session at no
+              additional charge.
+            </p>
+          </details>
+          <details>
+            <summary>Do you handle estate planning and multi-document packages?</summary>
+            <p>
+              Yes. Packages with several documents are quoted in advance so you have
+              a fixed number before the session. Email me your document list and the
+              number of signers and I'll send an itemized estimate.
+            </p>
+          </details>
+          <details>
+            <summary>What are your hours?</summary>
+            <p>
+              Standard hours are Sunday through Friday, 6am to 8pm Pacific, and
+              Saturday is closed. Additional hours are available at request,
+              including evenings, Saturdays, and holidays. Email me with the time
+              you need and I'll confirm availability and any additional charge
+              before you book.
+            </p>
+          </details>
+          <details>
+            <summary>Can every document be notarized online?</summary>
+            <p>
+              No. Eligibility depends on the document type,
+              platform requirements, and applicable law.
+            </p>
+          </details>
+          <details>
+            <summary>Do you provide legal advice?</summary>
+            <p>
+              No. EXPRESS NOTARY WA is not a law firm
+              and does not provide legal advice.
+            </p>
+          </details>
+          <details>
+            <summary>What do I need for the appointment?</summary>
+            <p>
+              You generally need your document,
+              a valid government-issued ID,
+              and a stable internet connection.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <!-- FINAL CTA -->
+    <section class="section final-cta" aria-labelledby="cta-title">
+      <svg class="cta-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M28 75 L28 25 L40 25 L60 58 L60 25 L72 25 L72 75 L60 75 L40 42 L40 75 Z" fill="#c7a052"/>
+      </svg>
+      <div class="container center reveal">
+        <p class="kicker"><span class="eyebrow">Ready when you are</span></p>
+        <h2 id="cta-title">Book your online notary appointment today.</h2>
+        <p>Secure, guided, and designed to fit your schedule.</p>
+        <div class="final-actions">
+          <a class="btn btn-primary" href="#book">Book an appointment</a>
+          <a class="btn btn-light" href="mailto:notary@eronwa.com">Email me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-grid">
+      <p class="footer-contact">
+        <strong>EXPRESS NOTARY WA</strong><br />
+        Brian Stewart, Washington State Notary Public<br />
+        <a href="mailto:notary@eronwa.com">notary@eronwa.com</a><br />
+        Sunday &ndash; Friday, 6am &ndash; 8pm Pacific
+      </p>
+      <ul class="footer-links">
+        <li><a href="#book">Book</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        &copy; <span id="year">2026</span> EXPRESS NOTARY WA. All rights reserved.
+        EXPRESS NOTARY WA provides remote online notarial services
+        by a commissioned Washington State Notary Public.
+        EXPRESS NOTARY WA is not a law firm and does not provide legal advice.
+      </p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('primary-nav');
+      function closeNav() {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) closeNav();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+          closeNav();
+          toggle.focus();
+        }
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Header shadow/compact state on scroll
+      var header = document.querySelector('.site-header');
+      function onScroll() {
+        header.classList.toggle('is-scrolled', window.scrollY > 12);
+      }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Scroll-reveal for elevated, unfolding feel
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && reveals.length) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>
