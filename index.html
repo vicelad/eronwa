@@ -104,7 +104,8 @@
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Acknowledgments" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jurats" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trust documents" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Power of attorney" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Power of attorney" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate planning packages" } }
           ]
         }
       },
@@ -117,7 +118,23 @@
             "name": "How much will I pay in total?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A single-document appointment during standard hours totals $35: $25 for the notarial act plus a $10 booking fee. Each additional notarial seal is $10. Appointments outside standard hours may carry additional charges."
+              "text": "A single-document appointment during standard hours totals $35: $25 for the notarial act plus a $10 booking fee. Each additional notarial seal is $10. Witnesses provided through the platform are $10 each. Appointments outside standard hours may carry additional charges."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you provide witnesses?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Witnesses can be provided through the notarization platform at $10 each, billed at cost as a non-notarial service. You are also welcome to bring your own witnesses at no additional charge."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you handle estate planning and multi-document packages?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Estate planning and other multi-document packages are quoted in advance so you have a fixed number before the session. Email notary@eronwa.com with the document list and number of signers."
             }
           },
           {
@@ -672,18 +689,47 @@
       color:var(--gold-ink);
     }
 
+    /* Grouped add-on tables */
+
+    .price-group{
+      margin:0 0 6px;
+      padding-top:26px;
+      font-family:Lato, Arial, sans-serif;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--navy);
+    }
+
+    .price-group:first-of-type{ padding-top:20px; }
+
+    .price-note-inline{
+      margin-top:20px;
+      padding-top:18px;
+      border-top:1px solid rgba(0,0,0,.08);
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .price-note-inline a{
+      color:var(--gold-ink);
+      font-weight:700;
+    }
+
     .price-table{
       width:100%;
       border-collapse:collapse;
-      margin-top:20px;
+      margin-top:8px;
     }
 
     .price-table th,
     .price-table td{
-      padding:16px 0;
+      padding:14px 0;
       border-bottom:1px solid rgba(0,0,0,.08);
       text-align:left;
       font-weight:400;
+      vertical-align:top;
     }
 
     .price-table td{
@@ -691,6 +737,20 @@
       font-weight:900;
       color:var(--gold-ink);
       white-space:nowrap;
+    }
+
+    .price-table .fee-detail{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:400;
+      line-height:1.5;
+    }
+
+    .price-table td.fee-included{
+      color:var(--muted);
+      font-weight:700;
     }
 
     .pricing-note{
@@ -1322,17 +1382,75 @@
 
             <h3>What can change the price</h3>
 
-            <table class="price-table">
-              <caption class="sr-only">Additional fees that may apply to your appointment</caption>
+            <h4 class="price-group" id="fees-notarial">Notarial fees</h4>
+
+            <table class="price-table" aria-labelledby="fees-notarial">
+              <caption class="sr-only">Notarial fees, set by Washington State</caption>
               <tbody>
-                <tr><th scope="row">Additional notarial seal</th><td>$10 each</td></tr>
+                <tr>
+                  <th scope="row">
+                    Additional notarial seal
+                    <span class="fee-detail">Each seal beyond the first one in your appointment.</span>
+                  </th>
+                  <td>$10 each</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 class="price-group" id="fees-session">Session add-ons</h4>
+
+            <table class="price-table" aria-labelledby="fees-session">
+              <caption class="sr-only">Optional session services, charged at cost</caption>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Witness provided for you
+                    <span class="fee-detail">Arranged through the notarization platform. Billed at cost.</span>
+                  </th>
+                  <td>$10 each</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Witness you bring yourself
+                    <span class="fee-detail">Invite your own witness to the session at no charge.</span>
+                  </th>
+                  <td class="fee-included">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Additional signer
+                    <span class="fee-detail">More than one person signing in the same session.</span>
+                  </th>
+                  <td class="fee-included">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">Identity verification</th>
+                  <td class="fee-included">Included</td>
+                </tr>
+                <tr>
+                  <th scope="row">Digital copies</th>
+                  <td class="fee-included">Included</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 class="price-group" id="fees-scheduling">Scheduling</h4>
+
+            <table class="price-table" aria-labelledby="fees-scheduling">
+              <caption class="sr-only">Charges for appointments outside standard hours</caption>
+              <tbody>
                 <tr><th scope="row">Outside standard hours</th><td>From $25</td></tr>
                 <tr><th scope="row">Holidays</th><td>From $25</td></tr>
                 <tr><th scope="row">Rush appointments</th><td>Contact for quote</td></tr>
-                <tr><th scope="row">Identity verification</th><td>Included</td></tr>
-                <tr><th scope="row">Digital copies</th><td>Included</td></tr>
               </tbody>
             </table>
+
+            <p class="price-note-inline">
+              Estate planning and other multi-document packages are quoted in advance, so you
+              have a fixed number before the session.
+              <a href="mailto:notary@eronwa.com">Email me</a> your document list and the number
+              of signers.
+            </p>
 
           </article>
 
@@ -1341,7 +1459,8 @@
         <p class="pricing-note">
           <strong>Pricing disclaimer:</strong> Final pricing is determined at the completion of your
           appointment based on Washington State notarial fees, the number of notarial acts performed,
-          and any optional premium scheduling services requested. Any charge beyond the $35 standard
+          and any optional services or premium scheduling requested. Witness services are provided by
+          the notarization platform and billed to you at cost. Any charge beyond the $35 standard
           appointment is confirmed with you in advance. A personalized estimate is available before
           your appointment on request.
         </p>
@@ -1451,8 +1570,28 @@
             <p>
               A single-document appointment during standard hours totals $35:
               $25 for the notarial act plus a $10 booking fee. Each additional
-              notarial seal is $10. Appointments outside standard hours may carry
-              additional charges, confirmed with you before your session.
+              notarial seal is $10. Witnesses provided through the platform are
+              $10 each. Appointments outside standard hours may carry additional
+              charges, confirmed with you before your session.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you provide witnesses?</summary>
+            <p>
+              Yes. Witnesses can be arranged through the notarization platform for
+              $10 each, billed to you at cost as a non-notarial service. You are
+              also welcome to bring your own witnesses to the session at no
+              additional charge.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you handle estate planning and multi-document packages?</summary>
+            <p>
+              Yes. Packages with several documents are quoted in advance so you have
+              a fixed number before the session. Email me your document list and the
+              number of signers and I'll send an itemized estimate.
             </p>
           </details>
 
