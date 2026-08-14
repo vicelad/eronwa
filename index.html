@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@300;400;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lato:wght@400;700;900&display=swap"
     rel="stylesheet"
   />
   <!-- STRUCTURED DATA -->
@@ -191,6 +191,7 @@
       --ease:260ms cubic-bezier(.2,.7,.3,1);
       --header-h:88px;
       --serif:"Cormorant Garamond", Georgia, serif;
+      --noise-bg:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
@@ -198,8 +199,10 @@
       margin:0;
       font-family:Lato, Arial, sans-serif;
       background:
+        var(--noise-bg),
         radial-gradient(1100px 600px at 100% -10%, rgba(199,160,82,.06), transparent 60%),
         var(--cream);
+      background-repeat:repeat, no-repeat;
       color:var(--ink);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
@@ -262,6 +265,30 @@
       width:34px;
       height:1px;
       background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .ornament{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      max-width:240px;
+      margin:0 auto 44px;
+    }
+    .ornament::before,
+    .ornament::after{
+      content:"";
+      flex:1;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--line-gold));
+    }
+    .ornament::after{
+      background:linear-gradient(90deg, var(--line-gold), transparent);
+    }
+    .ornament svg{
+      width:9px;
+      height:9px;
+      flex:none;
+      fill:var(--gold);
     }
     .eyebrow{
       margin:0;
@@ -326,10 +353,10 @@
     .btn-primary{
       color:var(--navy);
       background:linear-gradient(180deg,var(--gold2),var(--gold) 70%);
-      box-shadow:0 4px 0 rgba(124,92,25,.35) inset, 0 18px 38px rgba(199,160,82,.38);
+      box-shadow:0 3px 0 rgba(124,92,25,.3) inset, 0 8px 18px rgba(124,92,25,.16);
     }
     .btn-primary:hover{
-      box-shadow:0 4px 0 rgba(124,92,25,.35) inset, 0 22px 46px rgba(199,160,82,.5);
+      box-shadow:0 3px 0 rgba(124,92,25,.3) inset, 0 12px 24px rgba(124,92,25,.22);
     }
     .btn-light{
       color:var(--white);
@@ -512,6 +539,19 @@
       z-index:2;
       max-width:780px;
     }
+    @keyframes heroRise{
+      from{ opacity:0; transform:translateY(26px); }
+      to{ opacity:1; transform:none; }
+    }
+    .hero-content > *{
+      opacity:0;
+      animation:heroRise 900ms var(--ease) forwards;
+    }
+    .hero-content > *:nth-child(1){ animation-delay:.05s; }
+    .hero-content > *:nth-child(2){ animation-delay:.18s; }
+    .hero-content > *:nth-child(3){ animation-delay:.32s; }
+    .hero-content > *:nth-child(4){ animation-delay:.46s; }
+    .hero-content > *:nth-child(5){ animation-delay:.6s; }
     .hero .kicker::before{ background:linear-gradient(90deg, var(--gold2), transparent); }
     .hero .eyebrow{ color:var(--gold2); }
     .hero-copy{
@@ -553,6 +593,8 @@
       font-family:var(--serif);
       font-weight:600;
       letter-spacing:.01em;
+      font-feature-settings:"onum" 1, "kern" 1;
+      font-variant-numeric:oldstyle-nums;
     }
     .proof-pill span{
       color:rgba(255,255,255,.72);
@@ -648,8 +690,8 @@
     /* SERVICES */
     .services{
       position:relative;
-      background:#fffdf7;
-      border-top:1px solid var(--line);
+      background:var(--noise-bg), #fffdf7;
+      background-repeat:repeat, no-repeat;
     }
     .service-grid{
       display:grid;
@@ -676,8 +718,8 @@
     }
     /* PRICING */
     .pricing{
-      background:#fffdf7;
-      border-bottom:1px solid var(--line);
+      background:var(--noise-bg), #fffdf7;
+      background-repeat:repeat, no-repeat;
     }
     .pricing-grid{
       display:grid;
@@ -743,6 +785,8 @@
       line-height:1.25;
       padding-top:.06em;
       overflow:visible;
+      font-feature-settings:"lnum" 1, "kern" 1;
+      font-variant-numeric:lining-nums;
     }
     .price-breakdown{
       margin:0 0 24px;
@@ -819,6 +863,7 @@
       font-weight:900;
       color:var(--gold-ink);
       white-space:nowrap;
+      font-variant-numeric:tabular-nums lining-nums;
     }
     .price-table .fee-detail{
       display:block;
@@ -891,6 +936,30 @@
       border-radius:50%;
       background:radial-gradient(circle, rgba(199,160,82,.22), transparent 70%);
     }
+    .notary-seal{
+      position:absolute;
+      top:28px;
+      right:28px;
+      width:92px;
+      height:92px;
+      z-index:2;
+      opacity:.85;
+      animation:sealSpin 46s linear infinite;
+      pointer-events:none;
+    }
+    .notary-seal svg{ width:100%; height:100%; display:block; }
+    .notary-seal .seal-ring{ fill:none; stroke:var(--gold2); }
+    .notary-seal .seal-ring-outer{ stroke-width:1; opacity:.5; }
+    .notary-seal .seal-ring-inner{ stroke-width:1; opacity:.8; }
+    .notary-seal .seal-text{
+      fill:var(--gold2);
+      font-family:Lato, Arial, sans-serif;
+      font-size:9.6px;
+      font-weight:900;
+      letter-spacing:.2em;
+    }
+    .notary-seal .seal-mark{ fill:var(--gold2); }
+    @keyframes sealSpin{ to{ transform:rotate(360deg); } }
     .trust-portrait{
       width:100%;
       max-width:260px;
@@ -920,9 +989,8 @@
     }
     /* CONTACT */
     .contact{
-      background:#fffdf7;
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
+      background:var(--noise-bg), #fffdf7;
+      background-repeat:repeat, no-repeat;
     }
     .contact-grid{
       display:grid;
@@ -967,6 +1035,7 @@
       font-weight:900;
       color:var(--gold-ink);
       white-space:nowrap;
+      font-variant-numeric:tabular-nums lining-nums;
     }
     /* FAQ */
     .faq-list{
@@ -994,7 +1063,7 @@
       padding:23px 26px;
       cursor:pointer;
       list-style:none;
-      font-weight:900;
+      font-weight:700;
       color:var(--navy);
       font-family:var(--serif);
       font-size:19px;
@@ -1137,6 +1206,12 @@
         margin-left:auto;
         margin-right:auto;
       }
+      .notary-seal{
+        width:76px;
+        height:76px;
+        top:20px;
+        right:20px;
+      }
       .nav-toggle{ display:inline-flex; }
       .nav-links{
         position:absolute;
@@ -1190,6 +1265,9 @@
       .contact-card,
       .trust-panel{ padding:26px; }
     }
+    @media (max-width:560px){
+      .notary-seal{ display:none; }
+    }
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior:auto; }
       *,*::before,*::after{
@@ -1198,6 +1276,8 @@
       }
       .btn:hover{ transform:none; }
       .reveal{ opacity:1; transform:none; }
+      .hero-content > *{ opacity:1; animation:none; }
+      .notary-seal{ animation:none; }
     }
   </style>
 </head>
@@ -1339,6 +1419,7 @@
     </section>
     <!-- SERVICES -->
     <section id="services" class="section services" aria-labelledby="services-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
       <div class="container">
         <div class="center reveal">
           <p class="kicker"><span class="eyebrow">Services</span></p>
@@ -1480,6 +1561,7 @@
     </section>
     <!-- TRUST -->
     <section class="section" aria-labelledby="trust-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
       <div class="container trust-layout">
         <div class="reveal">
           <p class="kicker"><span class="eyebrow">Why choose EXPRESS NOTARY WA</span></p>
@@ -1493,6 +1575,21 @@
           </ul>
         </div>
         <aside class="trust-panel reveal">
+          <div class="notary-seal" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs>
+                <path id="sealCirclePath" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+              </defs>
+              <circle class="seal-ring seal-ring-outer" cx="100" cy="100" r="96" />
+              <circle class="seal-ring seal-ring-inner" cx="100" cy="100" r="68" />
+              <text class="seal-text">
+                <textPath href="#sealCirclePath" startOffset="2%">WASHINGTON STATE &#8226; COMMISSIONED NOTARY &#8226; </textPath>
+              </text>
+              <g class="seal-mark" transform="translate(100,100) scale(1.55) translate(-50,-50)">
+                <path d="M28 75 L28 25 L40 25 L60 58 L60 25 L72 25 L72 75 L60 75 L40 42 L40 75 Z" />
+              </g>
+            </svg>
+          </div>
           <img
             class="trust-portrait"
             src="assets/portrait.jpg"
@@ -1512,6 +1609,7 @@
     </section>
     <!-- CONTACT -->
     <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
       <div class="container">
         <div class="center reveal">
           <p class="kicker"><span class="eyebrow">Contact</span></p>
