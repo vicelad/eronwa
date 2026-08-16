@@ -619,7 +619,7 @@
     .steps-grid{
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      align-items:start;
+      grid-template-rows:repeat(2,1fr);
       gap:22px;
       margin-top:52px;
     }
@@ -637,6 +637,8 @@
     .callout-note strong{ color:var(--navy); }
     .step{
       position:relative;
+      display:flex;
+      flex-direction:column;
       padding:34px 32px;
       border-radius:var(--radius);
       border:1px solid var(--line);
@@ -1327,6 +1329,9 @@
       .contact-grid,
       .trust-layout{
         grid-template-columns:1fr;
+      }
+      .steps-grid{
+        grid-template-rows:none;
       }
       .hero-mark{
         right:-190px;
