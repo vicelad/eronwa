@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#050f22" />
+<title>Privacy Policy | E-RON WA</title>
+<meta
+  name="description"
+  content="How E-RON WA collects, uses, and protects your information when you book and complete a remote online notarization."
+/>
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://eronwa.com/privacy.html" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lato:wght@400;700;900&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root{
+    --navy:#050f22;
+    --navy2:#0b2c59;
+    --navy3:#0e3a72;
+    --gold:#c7a052;
+    --gold2:#f0d799;
+    --gold3:#9c7a34;
+    --gold-ink:#7d5c19;
+    --cream:#faf6ec;
+    --white:#ffffff;
+    --ink:#141c2c;
+    --muted:#5a6272;
+    --line:rgba(7,29,63,.12);
+    --line-gold:rgba(199,160,82,.35);
+    --shadow-sm:0 8px 24px rgba(7,20,45,.08);
+    --radius:24px;
+    --radius-sm:16px;
+    --container:840px;
+    --ease:260ms cubic-bezier(.2,.7,.3,1);
+    --header-h:88px;
+    --serif:"Cormorant Garamond", Georgia, serif;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:Lato, Arial, sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:var(--gold-ink); }
+  ::selection{ background:rgba(199,160,82,.32); color:var(--navy); }
+  :focus-visible{ outline:3px solid var(--gold); outline-offset:3px; border-radius:4px; }
+  .container{ width:min(var(--container), calc(100% - 34px)); margin:0 auto; }
+  /* HEADER (matches main site) */
+  .site-header{
+    position:fixed; top:0; left:0; width:100%; z-index:50;
+    padding:16px 0;
+    background:rgba(5,15,34,.94);
+    backdrop-filter:blur(20px) saturate(140%);
+    border-bottom:1px solid rgba(240,215,153,.12);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; gap:20px; max-width:1160px; width:min(1160px, calc(100% - 34px)); margin:0 auto; }
+  .brand{ display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--white); }
+  .brand img{ width:46px; height:46px; object-fit:contain; filter:drop-shadow(0 2px 8px rgba(199,160,82,.35)); }
+  .brand-title{ display:block; font-family:var(--serif); font-weight:600; font-size:26px; letter-spacing:.01em; line-height:1; }
+  .brand-subtitle{ display:block; margin-top:6px; color:var(--gold2); font-size:10px; font-weight:900; letter-spacing:.24em; text-transform:uppercase; opacity:.85; }
+  .nav-links{ display:flex; align-items:center; gap:10px; }
+  .nav-links a{ text-decoration:none; color:var(--white); opacity:.85; font-size:12.5px; font-weight:900; letter-spacing:.02em; padding:10px 4px; }
+  .nav-links a:hover{ opacity:1; color:var(--gold2); }
+  /* PAGE */
+  main{ padding:calc(var(--header-h) + 56px) 0 100px; }
+  .page-eyebrow{ margin:0 0 14px; color:var(--gold-ink); font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.26em; }
+  h1{ margin:0 0 10px; font-family:var(--serif); font-weight:600; letter-spacing:-.01em; color:var(--navy); font-size:clamp(36px,6vw,52px); }
+  .updated{ margin:0 0 46px; color:var(--muted); font-size:14px; }
+  .legal p{ margin:0 0 18px; line-height:1.8; color:var(--ink); }
+  .legal ul{ margin:0 0 18px; padding-left:22px; line-height:1.8; color:var(--ink); }
+  .legal li{ margin-bottom:8px; }
+  .legal h2{ margin:44px 0 16px; font-family:var(--serif); font-weight:600; color:var(--navy); font-size:26px; }
+  .legal h2:first-of-type{ margin-top:0; }
+  .legal a{ font-weight:700; text-decoration:underline; }
+  .notice-box{
+    margin:0 0 40px;
+    padding:20px 24px;
+    border-radius:var(--radius-sm);
+    background:rgba(199,160,82,.09);
+    border:1px solid rgba(199,160,82,.28);
+    color:var(--muted);
+    font-size:14.5px;
+    line-height:1.75;
+  }
+  .notice-box strong{ color:var(--navy); }
+  .back-link{ display:inline-block; margin-top:56px; font-weight:700; text-decoration:none; color:var(--gold-ink); }
+  /* FOOTER (matches main site) */
+  footer{ position:relative; padding:40px 0; background:#04101f; color:rgba(255,255,255,.72); font-size:14px; }
+  footer::before{ content:""; position:absolute; inset:0 0 auto 0; height:1px; background:linear-gradient(90deg, transparent, rgba(199,160,82,.45), transparent); }
+  .footer-grid{ max-width:1160px; width:min(1160px, calc(100% - 34px)); margin:0 auto; display:grid; gap:20px; }
+  .footer-contact{ color:rgba(255,255,255,.85); line-height:1.9; }
+  .footer-contact strong{ font-family:var(--serif); font-size:19px; font-weight:600; color:var(--gold2); letter-spacing:.01em; }
+  .footer-contact a{ font-weight:700; color:inherit; }
+  .footer-links{ display:flex; flex-wrap:wrap; gap:20px; padding:0; margin:0; list-style:none; }
+  .footer-links a{ text-decoration:none; color:inherit; font-weight:900; font-size:13px; letter-spacing:.02em; opacity:.85; }
+  .footer-links a:hover{ opacity:1; color:var(--gold2); }
+  .footer-disclaimer{ padding-top:20px; border-top:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.5); font-size:12px; line-height:1.75; max-width:1160px; width:min(1160px, calc(100% - 34px)); margin:20px auto 0; }
+  @media (max-width:680px){
+    .nav-links{ gap:6px; }
+    .nav-links a{ font-size:11px; }
+  }
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="" width="46" height="46" />
+        <span>
+          <span class="brand-title">E-RON WA</span>
+          <span class="brand-subtitle">Washington Online Notary</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="index.html#book">Book</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container legal">
+      <p class="page-eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: August 16, 2026</p>
+
+      <div class="notice-box">
+        <strong>Plain-language summary:</strong> this policy explains what information E-RON WA collects when you book or complete a remote online notarization, why it's collected, and how long certain records are legally required to be kept. It is not a substitute for legal advice.
+      </div>
+
+      <h2>Who we are</h2>
+      <p>
+        E-RON WA (Express Online Notary) is operated by Brian Stewart, a commissioned notary public and electronic
+        records notary public in the State of Washington. This policy applies to eronwa.com and to the remote
+        online notarization ("RON") services booked through it.
+      </p>
+
+      <h2>Information we collect</h2>
+      <p>Depending on how you interact with the site and whether you complete a booking, E-RON WA may collect:</p>
+      <ul>
+        <li><strong>Booking and contact information</strong> — your name, email address, and any details you provide when scheduling an appointment through the site's booking widget.</li>
+        <li><strong>Documents you send</strong> — the documents you email or upload for notarization, and information contained in them.</li>
+        <li><strong>Identity verification data</strong> — images of your government-issued ID and the results of the credential analysis and knowledge-based identity verification ("KBA") completed through the notarization platform used for your session.</li>
+        <li><strong>Session recordings</strong> — an audio-visual recording of the notarization session itself, as required by Washington State law.</li>
+        <li><strong>Payment information</strong> — invoicing and payment for services is handled by third-party booking and payment processors; E-RON WA does not store your full card details.</li>
+        <li><strong>Basic website usage data</strong> — standard technical information (such as browser type) that may be collected by third-party tools embedded on this site, like the booking widget.</li>
+      </ul>
+
+      <h2>How we use your information</h2>
+      <ul>
+        <li>To schedule, confirm, and perform your notarization appointment.</li>
+        <li>To verify your identity as required by Washington notarial law before completing a notarial act.</li>
+        <li>To maintain the notarial records and journal entries a Washington notary is legally required to keep.</li>
+        <li>To communicate with you about your appointment, documents, or an invoice.</li>
+        <li>To respond to questions you send by email.</li>
+      </ul>
+
+      <h2>Who your information is shared with</h2>
+      <p>
+        E-RON WA does not sell your personal information. Information is shared only as needed to provide the
+        service, including with the online scheduling platform used to manage bookings and the remote
+        notarization platform used to host the live session, verify your identity, and record the appointment.
+        Those platforms have their own privacy practices governing the data they process on E-RON WA's behalf.
+      </p>
+
+      <h2>Record and recording retention</h2>
+      <p>
+        Washington law requires an electronic records notary public to retain the audio-visual recording of each
+        remote notarization for a minimum period after it is made — currently at least ten years, per RCW
+        42.45.280 — either directly or through a designated third-party repository. Notarial journal entries
+        are retained on a similar basis. These records may be retained beyond a typical business record simply
+        because state law requires it, not as a matter of preference.
+      </p>
+
+      <h2>Data security</h2>
+      <p>
+        Identity verification and session recording are handled by the notarization platform's secure systems,
+        which are built to meet the requirements Washington State places on RON providers. E-RON WA takes
+        reasonable steps to keep documents and correspondence you send by email confidential, but no method of
+        electronic transmission or storage is ever completely secure.
+      </p>
+
+      <h2>Your choices</h2>
+      <p>
+        You can ask what information E-RON WA holds about you, or ask a question about this policy, at any time
+        by emailing <a href="mailto:notary@eronwa.com">notary@eronwa.com</a>. Because notarial records are kept
+        under legal requirement rather than by choice, some records — such as the journal entry and session
+        recording for a completed notarization — cannot be deleted on request during their required retention
+        period.
+      </p>
+
+      <h2>Children's privacy</h2>
+      <p>
+        This site and its services are intended for adults seeking notarization services and are not directed
+        to children under 13.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        This policy may be updated from time to time to reflect changes in practice or in Washington State
+        notarial law. The date at the top of this page reflects the most recent revision.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about this policy can be sent to <a href="mailto:notary@eronwa.com">notary@eronwa.com</a>.
+      </p>
+
+      <a class="back-link" href="index.html">&larr; Back to home</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <p class="footer-contact">
+        <strong>E-RON WA</strong><br />
+        Brian Stewart, Washington State Notary Public<br />
+        <a href="mailto:notary@eronwa.com">notary@eronwa.com</a><br />
+        Sunday &ndash; Friday, 6am &ndash; 8pm Pacific
+      </p>
+      <ul class="footer-links">
+        <li><a href="index.html#book">Book</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="https://professions.dol.wa.gov/s/license-lookup" target="_blank" rel="noopener noreferrer">Verify my WA notary commission (License #179620)</a></li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">
+      &copy; 2026 E-RON WA. All rights reserved.
+      E-RON WA provides remote online notarial services by a commissioned Washington State Notary Public.
+      E-RON WA is not a law firm and does not provide legal advice.
+    </p>
+  </footer>
+</body>
+</html>
