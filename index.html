@@ -160,6 +160,14 @@
               "@type": "Answer",
               "text": "You generally need your document, a valid government-issued ID, and a stable internet connection."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "What if a document needs to be resigned?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Booking a resigning appointment is always free. You only pay the notarization platform's session cost, nothing extra. Contact me directly at notary@eronwa.com to book a resigning appointment."
+            }
           }
         ]
       }
@@ -575,6 +583,7 @@
     /* BOOKING */
     .booking{
       padding-top:0;
+      padding-bottom:36px;
       margin-top:-76px;
       position:relative;
       z-index:10;
@@ -609,10 +618,23 @@
     /* HOW */
     .steps-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(2,1fr);
+      align-items:start;
       gap:22px;
       margin-top:52px;
     }
+    .callout-note{
+      max-width:640px;
+      margin:36px auto 0;
+      padding:16px 22px;
+      border-radius:var(--radius-sm);
+      background:rgba(199,160,82,.09);
+      border:1px solid rgba(199,160,82,.28);
+      color:var(--muted);
+      font-size:14.5px;
+      line-height:1.7;
+    }
+    .callout-note strong{ color:var(--navy); }
     .step{
       position:relative;
       padding:34px 32px;
@@ -1443,9 +1465,9 @@
           <p class="kicker"><span class="eyebrow">Washington State commissioned notary public</span></p>
           <h1 id="hero-title">Online notarization, <em>simplified</em></h1>
           <p class="hero-copy">
-            Secure remote online notarization with Brian Stewart, a Washington State
-            commissioned notary. Book online, verify your identity, and complete
-            eligible notarizations from wherever you are.
+            Secure remote online notarization by a Washington State commissioned notary
+            public. Book online, verify your identity, and complete eligible notarizations
+            from wherever you are.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#book">Book an appointment</a>
@@ -1488,25 +1510,45 @@
     </section>
     <!-- HOW -->
     <section id="how" class="section" aria-labelledby="how-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
       <div class="container">
         <div class="center reveal">
           <p class="kicker"><span class="eyebrow">Simple. Secure. Online.</span></p>
           <h2 id="how-title">How it works</h2>
           <p class="lead">
-            Upload, verify, meet live, and complete your eligible notarization online.
+            Request an appointment, receive confirmation, verify and sign live, then receive
+            your completed documents.
           </p>
         </div>
         <div class="steps-grid">
           <article class="step reveal">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <path d="M14 2v6h6"/>
+                <rect x="3" y="4" width="18" height="17" rx="2"/>
+                <path d="M16 2v4M8 2v4M3 10h18"/>
               </svg>
             </div>
             <span class="step-num">Step 1</span>
-            <h3>Prepare your documents</h3>
-            <p>Have your unsigned documents and ID ready before the session begins.</p>
+            <h3>Submit your appointment request</h3>
+            <p>
+              Appointment times are requested, not guaranteed. Every booking is reviewed and
+              must be manually approved before it is confirmed.
+            </p>
+          </article>
+          <article class="step reveal">
+            <div class="icon-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="M3 7l9 6 9-6"/>
+              </svg>
+            </div>
+            <span class="step-num">Step 2</span>
+            <h3>Receive your confirmation</h3>
+            <p>
+              Once your appointment is approved, you&rsquo;ll receive a confirmation email
+              requesting your booking details and the documents that require signing. Any
+              questions you have will be answered ahead of your appointment.
+            </p>
           </article>
           <article class="step reveal">
             <div class="icon-box">
@@ -1515,22 +1557,36 @@
                 <circle cx="9" cy="10" r="2"/>
               </svg>
             </div>
-            <span class="step-num">Step 2</span>
-            <h3>Verify your identity</h3>
-            <p>Complete identity verification using an acceptable government-issued ID.</p>
+            <span class="step-num">Step 3</span>
+            <h3>Verify your identity and sign</h3>
+            <p>
+              You&rsquo;ll receive an invitation to the secure notarization platform. On the
+              day of your appointment, have a valid, unexpired government-issued ID (state ID,
+              driver&rsquo;s license, or passport) ready and complete a brief identity
+              verification. Joining 10&ndash;15 minutes early is recommended to complete this
+              step beforehand, for a faster and more seamless signing experience.
+            </p>
           </article>
           <article class="step reveal">
             <div class="icon-box">
               <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2"/>
-                <path d="M9 11l2 2 4-4"/>
+                <path d="M6 2h12v18l-2-1-2 1-2-1-2 1-2-1-2 1V2z"/>
+                <path d="M9 7h6M9 11h6M9 15h3"/>
               </svg>
             </div>
-            <span class="step-num">Step 3</span>
-            <h3>Meet live online</h3>
-            <p>Join the session and complete your notarization online.</p>
+            <span class="step-num">Step 4</span>
+            <h3>Payment and document delivery</h3>
+            <p>
+              Following your completed session, you&rsquo;ll receive and settle the invoice.
+              Your finalized, notarized documents will then be delivered to you.
+            </p>
           </article>
         </div>
+        <p class="callout-note center">
+          Need a document resigned? Booking the appointment is always <strong>free</strong>
+          &mdash; you only pay the notarization platform&rsquo;s session cost, nothing extra.
+          <a href="mailto:notary@eronwa.com">Contact me</a> directly to book a resigning appointment.
+        </p>
       </div>
     </section>
     <!-- SERVICES -->
@@ -1958,6 +2014,15 @@
               You generally need your document,
               a valid government-issued ID,
               and a stable internet connection.
+            </p>
+          </details>
+          <details>
+            <summary>What if a document needs to be resigned?</summary>
+            <p>
+              Booking a resigning appointment is always free. You only pay the notarization
+              platform&rsquo;s session cost, nothing extra.
+              <a href="mailto:notary@eronwa.com">Contact me</a> directly to book a resigning
+              appointment.
             </p>
           </details>
         </div>
