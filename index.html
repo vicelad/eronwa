@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050f22" />
-  <title>Express Online Notary | E-RON WA</title>
+  <title>Remote Online Notary in Washington | EXPRESS NOTARY WA</title>
   <meta
     name="description"
     content="Remote online notarization by Brian Stewart, a Washington State commissioned notary public. Book online for acknowledgments, jurats, trust documents, and power of attorney forms. Open Sunday to Friday, 6am to 8pm."
@@ -671,13 +671,21 @@
       margin-top:52px;
     }
     .service-card{
+      all:unset;
+      box-sizing:border-box;
+      display:block;
+      width:100%;
+      -webkit-appearance:none;
+      appearance:none;
+      cursor:pointer;
       padding:30px 28px;
       border-radius:var(--radius-sm);
       background:var(--white);
       border:1px solid var(--line);
       transition:transform var(--ease), box-shadow var(--ease), border-color var(--ease);
     }
-    .service-card:hover{
+    .service-card:hover,
+    .service-card:focus-visible{
       transform:translateY(-4px);
       box-shadow:var(--shadow-sm);
       border-color:var(--line-gold);
@@ -686,6 +694,136 @@
     .service-card p{
       margin-top:12px;
       color:var(--muted);
+    }
+    .service-more{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-top:18px;
+      color:var(--gold-ink);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+    }
+    .service-more svg{
+      width:13px;
+      height:13px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      transition:transform var(--ease);
+    }
+    .service-card:hover .service-more svg,
+    .service-card:focus-visible .service-more svg{
+      transform:translateX(4px);
+    }
+    /* SERVICE DIALOGS */
+    .service-dialog{
+      border:none;
+      padding:0;
+      max-width:600px;
+      width:calc(100% - 40px);
+      max-height:calc(100% - 64px);
+      border-radius:var(--radius);
+      background:transparent;
+      color:var(--ink);
+      overflow:visible;
+    }
+    .service-dialog::backdrop{
+      background:rgba(5,15,34,.72);
+      backdrop-filter:blur(6px);
+    }
+    .service-dialog[open]{
+      opacity:1;
+      transform:none;
+      transition:opacity 260ms var(--ease), transform 260ms var(--ease);
+    }
+    @starting-style{
+      .service-dialog[open]{
+        opacity:0;
+        transform:translateY(16px) scale(.97);
+      }
+    }
+    .dialog-panel{
+      position:relative;
+      max-height:80vh;
+      overflow-y:auto;
+      background:var(--white);
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-lg);
+      padding:46px 42px;
+    }
+    .dialog-close{
+      position:absolute;
+      top:18px;
+      right:18px;
+      width:38px;
+      height:38px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:var(--cream);
+      color:var(--navy);
+      font-size:19px;
+      line-height:1;
+      cursor:pointer;
+      transition:background var(--ease), border-color var(--ease);
+    }
+    .dialog-close:hover{
+      background:rgba(199,160,82,.14);
+      border-color:var(--line-gold);
+    }
+    .dialog-eyebrow{
+      margin:0 0 10px;
+      color:var(--gold-ink);
+      font-size:11.5px;
+      font-weight:900;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+    .service-dialog h3{
+      font-size:34px;
+      padding-right:40px;
+    }
+    .dialog-lede{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.7;
+    }
+    .dialog-body{
+      margin-top:24px;
+      display:grid;
+      gap:14px;
+      color:var(--ink);
+      font-size:15px;
+      line-height:1.75;
+    }
+    .dialog-body strong{ color:var(--navy); }
+    .dialog-note{
+      margin-top:22px;
+      padding:14px 16px;
+      border-radius:var(--radius-sm);
+      background:rgba(199,160,82,.09);
+      border:1px solid rgba(199,160,82,.25);
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.6;
+    }
+    .dialog-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:30px;
+    }
+    @media (max-width:560px){
+      .dialog-panel{ padding:34px 24px; }
+      .service-dialog h3{ font-size:28px; }
     }
     /* PRICING */
     .pricing{
@@ -1404,24 +1542,155 @@
           </p>
         </div>
         <div class="service-grid">
-          <article class="service-card reveal">
+          <button class="service-card reveal" type="button" data-service="acknowledgments" aria-haspopup="dialog" aria-controls="svc-acknowledgments">
             <h3>Acknowledgments</h3>
             <p>For signers acknowledging documents willingly.</p>
-          </article>
-          <article class="service-card reveal">
+            <span class="service-more">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="service-card reveal" type="button" data-service="jurats" aria-haspopup="dialog" aria-controls="svc-jurats">
             <h3>Jurats</h3>
             <p>For documents requiring an oath or affirmation.</p>
-          </article>
-          <article class="service-card reveal">
+            <span class="service-more">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="service-card reveal" type="button" data-service="trust" aria-haspopup="dialog" aria-controls="svc-trust">
             <h3>Trust documents</h3>
             <p>Support for eligible estate and trust documents.</p>
-          </article>
-          <article class="service-card reveal">
+            <span class="service-more">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
+          <button class="service-card reveal" type="button" data-service="poa" aria-haspopup="dialog" aria-controls="svc-poa">
             <h3>Power of attorney</h3>
             <p>For eligible POA documents requiring notarization.</p>
-          </article>
+            <span class="service-more">Learn more<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </button>
         </div>
       </div>
+
+      <dialog class="service-dialog" id="svc-acknowledgments" aria-labelledby="svc-acknowledgments-title">
+        <div class="dialog-panel">
+          <button class="dialog-close" type="button" data-close-dialog aria-label="Close">&times;</button>
+          <p class="dialog-eyebrow">Notarial act</p>
+          <h3 id="svc-acknowledgments-title">Acknowledgments</h3>
+          <p class="dialog-lede">
+            The most common notarization for real estate, business, and legal documents &mdash;
+            you don&rsquo;t sign in front of me, you simply confirm that you already did.
+          </p>
+          <div class="dialog-body">
+            <p>
+              In an acknowledgment, you appear before me online, present valid ID, and declare
+              that the signature on the document is yours and that you signed it willingly. The
+              document can be signed before the session &mdash; you&rsquo;re acknowledging a
+              signature, not making one during the appointment.
+            </p>
+            <p>Because there&rsquo;s no oath involved, acknowledgments are typically the fastest notarization to complete.</p>
+            <p>
+              <strong>Common documents:</strong> deeds and real estate transfers, contracts and
+              agreements, affidavits that call for an acknowledgment, and many business filings.
+            </p>
+          </div>
+          <p class="dialog-note">
+            Not every document that says &ldquo;acknowledgment&rdquo; is automatically eligible for
+            remote online notarization &mdash; email your document ahead of time if you&rsquo;re not sure.
+          </p>
+          <div class="dialog-actions">
+            <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
+            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="service-dialog" id="svc-jurats" aria-labelledby="svc-jurats-title">
+        <div class="dialog-panel">
+          <button class="dialog-close" type="button" data-close-dialog aria-label="Close">&times;</button>
+          <p class="dialog-eyebrow">Notarial act</p>
+          <h3 id="svc-jurats-title">Jurats</h3>
+          <p class="dialog-lede">
+            Used when a document requires you to swear to its truthfulness &mdash; you sign live,
+            in front of me, and take an oath or affirmation before I notarize it.
+          </p>
+          <div class="dialog-body">
+            <p>
+              Unlike an acknowledgment, a jurat requires you to sign the document during the
+              session itself, not beforehand. I administer a spoken oath or affirmation, you
+              confirm the contents are true, and then sign while I witness it.
+            </p>
+            <p>
+              <strong>Common documents:</strong> sworn statements and affidavits, depositions,
+              verifications, and any document with &ldquo;subscribed and sworn&rdquo; language.
+            </p>
+          </div>
+          <p class="dialog-note">
+            Because the signing has to happen live, please have your document unsigned and ready
+            to go at the start of the appointment.
+          </p>
+          <div class="dialog-actions">
+            <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
+            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="service-dialog" id="svc-trust" aria-labelledby="svc-trust-title">
+        <div class="dialog-panel">
+          <button class="dialog-close" type="button" data-close-dialog aria-label="Close">&times;</button>
+          <p class="dialog-eyebrow">Estate planning</p>
+          <h3 id="svc-trust-title">Trust documents</h3>
+          <p class="dialog-lede">
+            Notarization for the documents that create, fund, or amend a trust as part of an estate plan.
+          </p>
+          <div class="dialog-body">
+            <p>
+              This covers documents like revocable living trusts, trust amendments and
+              restatements, and certifications of trust. Estate plans often involve several
+              related documents and more than one notarial act in the same appointment.
+            </p>
+            <p>
+              Because trust packages vary so much in length and complexity, I quote them
+              individually rather than at the standard single-document rate.
+            </p>
+          </div>
+          <p class="dialog-note">
+            Not every trust or estate document qualifies for remote online notarization depending
+            on its purpose and where it will be used. Email me your document list and I&rsquo;ll
+            confirm eligibility and pricing before you book.
+          </p>
+          <div class="dialog-actions">
+            <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
+            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="service-dialog" id="svc-poa" aria-labelledby="svc-poa-title">
+        <div class="dialog-panel">
+          <button class="dialog-close" type="button" data-close-dialog aria-label="Close">&times;</button>
+          <p class="dialog-eyebrow">Authorization document</p>
+          <h3 id="svc-poa-title">Power of attorney</h3>
+          <p class="dialog-lede">
+            Notarization for documents that authorize someone else to act on your behalf
+            financially, medically, or generally.
+          </p>
+          <div class="dialog-body">
+            <p>
+              A power of attorney names an agent (sometimes called an &ldquo;attorney-in-fact&rdquo;)
+              to make decisions or take action for you &mdash; anything from managing finances to
+              healthcare decisions to a specific, limited task. Most POA documents require
+              notarization to be accepted by banks, medical providers, and other institutions.
+            </p>
+            <p>
+              <strong>Common types:</strong> durable power of attorney, financial power of
+              attorney, healthcare power of attorney, and limited or special power of attorney.
+            </p>
+          </div>
+          <p class="dialog-note">
+            Some institutions and out-of-state uses have their own requirements for how a POA is
+            signed or witnessed &mdash; worth confirming with the receiving party before your appointment.
+          </p>
+          <div class="dialog-actions">
+            <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
+            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+          </div>
+        </div>
+      </dialog>
     </section>
     <!-- PRICING -->
     <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
@@ -1779,6 +2048,32 @@
       } else {
         reveals.forEach(function (el) { el.classList.add('is-visible'); });
       }
+
+      // Service detail pop-ups
+      var serviceTriggers = document.querySelectorAll('.service-card[data-service]');
+      var lastTrigger = null;
+      serviceTriggers.forEach(function (card) {
+        card.addEventListener('click', function () {
+          var dialog = document.getElementById('svc-' + card.dataset.service);
+          if (dialog && typeof dialog.showModal === 'function') {
+            lastTrigger = card;
+            dialog.showModal();
+          }
+        });
+      });
+      document.querySelectorAll('.service-dialog').forEach(function (dialog) {
+        // Close on backdrop click (a click that lands on the <dialog> element itself,
+        // outside the .dialog-panel content box, targets the backdrop area).
+        dialog.addEventListener('click', function (e) {
+          if (e.target === dialog) dialog.close();
+        });
+        dialog.querySelectorAll('[data-close-dialog]').forEach(function (el) {
+          el.addEventListener('click', function () { dialog.close(); });
+        });
+        dialog.addEventListener('close', function () {
+          if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
+        });
+      });
     })();
   </script>
 </body>
