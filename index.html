@@ -7,7 +7,7 @@
   <title>Remote Online Notary in Washington | EXPRESS NOTARY WA</title>
   <meta
     name="description"
-    content="Remote online notarization by a Washington State commissioned notary public. Book online for acknowledgments, jurats, trust documents, and power of attorney forms. Open Sunday to Friday, 6am to 8pm."
+    content="Remote online notarization by Brian Stewart, a Washington State commissioned notary public. Book online for acknowledgments, jurats, trust documents, and power of attorney forms. Open Sunday to Friday, 6am to 8pm."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://eronwa.com/" />
@@ -53,7 +53,7 @@
         "@type": "ProfessionalService",
         "@id": "https://eronwa.com/#business",
         "name": "EXPRESS NOTARY WA",
-        "founder": { "@type": "Person", "name": "Brian" },
+        "founder": { "@type": "Person", "name": "Brian Stewart" },
         "url": "https://eronwa.com/",
         "email": "notary@eronwa.com",
         "description": "Remote online notarization by a Washington State commissioned notary public.",
@@ -489,22 +489,11 @@
       overflow:hidden;
       color:var(--white);
       background:
+        linear-gradient(100deg, rgba(4,12,28,.93) 0%, rgba(6,20,45,.84) 38%, rgba(5,15,34,.58) 66%, rgba(5,15,34,.38) 100%),
         radial-gradient(900px 520px at 88% 8%, rgba(199,160,82,.16), transparent 60%),
+        url("assets/eronwa-hero.png") center/cover no-repeat,
         linear-gradient(150deg,#0c3468 0%,#071f42 46%,#050f22 82%);
       padding:156px 0 96px;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:1;
-      opacity:.5;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size:64px 64px;
-      -webkit-mask-image:radial-gradient(760px 480px at 78% 20%, #000, transparent 72%);
-      mask-image:radial-gradient(760px 480px at 78% 20%, #000, transparent 72%);
     }
     .hero-mark{
       position:absolute;
@@ -1222,6 +1211,11 @@
       .hero{
         min-height:0;
         padding:132px 0 92px;
+        background:
+          linear-gradient(180deg, rgba(4,12,28,.9) 0%, rgba(5,15,34,.88) 100%),
+          radial-gradient(900px 520px at 88% 8%, rgba(199,160,82,.14), transparent 60%),
+          url("assets/eronwa-hero.png") center/cover no-repeat,
+          linear-gradient(150deg,#0c3468 0%,#071f42 46%,#050f22 82%);
       }
       h1{ font-size:clamp(42px,12vw,66px); }
       .hero-actions .btn{ width:100%; }
@@ -1308,7 +1302,7 @@
           <p class="kicker"><span class="eyebrow">Washington State commissioned notary public</span></p>
           <h1 id="hero-title">Online notarization, <em>simplified</em></h1>
           <p class="hero-copy">
-            Secure remote online notarization with a Washington State
+            Secure remote online notarization with Brian Stewart, a Washington State
             commissioned notary. Book online, verify your identity, and complete
             eligible notarizations from wherever you are.
           </p>
