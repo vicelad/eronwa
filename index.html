@@ -859,14 +859,19 @@
       grid-template-columns:repeat(2,1fr);
       gap:28px;
       margin-top:54px;
-      align-items:start;
     }
     .price-card{
+      display:flex;
+      flex-direction:column;
       background:var(--white);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:42px;
       box-shadow:var(--shadow-sm);
+    }
+    .price-card > .btn{
+      margin-top:auto;
+      align-self:flex-start;
     }
     .price-card.featured{
       position:relative;
