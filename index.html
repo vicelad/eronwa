@@ -2922,6 +2922,7 @@
         var next = !document.body.classList.contains('win95-mode');
         applyState(next);
         try { window.localStorage.setItem(STORAGE_KEY, next ? '1' : '0'); } catch (e) {}
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     })();
 
