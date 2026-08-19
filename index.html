@@ -1265,6 +1265,38 @@
       gap:14px;
       margin-top:32px;
     }
+    /* PARTNER TEASER */
+    .partner-teaser-panel{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+      padding:40px 44px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:var(--white);
+      box-shadow:var(--shadow-sm);
+    }
+    .partner-teaser-text h2{
+      font-size:clamp(24px,3vw,32px);
+      margin-bottom:10px;
+    }
+    .partner-teaser-text .lead{
+      margin:0;
+      max-width:520px;
+      text-align:left;
+      font-size:16px;
+    }
+    .partner-teaser-panel .btn{ flex:none; }
+    @media (max-width:680px){
+      .partner-teaser-panel{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:32px 26px;
+      }
+      .partner-teaser-panel .btn{ width:100%; }
+    }
     /* FOOTER */
     footer{
       position:relative;
@@ -2402,6 +2434,23 @@
         </div>
       </div>
     </section>
+    <!-- PARTNER TEASER -->
+    <section class="section" aria-labelledby="partner-teaser-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
+      <div class="container">
+        <div class="partner-teaser-panel reveal">
+          <div class="partner-teaser-text">
+            <p class="kicker"><span class="eyebrow">For attorneys &amp; estate planning professionals</span></p>
+            <h2 id="partner-teaser-title">Need a notary for your clients on a regular basis?</h2>
+            <p class="lead lead-left">
+              Partner with E-RON WA for priority booking, a dedicated point of contact, and
+              reduced rates for your practice.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="partners.html">Learn about partnering</a>
+        </div>
+      </div>
+    </section>
   </main>
   <footer>
     <div class="container footer-grid">
@@ -2419,6 +2468,7 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="partners.html">Attorneys &amp; Partners</a></li>
         <li><a href="https://professions.dol.wa.gov/s/license-lookup" target="_blank" rel="noopener noreferrer">Verify my WA notary commission (License #179620)</a></li>
       </ul>
       <p class="footer-disclaimer">
