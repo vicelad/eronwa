@@ -1677,22 +1677,95 @@
       border-bottom:2px solid #000 !important;
       padding:8px 0 !important;
     }
-    body.win95-mode .site-header::after{
-      content:"_ \25A1 \2715";
-      position:absolute;
-      top:50%;
-      right:16px;
-      transform:translateY(-50%);
+    /* Real window-control buttons (top-right of title bar) */
+    .win95-window-controls{
+      display:none;
+      align-items:center;
+      gap:4px;
+    }
+    body.win95-mode .win95-window-controls{ display:flex; }
+    .win95-wc-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:20px;
+      height:19px;
+      padding:0;
+      background:#c0c0c0;
+      border:2px solid;
+      border-color:#fff #000 #000 #fff;
       font-family:"Courier New", monospace;
       font-weight:700;
-      font-size:13px;
-      letter-spacing:5px;
+      font-size:12px;
+      line-height:1;
       color:#000;
-      background:#c0c0c0;
-      border:1px solid;
-      border-color:#fff #000 #000 #fff;
-      padding:2px 6px;
+      cursor:default;
+    }
+    button.win95-wc-btn{ cursor:pointer; }
+    button.win95-wc-btn:active{ border-color:#000 #fff #fff #000; }
+    .win95-wc-close:hover{ background:#e6c2c2; }
+
+    /* Theme transition overlay (calendar rewind / Y2K countdown) */
+    .theme-transition{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#050e22;
+      opacity:0;
+      visibility:hidden;
       pointer-events:none;
+      transition:opacity .25s ease;
+    }
+    .theme-transition.is-active{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+    .tt-card{
+      width:220px;
+      padding:22px 10px;
+      text-align:center;
+      background:#f2ead3;
+      border-radius:6px;
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+      border:1px solid rgba(0,0,0,.15);
+    }
+    .tt-card-label{
+      font-family:Lato, Arial, sans-serif;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#a3271f;
+      margin-bottom:10px;
+    }
+    .tt-card-value{
+      font-family:"Courier New", monospace;
+      font-size:56px;
+      font-weight:700;
+      color:#111;
+      line-height:1;
+    }
+    .tt-card-value.is-flipping{ animation:tt-flip .32s ease; }
+    @keyframes tt-flip{
+      0%{ transform:rotateX(0deg); opacity:1; }
+      45%{ transform:rotateX(-90deg); opacity:.25; }
+      55%{ transform:rotateX(-90deg); opacity:.25; }
+      100%{ transform:rotateX(0deg); opacity:1; }
+    }
+    .tt-card.tt-y2k{
+      background:#0a0a0a;
+      border:2px solid #1a1a1a;
+      box-shadow:0 0 0 4px #000, 0 20px 60px rgba(0,0,0,.6), inset 0 0 20px rgba(57,255,106,.08);
+    }
+    .tt-card.tt-y2k .tt-card-label{ color:#39ff6a; text-shadow:0 0 6px rgba(57,255,106,.6); }
+    .tt-card.tt-y2k .tt-card-value{ color:#39ff6a; text-shadow:0 0 10px rgba(57,255,106,.7); }
+    @media (prefers-reduced-motion: reduce){
+      .tt-card-value.is-flipping{ animation:none; }
+      .theme-transition{ transition:none; }
     }
     body.win95-mode .brand,
     body.win95-mode .nav-links a:not(.btn){ color:#fff !important; }
@@ -2065,6 +2138,11 @@
         <a href="#faq">FAQ</a>
         <a class="btn btn-primary" href="#book">Book now</a>
       </nav>
+      <div class="win95-window-controls">
+        <span class="win95-wc-btn" aria-hidden="true">_</span>
+        <span class="win95-wc-btn" aria-hidden="true">&#9633;</span>
+        <button type="button" class="win95-wc-btn win95-wc-close" id="win95-close-btn" aria-label="Exit Windows 95 mode">&#10005;</button>
+      </div>
     </div>
   </header>
   <main id="main">
@@ -2933,6 +3011,13 @@
     <span class="win95-clock" id="win95-clock">12:00 PM</span>
   </div>
 
+  <div class="theme-transition" id="theme-transition" aria-hidden="true">
+    <div class="tt-card" id="tt-card">
+      <div class="tt-card-label" id="tt-label">Rewinding to</div>
+      <div class="tt-card-value" id="tt-value">2026</div>
+    </div>
+  </div>
+
   <dialog class="service-dialog" id="dino-game-dialog" aria-labelledby="dino-game-title">
     <div class="dialog-panel">
       <button class="dialog-close" type="button" data-close-dialog aria-label="Close">&times;</button>
@@ -3183,17 +3268,97 @@
       function playStartupChime() { playTone([523.25, 659.25, 783.99], 0.14); }
       function playShutdownChime() { playTone([783.99, 523.25], 0.16); }
 
+      // Flip-card transition: a calendar rewinding to 1995 on the way in,
+      // a Y2K countdown hitting 0 on the way out. The actual theme swap
+      // happens while the overlay is fully opaque, so it's invisible.
+      var ttOverlay = document.getElementById('theme-transition');
+      var ttCard = document.getElementById('tt-card');
+      var ttLabel = document.getElementById('tt-label');
+      var ttValue = document.getElementById('tt-value');
+
+      function ttSetValue(text) {
+        if (!ttValue) return;
+        ttValue.classList.remove('is-flipping');
+        void ttValue.offsetWidth; // restart the flip animation
+        ttValue.classList.add('is-flipping');
+        ttValue.textContent = text;
+      }
+
+      function runThemeTransition(isEntering, onSwap, onDone) {
+        if (!ttOverlay || !ttCard || !ttLabel || !ttValue) {
+          onSwap();
+          if (onDone) onDone();
+          return;
+        }
+        ttCard.classList.toggle('tt-y2k', !isEntering);
+        ttOverlay.classList.add('is-active');
+
+        var frames;
+        if (isEntering) {
+          ttLabel.textContent = 'Rewinding to';
+          var startYear = new Date().getFullYear();
+          var count = 6;
+          frames = [];
+          for (var s = 0; s < count; s++) {
+            var t = s / (count - 1);
+            frames.push(String(Math.round(startYear - t * (startYear - 1995))));
+          }
+          frames[frames.length - 1] = '1995';
+        } else {
+          ttLabel.textContent = 'Countdown to Y2K';
+          frames = ['3', '2', '1', '0'];
+        }
+
+        var STEP_MS = 150;
+        var i = 0;
+        ttSetValue(frames[0]);
+
+        function nextFrame() {
+          i++;
+          if (i < frames.length) {
+            ttSetValue(frames[i]);
+            window.setTimeout(nextFrame, STEP_MS);
+            return;
+          }
+          // Countdown/rewind finished — swap themes now, while still opaque.
+          onSwap();
+          if (!isEntering) {
+            window.setTimeout(function () {
+              ttLabel.textContent = 'Welcome to';
+              ttSetValue('2000');
+            }, 120);
+          }
+          window.setTimeout(function () {
+            ttOverlay.classList.remove('is-active');
+            window.setTimeout(function () { if (onDone) onDone(); }, 260);
+          }, isEntering ? 320 : 520);
+        }
+
+        window.setTimeout(nextFrame, STEP_MS);
+      }
+
       var stored = null;
       try { stored = window.localStorage.getItem(STORAGE_KEY); } catch (e) {}
       applyState(stored === '1');
 
       toggle.addEventListener('click', function () {
+        if (toggle.disabled) return;
         var next = !document.body.classList.contains('win95-mode');
-        applyState(next);
-        try { window.localStorage.setItem(STORAGE_KEY, next ? '1' : '0'); } catch (e) {}
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (next) { playStartupChime(); } else { playShutdownChime(); }
+        toggle.disabled = true;
+        runThemeTransition(next, function () {
+          applyState(next);
+          try { window.localStorage.setItem(STORAGE_KEY, next ? '1' : '0'); } catch (e) {}
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          if (next) { playStartupChime(); } else { playShutdownChime(); }
+        }, function () {
+          toggle.disabled = false;
+        });
       });
+
+      var closeBtn = document.getElementById('win95-close-btn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function () { toggle.click(); });
+      }
     })();
 
     // Dino game (Windows 95 easter egg)
