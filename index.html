@@ -3319,22 +3319,30 @@
 
         state.spawnTimer -= state.speed;
         if (state.spawnTimer <= 0) {
+          var obstacleWidth;
           if (Math.random() < 0.28 && state.distance > 400) {
-            state.obstacles.push({ type: 'ptero', x: W + 10, w: 30, h: 18, flapTimer: 0, flapFrame: 0 });
+            obstacleWidth = 30;
+            state.obstacles.push({ type: 'ptero', x: W + 10, w: obstacleWidth, h: 18, flapTimer: 0, flapFrame: 0 });
           } else {
             var groupSize = 1 + Math.floor(Math.random() * 3);
             var segW = 8 + Math.random() * 6;
             var segH = 18 + Math.random() * 20;
+            obstacleWidth = groupSize * (segW + 3) - 3;
             state.obstacles.push({
               type: 'cactus',
               x: W + 10,
-              w: groupSize * (segW + 3) - 3,
+              w: obstacleWidth,
               h: segH,
               segW: segW,
               segments: groupSize
             });
           }
-          state.spawnTimer = 50 + Math.random() * 60;
+          // Gap is measured AFTER this obstacle's own width, so a wide cluster
+          // can't eat into the space the player needs to land and react again.
+          // The floor shrinks a little as speed ramps up, but never past what's
+          // still fair at top speed.
+          var baseGap = Math.max(95, 190 - state.speed * 6);
+          state.spawnTimer = obstacleWidth + baseGap + Math.random() * 80;
         }
         state.obstacles.forEach(function (o) {
           o.x -= state.speed;
