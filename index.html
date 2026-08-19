@@ -1971,19 +1971,43 @@
       width:100%;
       max-width:560px;
       height:auto;
-      aspect-ratio:600 / 170;
+      aspect-ratio:600 / 200;
       background:#fff;
       border:2px solid;
       border-color:#000 #fff #fff #000;
       cursor:pointer;
       touch-action:manipulation;
     }
-    .dino-game-score{
+    .dino-game-controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
       margin-top:12px;
+    }
+    .dino-game-score{
       font-family:"MS Sans Serif", Tahoma, Geneva, sans-serif;
       font-size:13px;
       font-weight:700;
       color:var(--ink);
+    }
+    .dino-duck-btn{
+      font-family:"MS Sans Serif", Tahoma, Geneva, sans-serif;
+      font-size:12px;
+      font-weight:700;
+      padding:7px 14px;
+      background:#c0c0c0;
+      border:2px solid;
+      border-color:#fff #000 #000 #fff;
+      color:#000;
+      cursor:default;
+      touch-action:none;
+      user-select:none;
+    }
+    .dino-duck-btn:active,
+    .dino-duck-btn.is-pressed{
+      border-color:#000 #fff #fff #000;
     }
     .dino-game-hint{
       margin-top:4px;
@@ -2914,10 +2938,13 @@
       <button class="dialog-close" type="button" data-close-dialog aria-label="Close">&times;</button>
       <p class="dialog-eyebrow">Break time</p>
       <h3 id="dino-game-title">Dino Runner</h3>
-      <p class="dialog-lede">Space or tap the game to jump. Don&rsquo;t hit the cactus.</p>
+      <p class="dialog-lede">Space or tap to jump, down arrow to duck under the pterodactyls.</p>
       <div class="dino-game-wrap">
-        <canvas id="dino-canvas" width="600" height="170" tabindex="0" aria-label="Dino jumping game — press space to jump"></canvas>
-        <p class="dino-game-score">Score: <span id="dino-score">0</span> &nbsp;&middot;&nbsp; Best: <span id="dino-best">0</span></p>
+        <canvas id="dino-canvas" width="600" height="200" tabindex="0" aria-label="Dino jumping game — press space to jump, down arrow to duck"></canvas>
+        <div class="dino-game-controls">
+          <p class="dino-game-score">Score: <span id="dino-score">0</span> &nbsp;&middot;&nbsp; Best: <span id="dino-best">0</span></p>
+          <button type="button" class="dino-duck-btn" id="dino-duck-btn">Hold to duck</button>
+        </div>
         <p class="dino-game-hint" id="dino-hint">Press Space or tap the game to start</p>
       </div>
     </div>
@@ -3176,12 +3203,27 @@
       if (!dialog || !canvas || !canvas.getContext) return;
       var ctx = canvas.getContext('2d');
       var W = canvas.width, H = canvas.height;
-      var GROUND_Y = H - 24;
+      var GROUND_Y = H - 34;
       var scoreEl = document.getElementById('dino-score');
       var bestEl = document.getElementById('dino-best');
       var hintEl = document.getElementById('dino-hint');
+      var duckBtn = document.getElementById('dino-duck-btn');
       var BEST_KEY = 'eronwa-dino-best';
-      var DINO_X = 40, DINO_W = 26, DINO_H = 30;
+      var PX = 3;
+      var DINO_X = 46;
+
+      // Blocky pixel-sprite frames, defined as grids of [x, y, w, h] blocks
+      // (in PX units) plus an eye accent. Two running frames alternate for a
+      // simple walk-cycle; jump and duck get their own poses.
+      var DINO_RUN = [
+        { body: [[6,0,5,4],[2,3,7,5],[0,5,3,3],[3,8,2,4],[7,8,2,3]], eye: [9,1,1,1] },
+        { body: [[6,0,5,4],[2,3,7,5],[0,5,3,3],[3,8,2,3],[7,8,2,4]], eye: [9,1,1,1] }
+      ];
+      var DINO_JUMP = { body: [[6,0,5,4],[2,3,7,5],[0,5,3,3],[3,8,2,2],[7,8,2,2]], eye: [9,1,1,1] };
+      var DINO_DUCK = { body: [[8,1,5,3],[2,2,8,4],[0,4,3,2],[3,6,2,2],[9,6,2,2]], eye: [11,1,1,1] };
+      var DINO_RUN_W = 12, DINO_RUN_H = 12;
+      var DINO_DUCK_W = 15, DINO_DUCK_H = 8;
+
       var best = 0;
       try { best = parseInt(window.localStorage.getItem(BEST_KEY), 10) || 0; } catch (e) {}
       if (bestEl) bestEl.textContent = best;
@@ -3194,10 +3236,20 @@
           dinoY: 0,
           vy: 0,
           onGround: true,
+          ducking: false,
+          runFrame: 0,
+          animTimer: 0,
           obstacles: [],
+          clouds: [
+            { x: W * 0.3, y: 30, scale: 1 },
+            { x: W * 0.75, y: 55, scale: 0.8 }
+          ],
+          groundOffset: 0,
           speed: 5.5,
           distance: 0,
           spawnTimer: 60,
+          night: false,
+          nextNightScore: 500,
           running: true,
           gameOver: false
         };
@@ -3205,17 +3257,21 @@
 
       function start() {
         state = newState();
-        if (hintEl) hintEl.textContent = 'Space or tap to jump';
+        if (hintEl) hintEl.textContent = 'Space or tap to jump, down arrow to duck';
         if (rafId) cancelAnimationFrame(rafId);
         loop();
       }
 
       function jump() {
         if (!state || state.gameOver) { start(); return; }
-        if (state.onGround) {
-          state.vy = -9.5;
+        if (state.onGround && !state.ducking) {
+          state.vy = -10.5;
           state.onGround = false;
         }
+      }
+
+      function setDucking(isDucking) {
+        if (state) state.ducking = isDucking && state.onGround;
       }
 
       function endGame() {
@@ -3230,64 +3286,186 @@
         if (hintEl) hintEl.textContent = 'Game over — press Space or tap to try again';
       }
 
+      function dinoBox() {
+        if (state.ducking) {
+          return { x: DINO_X, y: GROUND_Y - DINO_DUCK_H * PX, w: DINO_DUCK_W * PX, h: DINO_DUCK_H * PX };
+        }
+        var top = GROUND_Y - DINO_RUN_H * PX + state.dinoY;
+        return { x: DINO_X, y: top, w: DINO_RUN_W * PX, h: DINO_RUN_H * PX };
+      }
+
       function step() {
         if (!state || !state.running) return;
-        state.vy += 0.5;
-        state.dinoY += state.vy;
-        if (state.dinoY >= 0) { state.dinoY = 0; state.vy = 0; state.onGround = true; }
+
+        if (!state.ducking) {
+          state.vy += 0.55;
+          state.dinoY += state.vy;
+          if (state.dinoY >= 0) { state.dinoY = 0; state.vy = 0; state.onGround = true; }
+        }
+
+        if (state.onGround && !state.ducking) {
+          state.animTimer += state.speed;
+          if (state.animTimer > 24) { state.animTimer = 0; state.runFrame = state.runFrame === 0 ? 1 : 0; }
+        }
 
         state.distance += state.speed;
-        state.speed = Math.min(11, 5.5 + state.distance / 2200);
+        state.speed = Math.min(12, 5.5 + state.distance / 2400);
+        state.groundOffset = (state.groundOffset + state.speed) % 40;
+
+        state.clouds.forEach(function (c) {
+          c.x -= state.speed * 0.25;
+          if (c.x < -60) { c.x = W + Math.random() * 60; c.y = 20 + Math.random() * 50; }
+        });
 
         state.spawnTimer -= state.speed;
         if (state.spawnTimer <= 0) {
-          var h = 18 + Math.random() * 20;
-          state.obstacles.push({ x: W + 10, w: 12 + Math.random() * 10, h: h });
-          state.spawnTimer = 55 + Math.random() * 55;
+          if (Math.random() < 0.28 && state.distance > 400) {
+            state.obstacles.push({ type: 'ptero', x: W + 10, w: 30, h: 18, flapTimer: 0, flapFrame: 0 });
+          } else {
+            var groupSize = 1 + Math.floor(Math.random() * 3);
+            var segW = 8 + Math.random() * 6;
+            var segH = 18 + Math.random() * 20;
+            state.obstacles.push({
+              type: 'cactus',
+              x: W + 10,
+              w: groupSize * (segW + 3) - 3,
+              h: segH,
+              segW: segW,
+              segments: groupSize
+            });
+          }
+          state.spawnTimer = 50 + Math.random() * 60;
         }
-        state.obstacles.forEach(function (o) { o.x -= state.speed; });
+        state.obstacles.forEach(function (o) {
+          o.x -= state.speed;
+          if (o.type === 'ptero') {
+            o.flapTimer += state.speed;
+            if (o.flapTimer > 14) { o.flapTimer = 0; o.flapFrame = o.flapFrame === 0 ? 1 : 0; }
+          }
+        });
         state.obstacles = state.obstacles.filter(function (o) { return o.x + o.w > -5; });
 
-        var dinoTop = GROUND_Y - DINO_H + state.dinoY;
+        var d = dinoBox();
         state.obstacles.forEach(function (o) {
-          var oTop = GROUND_Y - o.h;
+          var oTop = o.type === 'ptero' ? GROUND_Y - DINO_RUN_H * PX - 6 : GROUND_Y - o.h;
+          var oBottom = o.type === 'ptero' ? oTop + o.h : GROUND_Y;
           if (
-            DINO_X + DINO_W - 4 > o.x + 3 &&
-            DINO_X + 4 < o.x + o.w - 3 &&
-            dinoTop + DINO_H - 4 > oTop
+            d.x + d.w - 5 > o.x + 3 &&
+            d.x + 5 < o.x + o.w - 3 &&
+            d.y + d.h - 5 > oTop &&
+            d.y + 5 < oBottom
           ) {
             endGame();
           }
         });
 
-        if (scoreEl) scoreEl.textContent = Math.floor(state.distance / 10);
+        var score = Math.floor(state.distance / 10);
+        if (scoreEl) scoreEl.textContent = score;
+        if (score >= state.nextNightScore) {
+          state.night = !state.night;
+          state.nextNightScore += 500;
+        }
+      }
+
+      function drawSprite(frame, x, y, color) {
+        ctx.fillStyle = color;
+        frame.body.forEach(function (b) {
+          ctx.fillRect(x + b[0] * PX, y + b[1] * PX, b[2] * PX, b[3] * PX);
+        });
+        ctx.fillStyle = (state && state.night) ? '#000' : '#fff';
+        var e = frame.eye;
+        ctx.fillRect(x + e[0] * PX, y + e[1] * PX, e[2] * PX, e[3] * PX);
+      }
+
+      function drawCactusCluster(o) {
+        for (var i = 0; i < o.segments; i++) {
+          var segX = o.x + i * (o.segW + 3);
+          var segH = o.h - (i % 2 === 1 ? 6 : 0);
+          ctx.fillRect(segX, GROUND_Y - segH, o.segW, segH);
+          // little arm nub for visual variety
+          if (segH > 24) {
+            ctx.fillRect(segX - 4, GROUND_Y - segH + 8, 4, 3);
+          }
+        }
+      }
+
+      function drawPterodactyl(o) {
+        var y = GROUND_Y - DINO_RUN_H * PX - 6 - o.h / 2;
+        ctx.fillRect(o.x + 6, y, o.w - 12, o.h * 0.5);
+        var wingUp = o.flapFrame === 0;
+        ctx.beginPath();
+        if (wingUp) {
+          ctx.moveTo(o.x, y + 4);
+          ctx.lineTo(o.x + 14, y - 8);
+          ctx.lineTo(o.x + 16, y + 4);
+        } else {
+          ctx.moveTo(o.x, y + 4);
+          ctx.lineTo(o.x + 14, y + 14);
+          ctx.lineTo(o.x + 16, y + 4);
+        }
+        ctx.closePath();
+        ctx.fill();
       }
 
       function draw() {
-        ctx.clearRect(0, 0, W, H);
-        ctx.strokeStyle = '#000';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(0, GROUND_Y + 1);
-        ctx.lineTo(W, GROUND_Y + 1);
-        ctx.stroke();
-
-        var dinoTop = GROUND_Y - DINO_H + (state ? state.dinoY : 0);
-        ctx.fillStyle = '#000';
-        ctx.fillRect(DINO_X, dinoTop, DINO_W, DINO_H);
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(DINO_X + DINO_W - 8, dinoTop + 6, 3, 3);
+        var bg = state && state.night ? '#000' : '#fff';
+        var fg = state && state.night ? '#fff' : '#000';
+        ctx.fillStyle = bg;
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = fg;
 
         if (state) {
-          ctx.fillStyle = '#000';
+          if (state.night) {
+            ctx.beginPath();
+            ctx.arc(W - 46, 34, 12, 0, Math.PI * 2);
+            ctx.fill();
+            for (var s = 0; s < 6; s++) {
+              ctx.fillRect(40 + (s * 83) % (W - 80), 18 + (s * 37) % 50, 2, 2);
+            }
+          } else {
+            state.clouds.forEach(function (c) {
+              ctx.fillStyle = '#c0c0c0';
+              ctx.fillRect(c.x, c.y, 28 * c.scale, 8 * c.scale);
+              ctx.fillRect(c.x + 8 * c.scale, c.y - 5 * c.scale, 16 * c.scale, 7 * c.scale);
+              ctx.fillStyle = fg;
+            });
+          }
+        }
+
+        // scrolling dashed ground
+        ctx.fillRect(0, GROUND_Y, W, 2);
+        var offset = state ? state.groundOffset : 0;
+        for (var gx = -offset; gx < W; gx += 40) {
+          ctx.fillRect(gx, GROUND_Y + 4, 20, 2);
+        }
+
+        var frame = DINO_RUN[0];
+        var dinoX = DINO_X, dinoY = GROUND_Y - DINO_RUN_H * PX;
+        if (state) {
+          if (state.ducking) {
+            frame = DINO_DUCK;
+            dinoY = GROUND_Y - DINO_DUCK_H * PX;
+          } else if (!state.onGround) {
+            frame = DINO_JUMP;
+            dinoY = GROUND_Y - DINO_RUN_H * PX + state.dinoY;
+          } else {
+            frame = DINO_RUN[state.runFrame];
+            dinoY = GROUND_Y - DINO_RUN_H * PX;
+          }
+        }
+        drawSprite(frame, dinoX, dinoY, fg);
+
+        if (state) {
+          ctx.fillStyle = fg;
           state.obstacles.forEach(function (o) {
-            ctx.fillRect(o.x, GROUND_Y - o.h, o.w, o.h);
+            if (o.type === 'ptero') { drawPterodactyl(o); }
+            else { drawCactusCluster(o); }
           });
           if (state.gameOver) {
-            ctx.fillStyle = '#000';
-            ctx.font = 'bold 20px "MS Sans Serif", Tahoma, sans-serif';
+            ctx.fillStyle = fg;
+            ctx.font = 'bold 22px "MS Sans Serif", Tahoma, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('GAME OVER', W / 2, H / 2);
+            ctx.fillText('G A M E   O V E R', W / 2, H / 2 - 10);
           }
         }
       }
@@ -3307,11 +3485,34 @@
         { passive: false }
       );
       dialog.addEventListener('keydown', function (e) {
-        if (e.key === ' ' || e.code === 'Space') {
+        if (e.key === ' ' || e.code === 'Space' || e.key === 'ArrowUp') {
           e.preventDefault();
           jump();
+        } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          setDucking(true);
         }
       });
+      dialog.addEventListener('keyup', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
+          setDucking(false);
+        }
+      });
+      if (duckBtn) {
+        var pressDuck = function (e) {
+          e.preventDefault();
+          duckBtn.classList.add('is-pressed');
+          setDucking(true);
+        };
+        var releaseDuck = function () {
+          duckBtn.classList.remove('is-pressed');
+          setDucking(false);
+        };
+        duckBtn.addEventListener('pointerdown', pressDuck);
+        duckBtn.addEventListener('pointerup', releaseDuck);
+        duckBtn.addEventListener('pointerleave', releaseDuck);
+        duckBtn.addEventListener('pointercancel', releaseDuck);
+      }
       dialog.addEventListener('close', function () {
         if (rafId) cancelAnimationFrame(rafId);
         rafId = null;
