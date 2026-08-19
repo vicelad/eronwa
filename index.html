@@ -1418,6 +1418,267 @@
       .hero-content > *{ opacity:1; animation:none; }
       .notary-seal{ animation:none; }
     }
+    /* RETRO TOGGLE LINK (normal mode) */
+    .retro-toggle-row{
+      margin-top:18px;
+      text-align:center;
+    }
+    .retro-toggle-link{
+      display:inline-block;
+      padding:0;
+      border:0;
+      background:none;
+      color:rgba(255,255,255,.4);
+      font-family:Lato, Arial, sans-serif;
+      font-size:11.5px;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      cursor:pointer;
+      transition:color var(--ease);
+    }
+    .retro-toggle-link:hover{ color:var(--gold2); }
+
+    /* =====================================================
+       WINDOWS 95 MODE
+       Toggled via body.win95-mode — a from-the-90s reskin.
+       ===================================================== */
+    body.win95-mode{
+      --navy:#000080;
+      --navy2:#1084d0;
+      --navy3:#000080;
+      --gold:#c0c0c0;
+      --gold2:#c0c0c0;
+      --gold3:#808080;
+      --gold-ink:#000080;
+      --white:#ffffff;
+      --ink:#000000;
+      --muted:#1a1a1a;
+      --line:#000000;
+      --line-gold:#000000;
+      --shadow-sm:none;
+      --shadow:none;
+      --shadow-lg:none;
+      --radius:0px;
+      --radius-sm:0px;
+      --serif:"MS Sans Serif", Tahoma, Geneva, sans-serif;
+    }
+    /* Kill every soft animation/blur/shadow site-wide, then re-add
+       chunky beveled ones on purpose below. */
+    body.win95-mode,
+    body.win95-mode *{
+      transition:none !important;
+      animation:none !important;
+      backdrop-filter:none !important;
+      box-shadow:none !important;
+      text-shadow:none !important;
+      scroll-behavior:auto !important;
+    }
+    body.win95-mode{
+      background:#008080 !important;
+      font-family:"MS Sans Serif", Tahoma, Geneva, sans-serif !important;
+      padding-bottom:34px;
+    }
+    body.win95-mode .reveal{ opacity:1 !important; transform:none !important; }
+    body.win95-mode h1,
+    body.win95-mode h2,
+    body.win95-mode h3,
+    body.win95-mode h4{ letter-spacing:0 !important; }
+    body.win95-mode h1 em,
+    body.win95-mode .price strong{
+      -webkit-text-fill-color:currentColor !important;
+      background:none !important;
+      color:#000080 !important;
+      font-style:normal !important;
+    }
+    body.win95-mode a{ color:#0000ee; }
+    body.win95-mode a:visited{ color:#800080; }
+
+    /* Header becomes a title bar */
+    body.win95-mode .site-header{
+      background:linear-gradient(90deg,#000080,#1084d0) !important;
+      border-bottom:2px solid #000 !important;
+      padding:8px 0 !important;
+    }
+    body.win95-mode .site-header::after{
+      content:"_ \25A1 \2715";
+      position:absolute;
+      top:50%;
+      right:16px;
+      transform:translateY(-50%);
+      font-family:"Courier New", monospace;
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:5px;
+      color:#000;
+      background:#c0c0c0;
+      border:1px solid;
+      border-color:#fff #000 #000 #fff;
+      padding:2px 6px;
+      pointer-events:none;
+    }
+    body.win95-mode .brand,
+    body.win95-mode .nav-links a:not(.btn){ color:#fff !important; }
+    body.win95-mode .brand-subtitle{ color:#fff !important; opacity:.85; }
+
+    /* Hero becomes a flat classic-blue banner */
+    body.win95-mode .hero{
+      background:#000080 !important;
+      min-height:0 !important;
+      padding:70px 0 56px !important;
+    }
+    body.win95-mode .hero-mark{ opacity:.15 !important; }
+
+    /* Buttons: authentic pushed/outset 3D face */
+    body.win95-mode .btn{
+      border-radius:0 !important;
+      color:#000 !important;
+      background:#c0c0c0 !important;
+      border:2px solid !important;
+      border-color:#fff #000 #000 #fff !important;
+      box-shadow:inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080 !important;
+      text-transform:none !important;
+      font-weight:700 !important;
+      letter-spacing:0 !important;
+    }
+    body.win95-mode .btn:hover{ transform:none !important; }
+    body.win95-mode .btn:active{
+      border-color:#000 #fff #fff #000 !important;
+      box-shadow:inset -1px -1px 0 #dfdfdf, inset 1px 1px 0 #808080 !important;
+      transform:none !important;
+    }
+    body.win95-mode .btn-light{ background:#c0c0c0 !important; }
+    body.win95-mode .nav-links.is-open{
+      background:#000080 !important;
+      border-bottom:2px solid #000 !important;
+    }
+    body.win95-mode .nav-toggle{
+      color:#000 !important;
+      background:#c0c0c0 !important;
+      border:2px solid !important;
+      border-color:#fff #000 #000 #fff !important;
+      border-radius:0 !important;
+      box-shadow:inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080 !important;
+    }
+
+    /* Cards / panels: flat black border, square corners (via vars above),
+       with a few "important" surfaces getting a real outset bevel. */
+    body.win95-mode .price-card.featured,
+    body.win95-mode .booking-shell,
+    body.win95-mode .dialog-panel,
+    body.win95-mode details{
+      border:2px solid !important;
+      border-color:#fff #000 #000 #fff !important;
+      box-shadow:inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080 !important;
+    }
+    body.win95-mode .price-card.featured::before{ display:none; }
+    body.win95-mode .step:hover,
+    body.win95-mode .service-card:hover,
+    body.win95-mode .service-card:focus-visible,
+    body.win95-mode .price-card:hover{ transform:none !important; }
+    body.win95-mode .icon-box{
+      border-radius:0 !important;
+      box-shadow:inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080 !important;
+    }
+    body.win95-mode .check-item::before,
+    body.win95-mode summary::after{ border-radius:0 !important; }
+
+    /* Classic pale-yellow "tooltip" notes */
+    body.win95-mode .callout-note,
+    body.win95-mode .price-breakdown,
+    body.win95-mode .dialog-note,
+    body.win95-mode .price-list li,
+    body.win95-mode .price-group{
+      background:#ffffe1 !important;
+      border-color:#000 !important;
+      color:#000 !important;
+    }
+
+    /* Footer + final CTA back to flat title-bar blue */
+    body.win95-mode footer,
+    body.win95-mode .final-cta{
+      background:#000080 !important;
+    }
+    body.win95-mode .footer-links a,
+    body.win95-mode .footer-contact a{ color:#fff !important; }
+    body.win95-mode .cta-mark{ opacity:.08 !important; }
+
+    /* Dialogs */
+    body.win95-mode .service-dialog::backdrop{
+      background:rgba(0,0,0,.5) !important;
+    }
+    body.win95-mode .dialog-close{
+      border-radius:0 !important;
+      border:2px solid !important;
+      border-color:#fff #000 #000 #fff !important;
+      background:#c0c0c0 !important;
+    }
+
+    /* Fake taskbar, pinned to the bottom of the viewport */
+    .win95-taskbar{
+      display:none;
+      position:fixed;
+      left:0; right:0; bottom:0;
+      z-index:200;
+      height:34px;
+      align-items:center;
+      gap:10px;
+      padding:0 8px;
+      background:#c0c0c0;
+      border-top:2px solid #fff;
+      font-family:"MS Sans Serif", Tahoma, Geneva, sans-serif;
+      font-size:12.5px;
+      color:#000;
+    }
+    body.win95-mode .win95-taskbar{ display:flex; }
+    .win95-start{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      height:24px;
+      padding:0 10px;
+      background:#c0c0c0;
+      border:2px solid;
+      border-color:#fff #000 #000 #fff;
+      font-weight:700;
+      cursor:default;
+    }
+    .win95-flag{
+      width:14px; height:14px;
+      background:linear-gradient(135deg,#f00 25%,#0a0 25% 50%,#00f 50% 75%,#ff0 75%);
+      display:inline-block;
+    }
+    .win95-taskbar-sep{
+      width:2px; height:24px;
+      border-left:1px solid #808080;
+      border-right:1px solid #fff;
+    }
+    .win95-clock{
+      margin-left:auto;
+      height:24px;
+      display:flex;
+      align-items:center;
+      padding:0 10px;
+      border:2px solid;
+      border-color:#808080 #fff #fff #808080;
+    }
+
+    /* Toggle link, reskinned as a taskbar-adjacent button once active */
+    body.win95-mode .retro-toggle-row{ margin-top:26px; }
+    body.win95-mode .retro-toggle-link{
+      color:#000 !important;
+      background:#c0c0c0 !important;
+      border:2px solid !important;
+      border-color:#fff #000 #000 #fff !important;
+      box-shadow:inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080 !important;
+      padding:6px 14px !important;
+      text-decoration:none !important;
+      font-family:"MS Sans Serif", Tahoma, Geneva, sans-serif !important;
+      font-size:12.5px !important;
+      font-weight:400 !important;
+      letter-spacing:0 !important;
+    }
   </style>
 </head>
 <body>
@@ -2079,8 +2340,16 @@
         by a commissioned Washington State Notary Public.
         E-RON WA is not a law firm and does not provide legal advice.
       </p>
+      <p class="retro-toggle-row">
+        <button type="button" id="retro-toggle" class="retro-toggle-link" aria-pressed="false">1995 was the best year</button>
+      </p>
     </div>
   </footer>
+  <div class="win95-taskbar" aria-hidden="true">
+    <span class="win95-start"><span class="win95-flag"></span>Start</span>
+    <span class="win95-taskbar-sep"></span>
+    <span class="win95-clock" id="win95-clock">12:00 PM</span>
+  </div>
   <script>
     (function () {
       var toggle = document.querySelector('.nav-toggle');
@@ -2155,6 +2424,52 @@
         dialog.addEventListener('close', function () {
           if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
         });
+      });
+    })();
+
+    // Windows 95 mode
+    (function () {
+      var toggle = document.getElementById('retro-toggle');
+      var clockEl = document.getElementById('win95-clock');
+      if (!toggle) return;
+      var OFF_TEXT = '1995 was the best year';
+      var ON_TEXT = "im too boring for this look";
+      var STORAGE_KEY = 'eronwa-win95-mode';
+      var clockTimer = null;
+
+      function updateClock() {
+        if (!clockEl) return;
+        var now = new Date();
+        var h = now.getHours();
+        var m = now.getMinutes();
+        var ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12;
+        if (h === 0) h = 12;
+        var mm = m < 10 ? '0' + m : String(m);
+        clockEl.textContent = h + ':' + mm + ' ' + ampm;
+      }
+
+      function applyState(isRetro) {
+        document.body.classList.toggle('win95-mode', isRetro);
+        toggle.textContent = isRetro ? ON_TEXT : OFF_TEXT;
+        toggle.setAttribute('aria-pressed', String(isRetro));
+        if (isRetro) {
+          updateClock();
+          if (!clockTimer) clockTimer = window.setInterval(updateClock, 15000);
+        } else if (clockTimer) {
+          window.clearInterval(clockTimer);
+          clockTimer = null;
+        }
+      }
+
+      var stored = null;
+      try { stored = window.localStorage.getItem(STORAGE_KEY); } catch (e) {}
+      applyState(stored === '1');
+
+      toggle.addEventListener('click', function () {
+        var next = !document.body.classList.contains('win95-mode');
+        applyState(next);
+        try { window.localStorage.setItem(STORAGE_KEY, next ? '1' : '0'); } catch (e) {}
       });
     })();
   </script>
