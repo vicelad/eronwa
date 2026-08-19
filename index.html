@@ -2074,7 +2074,7 @@
         <p class="callout-note center">
           Need a document resigned? Booking the appointment is always <strong>free</strong>
           &mdash; you only pay the notarization platform&rsquo;s session cost, nothing extra.
-          <a href="mailto:notary@eronwa.com">Contact me</a> directly to book a resigning appointment.
+          <a href="#request" data-prefill-service="Document resigning (free rebooking)">Request a resigning appointment</a> and I'll follow up to schedule it.
         </p>
       </div>
     </section>
@@ -2141,7 +2141,7 @@
           </p>
           <div class="dialog-actions">
             <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
-            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+            <button type="button" class="btn btn-ghost" data-quick-contact="Acknowledgments">Ask a question</button>
           </div>
         </div>
       </dialog>
@@ -2172,7 +2172,7 @@
           </p>
           <div class="dialog-actions">
             <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
-            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+            <button type="button" class="btn btn-ghost" data-quick-contact="Jurats">Ask a question</button>
           </div>
         </div>
       </dialog>
@@ -2198,12 +2198,13 @@
           </div>
           <p class="dialog-note">
             Not every trust or estate document qualifies for remote online notarization depending
-            on its purpose and where it will be used. Email me your document list and I&rsquo;ll
-            confirm eligibility and pricing before you book.
+            on its purpose and where it will be used.
+            <a href="#request" data-close-dialog data-prefill-service="Estate planning / multi-document package">Request a quote</a> with your document list and
+            I&rsquo;ll confirm eligibility and pricing before you book.
           </p>
           <div class="dialog-actions">
             <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
-            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+            <button type="button" class="btn btn-ghost" data-quick-contact="Trust documents">Ask a question</button>
           </div>
         </div>
       </dialog>
@@ -2235,8 +2236,37 @@
           </p>
           <div class="dialog-actions">
             <a class="btn btn-primary" href="#book" data-close-dialog>Book an appointment</a>
-            <a class="btn btn-ghost" href="mailto:notary@eronwa.com">Ask a question</a>
+            <button type="button" class="btn btn-ghost" data-quick-contact="Power of attorney">Ask a question</button>
           </div>
+        </div>
+      </dialog>
+
+      <dialog class="service-dialog" id="quick-contact-dialog" aria-labelledby="quick-contact-title">
+        <div class="dialog-panel">
+          <button class="dialog-close" type="button" data-close-dialog aria-label="Close">&times;</button>
+          <p class="dialog-eyebrow">Quick question</p>
+          <h3 id="quick-contact-title">Ask a question</h3>
+          <p class="dialog-lede">Send it over and I'll reply by email, usually within a few hours.</p>
+          <form class="contact-form" id="quick-contact-form" action="https://formspree.io/f/xdenylez" method="POST" style="margin-top:22px;">
+            <div class="form-field full">
+              <label for="qc-name">Name</label>
+              <input type="text" id="qc-name" name="name" autocomplete="name" required />
+            </div>
+            <div class="form-field full">
+              <label for="qc-email">Email</label>
+              <input type="email" id="qc-email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form-field full">
+              <label for="qc-message">Message</label>
+              <textarea id="qc-message" name="message" required></textarea>
+            </div>
+            <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="_subject" id="qc-subject" value="New message from eronwa.com" />
+            <div class="contact-form-actions">
+              <button type="submit" class="btn btn-primary" id="qc-submit">Send message</button>
+              <span class="form-status" id="qc-status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
         </div>
       </dialog>
     </section>
@@ -2337,7 +2367,7 @@
             <p class="price-note-inline">
               Estate planning and other multi-document packages are quoted in advance, so you
               have a fixed number before the session.
-              <a href="#request">Request a quote</a> and include your document list and the
+              <a href="#request" data-prefill-service="Estate planning / multi-document package">Request a quote</a> and include your document list and the
               number of signers.
             </p>
           </article>
@@ -2388,6 +2418,7 @@
                 <option value="Real estate documents (non-loan)">Real estate documents (non-loan)</option>
                 <option value="Power of attorney">Power of attorney</option>
                 <option value="Business documents">Business documents</option>
+                <option value="Document resigning (free rebooking)">Document resigning (free rebooking)</option>
                 <option value="Other / not sure">Other / not sure</option>
               </select>
             </div>
@@ -2653,8 +2684,8 @@
             <p>
               Booking a resigning appointment is always free. You only pay the notarization
               platform&rsquo;s session cost, nothing extra.
-              <a href="mailto:notary@eronwa.com">Contact me</a> directly to book a resigning
-              appointment.
+              <a href="#request" data-prefill-service="Document resigning (free rebooking)">Request a resigning appointment</a> and I'll follow up to
+              schedule it.
             </p>
           </details>
         </div>
@@ -2671,7 +2702,7 @@
         <p>Secure, guided, and designed to fit your schedule.</p>
         <div class="final-actions">
           <a class="btn btn-primary" href="#book">Book an appointment</a>
-          <a class="btn btn-light" href="mailto:notary@eronwa.com">Email me</a>
+          <button type="button" class="btn btn-light" data-quick-contact="">Ask a question</button>
         </div>
       </div>
     </section>
@@ -2804,6 +2835,48 @@
           if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
         });
       });
+
+      // Quick-contact popup: pre-fills a short contact form with what the visitor was
+      // looking at, so "Ask a question" doesn't dump them at the bottom of the page.
+      var quickContactDialog = document.getElementById('quick-contact-dialog');
+      if (quickContactDialog) {
+        document.querySelectorAll('[data-quick-contact]').forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
+            var parentDialog = trigger.closest('.service-dialog');
+            var returnFocusTarget = trigger;
+            if (parentDialog && parentDialog !== quickContactDialog) {
+              // Triggered from inside a service dialog — remember what originally opened
+              // THAT dialog, so focus lands there once the popup is closed, not on this
+              // now-hidden button.
+              returnFocusTarget = lastTrigger || trigger;
+              if (typeof parentDialog.close === 'function') parentDialog.close();
+            }
+            var topic = trigger.getAttribute('data-quick-contact');
+            var msgField = document.getElementById('qc-message');
+            var subjectField = document.getElementById('qc-subject');
+            if (topic) {
+              msgField.value = 'I have a question about: ' + topic + '\n\n';
+              subjectField.value = 'Question about ' + topic + ' — eronwa.com';
+            } else {
+              msgField.value = '';
+              subjectField.value = 'New message from eronwa.com';
+            }
+            lastTrigger = returnFocusTarget;
+            quickContactDialog.showModal();
+            var nameField = document.getElementById('qc-name');
+            if (nameField) nameField.focus();
+          });
+        });
+      }
+
+      // Pre-fill the "Type of service" dropdown on the request-a-quote form when
+      // arriving via a link that already knows what the visitor needs (e.g. resigning).
+      document.querySelectorAll('[data-prefill-service]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var select = document.getElementById('rf-service');
+          if (select) select.value = el.getAttribute('data-prefill-service');
+        });
+      });
     })();
 
     // Windows 95 mode
@@ -2911,6 +2984,13 @@
       statusId: 'rf-status',
       submitId: 'rf-submit',
       successMessage: "Thanks — your request is on its way. I'll follow up by email with a quote."
+    });
+
+    wireAjaxForm({
+      formId: 'quick-contact-form',
+      statusId: 'qc-status',
+      submitId: 'qc-submit',
+      successMessage: "Thanks — your message is on its way. I'll reply by email soon."
     });
   </script>
 </body>
