@@ -582,27 +582,18 @@
     }
     /* BOOKING */
     .booking{
-      padding-top:0;
-      padding-bottom:36px;
-      margin-top:-76px;
-      position:relative;
-      z-index:10;
+      padding-top:90px;
+      padding-bottom:70px;
     }
     .booking-shell{
+      margin-top:52px;
       padding:20px;
       border-radius:var(--radius);
       background:var(--white);
       border:1px solid var(--line);
-      box-shadow:var(--shadow-lg);
+      box-shadow:var(--shadow-sm);
       overflow:hidden;
       position:relative;
-    }
-    .booking-shell::before{
-      content:"";
-      position:absolute;
-      inset:0 0 auto 0;
-      height:4px;
-      background:linear-gradient(90deg, var(--gold3), var(--gold2), var(--gold3));
     }
     .tidycal-embed{
       width:100%;
@@ -1501,8 +1492,16 @@
       </div>
     </section>
     <!-- BOOKING -->
-    <section id="book" class="section booking" aria-label="Book an appointment">
+    <section id="book" class="section booking" aria-labelledby="book-title">
       <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">Book online</span></p>
+          <h2 id="book-title">Book your appointment</h2>
+          <p class="lead">
+            Pick a time that works for you. Every request is reviewed and confirmed by email,
+            usually within a few hours.
+          </p>
+        </div>
         <div class="booking-shell reveal">
           <div class="tidycal-embed" data-path="e-ronwa">
             <noscript>
