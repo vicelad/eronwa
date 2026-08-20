@@ -1177,6 +1177,21 @@
       font-variant-numeric:tabular-nums lining-nums;
     }
     /* CONTACT FORM */
+    .contact-form-panel{
+      margin-top:22px;
+      padding:40px 38px;
+      border-radius:var(--radius);
+      background:var(--white);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-sm);
+    }
+    .contact-form-panel h3{
+      font-size:24px;
+    }
+    .contact-form-panel > p{
+      margin-top:10px;
+      color:var(--muted);
+    }
     .contact-form{
       margin-top:26px;
       display:grid;
@@ -1275,6 +1290,7 @@
     .form-status[data-state="success"]{ color:#1a7a3e; }
     .form-status[data-state="error"]{ color:#b3261e; }
     @media (max-width:640px){
+      .contact-form-panel{ padding:30px 24px; }
       .contact-form{ grid-template-columns:1fr; }
     }
     /* FAQ */
@@ -1701,7 +1717,7 @@
       opacity:0;
       visibility:hidden;
       pointer-events:none;
-      transition:opacity .25s ease;
+      transition:opacity .35s ease;
     }
     .theme-transition.is-active{
       opacity:1;
@@ -2602,6 +2618,87 @@
         </p>
       </div>
     </section>
+    <!-- REQUEST -->
+    <section id="request" class="section" aria-labelledby="request-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
+      <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">Request service</span></p>
+          <h2 id="request-title">Tell me what you need</h2>
+          <p class="lead">
+            For multi-document packages, estate planning paperwork, or anything you'd
+            like quoted before you book, fill this out once and I'll follow up with a
+            price and next steps &mdash; no email back-and-forth required.
+          </p>
+        </div>
+        <div class="request-shell reveal">
+          <form class="request-form" id="request-form" action="https://formspree.io/f/YOUR_REQUEST_FORM_ID" method="POST">
+            <div class="form-field">
+              <label for="rf-name">Name</label>
+              <input type="text" id="rf-name" name="name" autocomplete="name" required />
+            </div>
+            <div class="form-field">
+              <label for="rf-email">Email</label>
+              <input type="email" id="rf-email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form-field">
+              <label for="rf-phone">Phone <span style="font-weight:400;color:var(--muted);">(optional)</span></label>
+              <input type="tel" id="rf-phone" name="phone" autocomplete="tel" />
+            </div>
+            <div class="form-field">
+              <label for="rf-service">Type of service</label>
+              <select id="rf-service" name="service_type" required>
+                <option value="" disabled selected>Select one&hellip;</option>
+                <option value="General single-document notarization">General single-document notarization</option>
+                <option value="Estate planning / multi-document package">Estate planning / multi-document package</option>
+                <option value="Real estate documents (non-loan)">Real estate documents (non-loan)</option>
+                <option value="Power of attorney">Power of attorney</option>
+                <option value="Business documents">Business documents</option>
+                <option value="Resigning a previously notarized document (free)">Resigning a previously notarized document (free)</option>
+                <option value="Other / not sure">Other / not sure</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="rf-docs">Number of documents</label>
+              <input type="number" id="rf-docs" name="document_count" min="1" step="1" inputmode="numeric" required />
+            </div>
+            <div class="form-field">
+              <label for="rf-signers">Number of signers</label>
+              <input type="number" id="rf-signers" name="signer_count" min="1" step="1" inputmode="numeric" required />
+            </div>
+            <div class="form-field">
+              <label for="rf-witnesses">Witnesses</label>
+              <select id="rf-witnesses" name="witnesses" required>
+                <option value="" disabled selected>Select one&hellip;</option>
+                <option value="Not needed">Not needed</option>
+                <option value="I'll bring my own (no charge)">I'll bring my own (no charge)</option>
+                <option value="Please arrange one for me ($10 each)">Please arrange one for me ($10 each)</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="rf-timing">When do you need this done?</label>
+              <select id="rf-timing" name="timing" required>
+                <option value="" disabled selected>Select one&hellip;</option>
+                <option value="Flexible / no rush">Flexible / no rush</option>
+                <option value="Within the next week">Within the next week</option>
+                <option value="ASAP / rush">ASAP / rush</option>
+              </select>
+            </div>
+            <div class="form-field full">
+              <label for="rf-details">Document details</label>
+              <textarea id="rf-details" name="message" placeholder="List the documents involved and any other details I should know before quoting your appointment." required></textarea>
+            </div>
+            <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="_subject" value="New client request from eronwa.com" />
+            <div class="contact-form-actions">
+              <button type="submit" class="btn btn-primary" id="rf-submit">Send request</button>
+              <span class="form-status" id="rf-status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
     <!-- TRUST -->
     <section class="section" aria-labelledby="trust-title">
       <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
@@ -2677,19 +2774,15 @@
         </div>
       </div>
     </section>
-    <!-- REQUEST + CONTACT -->
-    <section id="request" class="section contact" aria-labelledby="request-title">
-      <span id="contact" aria-hidden="true"></span>
+    <!-- CONTACT -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
       <div class="container">
         <div class="center reveal">
-          <p class="kicker"><span class="eyebrow">Request service &amp; contact</span></p>
-          <h2 id="request-title">Tell me what you need</h2>
+          <p class="kicker"><span class="eyebrow">Contact</span></p>
+          <h2 id="contact-title">Hours and how to reach me</h2>
           <p class="lead">
-            For multi-document packages, estate planning paperwork, or anything you'd
-            like quoted before you book, fill out the form below and I'll follow up with
-            a price and next steps. Booking is fastest online &mdash; for anything else,
-            email is the quickest way to reach me.
+            Booking is fastest online. For anything else, email is the quickest way to me.
           </p>
         </div>
         <div class="contact-grid">
@@ -2718,69 +2811,31 @@
             </p>
           </article>
         </div>
-        <div class="request-shell reveal">
-          <form class="request-form" id="request-form" action="https://formspree.io/f/xdenylez" method="POST">
+        <div class="contact-form-panel reveal">
+          <h3>Send a message</h3>
+          <p>Prefer a form to typing out an email? Fill this in and it'll land straight in my inbox.</p>
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/xdenylez" method="POST">
             <div class="form-field">
-              <label for="rf-name">Name</label>
-              <input type="text" id="rf-name" name="name" autocomplete="name" required />
+              <label for="cf-name">Name</label>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required />
             </div>
             <div class="form-field">
-              <label for="rf-email">Email</label>
-              <input type="email" id="rf-email" name="email" autocomplete="email" required />
-            </div>
-            <div class="form-field">
-              <label for="rf-phone">Phone <span style="font-weight:400;color:var(--muted);">(optional)</span></label>
-              <input type="tel" id="rf-phone" name="phone" autocomplete="tel" />
-            </div>
-            <div class="form-field">
-              <label for="rf-service">Type of service</label>
-              <select id="rf-service" name="service_type" required>
-                <option value="" disabled selected>Select one&hellip;</option>
-                <option value="General single-document notarization">General single-document notarization</option>
-                <option value="Estate planning / multi-document package">Estate planning / multi-document package</option>
-                <option value="Real estate documents (non-loan)">Real estate documents (non-loan)</option>
-                <option value="Power of attorney">Power of attorney</option>
-                <option value="Business documents">Business documents</option>
-                <option value="Resigning a previously notarized document (free)">Resigning a previously notarized document (free)</option>
-                <option value="Other / not sure">Other / not sure</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label for="rf-docs">Number of documents</label>
-              <input type="number" id="rf-docs" name="document_count" min="1" step="1" inputmode="numeric" required />
-            </div>
-            <div class="form-field">
-              <label for="rf-signers">Number of signers</label>
-              <input type="number" id="rf-signers" name="signer_count" min="1" step="1" inputmode="numeric" required />
-            </div>
-            <div class="form-field">
-              <label for="rf-witnesses">Witnesses</label>
-              <select id="rf-witnesses" name="witnesses" required>
-                <option value="" disabled selected>Select one&hellip;</option>
-                <option value="Not needed">Not needed</option>
-                <option value="I'll bring my own (no charge)">I'll bring my own (no charge)</option>
-                <option value="Please arrange one for me ($10 each)">Please arrange one for me ($10 each)</option>
-                <option value="Not sure yet">Not sure yet</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label for="rf-timing">When do you need this done?</label>
-              <select id="rf-timing" name="timing" required>
-                <option value="" disabled selected>Select one&hellip;</option>
-                <option value="Flexible / no rush">Flexible / no rush</option>
-                <option value="Within the next week">Within the next week</option>
-                <option value="ASAP / rush">ASAP / rush</option>
-              </select>
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required />
             </div>
             <div class="form-field full">
-              <label for="rf-details">Document details</label>
-              <textarea id="rf-details" name="message" placeholder="List the documents involved and any other details I should know before quoting your appointment." required></textarea>
+              <label for="cf-phone">Phone <span style="font-weight:400;color:var(--muted);">(optional)</span></label>
+              <input type="tel" id="cf-phone" name="phone" autocomplete="tel" />
+            </div>
+            <div class="form-field full">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" required></textarea>
             </div>
             <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <input type="hidden" name="_subject" value="New client request from eronwa.com" />
+            <input type="hidden" name="_subject" value="New message from eronwa.com" />
             <div class="contact-form-actions">
-              <button type="submit" class="btn btn-primary" id="rf-submit">Send request</button>
-              <span class="form-status" id="rf-status" role="status" aria-live="polite"></span>
+              <button type="submit" class="btn btn-primary" id="cf-submit">Send a message</button>
+              <span class="form-status" id="cf-status" role="status" aria-live="polite"></span>
             </div>
           </form>
         </div>
@@ -3156,7 +3211,7 @@
       var clockEl = document.getElementById('win95-clock');
       if (!toggle) return;
       var OFF_TEXT = '1995 was the best year';
-      var ON_TEXT = "im too boring for this look";
+      var ON_TEXT = "Y2K this Site";
       var STORAGE_KEY = 'eronwa-win95-mode';
       var clockTimer = null;
 
@@ -3254,7 +3309,7 @@
           frames = ['3', '2', '1', '0'];
         }
 
-        var STEP_MS = 150;
+        var STEP_MS = 420;
         var i = 0;
         ttSetValue(frames[0]);
 
@@ -3271,12 +3326,12 @@
             window.setTimeout(function () {
               ttLabel.textContent = 'Welcome to';
               ttSetValue('2000');
-            }, 120);
+            }, 320);
           }
           window.setTimeout(function () {
             ttOverlay.classList.remove('is-active');
-            window.setTimeout(function () { if (onDone) onDone(); }, 260);
-          }, isEntering ? 320 : 520);
+            window.setTimeout(function () { if (onDone) onDone(); }, 350);
+          }, isEntering ? 700 : 1000);
         }
 
         window.setTimeout(nextFrame, STEP_MS);
@@ -3687,6 +3742,13 @@
           });
       });
     }
+
+    wireAjaxForm({
+      formId: 'contact-form',
+      statusId: 'cf-status',
+      submitId: 'cf-submit',
+      successMessage: "Thanks — your message is on its way. I'll reply by email soon."
+    });
 
     wireAjaxForm({
       formId: 'request-form',
