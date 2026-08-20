@@ -99,7 +99,35 @@
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Power of attorney" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate planning packages" } }
           ]
-        }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.7",
+          "reviewCount": "3"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Daniel M." },
+            "datePublished": "2026-08",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "Brian was a pleasure to work with. He was prompt, professional, and patient even though we needed to be squeezed in last second. I honestly can't wait to need another document notarized so I can use him again — he was a breath of fresh air during a difficult and complicated process."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Rebecca B." },
+            "datePublished": "2026-07",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "reviewBody": "The notary that helped me was very professional and knowledgeable. He helped me when I was having issues on my end and gave me great advice. I truly had a wonderful experience."
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Brenda K." },
+            "datePublished": "2026-07",
+            "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+            "reviewBody": "I'd give it a five if not for technical issues. We had four signers to manage, and I give him a ton of credit for being so cool, calm, and collected while fixing the issues and successfully completing our document. I'll definitely use their service again and recommend them."
+          }
+        ]
       },
       {
         "@type": "FAQPage",
@@ -1482,6 +1510,83 @@
       font-size:12px;
       line-height:1.75;
     }
+    /* REVIEWS */
+    .reviews-summary{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin-top:20px;
+      flex-wrap:wrap;
+    }
+    .reviews-summary .stars-lg{
+      color:var(--gold);
+      font-size:22px;
+      letter-spacing:3px;
+    }
+    .reviews-summary .reviews-count{
+      color:var(--muted);
+      font-weight:700;
+    }
+    .reviews-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:52px;
+    }
+    .review-card{
+      display:flex;
+      flex-direction:column;
+      padding:32px 30px;
+      border-radius:var(--radius-sm);
+      background:var(--white);
+      border:1px solid var(--line);
+      transition:box-shadow var(--ease), border-color var(--ease);
+    }
+    .review-card:hover{
+      box-shadow:var(--shadow-sm);
+      border-color:var(--line-gold);
+    }
+    .review-stars{
+      color:var(--gold);
+      font-size:16px;
+      letter-spacing:3px;
+    }
+    .review-stars .star-off{ color:var(--line); }
+    .review-quote{
+      margin-top:14px;
+      color:var(--ink);
+      line-height:1.7;
+      flex:1;
+    }
+    .review-quote::before{ content:"\201C"; }
+    .review-quote::after{ content:"\201D"; }
+    .review-meta{
+      margin-top:20px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+    }
+    .review-author{
+      display:block;
+      font-weight:900;
+      color:var(--ink);
+    }
+    .review-detail{
+      display:block;
+      margin-top:2px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .reviews-more{
+      margin-top:36px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .reviews-more a{
+      color:var(--gold-ink);
+      font-weight:700;
+    }
     /* RESPONSIVE */
     @media (max-width:980px){
       .hero-proof,
@@ -1489,6 +1594,7 @@
       .service-grid,
       .pricing-grid,
       .contact-grid,
+      .reviews-grid,
       .trust-layout{
         grid-template-columns:1fr;
       }
@@ -1568,6 +1674,7 @@
       .step,
       .service-card,
       .contact-card,
+      .review-card,
       .trust-panel{ padding:26px; }
     }
     @media (max-width:560px){
@@ -1890,6 +1997,13 @@
     }
     body.win95-mode .check-item::before,
     body.win95-mode summary::after{ border-radius:0 !important; }
+
+    /* Star ratings: --gold turns pale silver and --line turns solid black
+       in this theme, which inverts the filled/empty contrast — pin explicit
+       colors instead so filled stars still read as "filled". */
+    body.win95-mode .review-stars,
+    body.win95-mode .stars-lg{ color:#000080 !important; }
+    body.win95-mode .review-stars .star-off{ color:#c0c0c0 !important; }
 
     /* Classic pale-yellow "tooltip" notes */
     body.win95-mode .callout-note,
@@ -2674,6 +2788,49 @@
             to be.
           </p>
         </aside>
+      </div>
+    </section>
+    <!-- REVIEWS -->
+    <section id="reviews" class="section" aria-labelledby="reviews-title">
+      <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
+      <div class="container">
+        <div class="center reveal">
+          <p class="kicker"><span class="eyebrow">Client reviews</span></p>
+          <h2 id="reviews-title">What clients are saying</h2>
+          <div class="reviews-summary">
+            <span class="stars-lg" aria-hidden="true">★★★★★</span>
+            <span class="reviews-count">4.7 out of 5 &middot; 3 reviews</span>
+          </div>
+        </div>
+        <div class="reviews-grid reveal">
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="review-quote">Brian was a pleasure to work with. He was prompt, professional, and patient even though we needed to be squeezed in last second. I honestly can&rsquo;t wait to need another document notarized so I can use him again &mdash; he was a breath of fresh air during a difficult and complicated process.</p>
+            <div class="review-meta">
+              <span class="review-author">Daniel M.</span>
+              <span class="review-detail">General Notary Work (Multi-Signer) &middot; Aug 2026</span>
+            </div>
+          </article>
+          <article class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="review-quote">The notary that helped me was very professional and knowledgeable. He helped me when I was having issues on my end and gave me great advice. I truly had a wonderful experience.</p>
+            <div class="review-meta">
+              <span class="review-author">Rebecca B.</span>
+              <span class="review-detail">General review &middot; Jul 2026</span>
+            </div>
+          </article>
+          <article class="review-card">
+            <div class="review-stars" aria-label="4 out of 5 stars">★★★★<span class="star-off">★</span></div>
+            <p class="review-quote">I&rsquo;d give it a five if not for technical issues. We had four signers to manage, and I give him a ton of credit for being so cool, calm, and collected while fixing the issues and successfully completing our document. I&rsquo;ll definitely use their service again and recommend them.</p>
+            <div class="review-meta">
+              <span class="review-author">Brenda K.</span>
+              <span class="review-detail">General review &middot; Jul 2026</span>
+            </div>
+          </article>
+        </div>
+        <p class="reviews-more reveal">
+          <a href="https://tidycal.com/e-ronwa/general-notary-work" target="_blank" rel="noopener">Read more reviews on our booking page &rarr;</a>
+        </p>
       </div>
     </section>
     <!-- BOOKING -->
