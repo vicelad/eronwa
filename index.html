@@ -1358,6 +1358,9 @@
       background:
         radial-gradient(760px 460px at 50% 0%, rgba(199,160,82,.14), transparent 65%),
         linear-gradient(150deg,#0c3468 0%,#071f42 55%,#050f22 90%);
+      /* Same dark tone as the footer right after it, so a shorter bottom
+         padding still lands with confidence instead of trailing off. */
+      padding-bottom:64px;
     }
     .cta-mark{
       position:absolute;
@@ -1394,6 +1397,9 @@
       margin-top:32px;
     }
     /* PARTNER TEASER */
+    /* Sits directly on the FAQ section's background with no color break, so it
+       reads as one continuous close rather than a separate padded-out block. */
+    .partner-teaser{ padding-top:16px; padding-bottom:76px; }
     .partner-teaser-panel{
       display:flex;
       flex-wrap:wrap;
@@ -2892,23 +2898,8 @@
         </div>
       </div>
     </section>
-    <!-- FINAL CTA -->
-    <section class="section final-cta" aria-labelledby="cta-title">
-      <svg class="cta-mark" viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M28 75 L28 25 L40 25 L60 58 L60 25 L72 25 L72 75 L60 75 L40 42 L40 75 Z" fill="#c7a052"/>
-      </svg>
-      <div class="container center reveal">
-        <p class="kicker"><span class="eyebrow">Ready when you are</span></p>
-        <h2 id="cta-title">Book your online notary appointment today.</h2>
-        <p>Secure, guided, and designed to fit your schedule.</p>
-        <div class="final-actions">
-          <a class="btn btn-primary" href="#book">Book an appointment</a>
-          <button type="button" class="btn btn-light" data-quick-contact="">Ask a question</button>
-        </div>
-      </div>
-    </section>
     <!-- PARTNER TEASER -->
-    <section class="section" aria-labelledby="partner-teaser-title">
+    <section class="section partner-teaser" aria-labelledby="partner-teaser-title">
       <div class="ornament" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="1.5" y="1.5" width="7" height="7" transform="rotate(45 5 5)"/></svg></div>
       <div class="container">
         <div class="partner-teaser-panel reveal">
@@ -2921,6 +2912,21 @@
             </p>
           </div>
           <a class="btn btn-primary" href="partners.html">Learn about partnering</a>
+        </div>
+      </div>
+    </section>
+    <!-- FINAL CTA -->
+    <section class="section final-cta" aria-labelledby="cta-title">
+      <svg class="cta-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M28 75 L28 25 L40 25 L60 58 L60 25 L72 25 L72 75 L60 75 L40 42 L40 75 Z" fill="#c7a052"/>
+      </svg>
+      <div class="container center reveal">
+        <p class="kicker"><span class="eyebrow">Ready when you are</span></p>
+        <h2 id="cta-title">Book your online notary appointment today.</h2>
+        <p>Secure, guided, and designed to fit your schedule.</p>
+        <div class="final-actions">
+          <a class="btn btn-primary" href="#book">Book an appointment</a>
+          <button type="button" class="btn btn-light" data-quick-contact="">Ask a question</button>
         </div>
       </div>
     </section>
