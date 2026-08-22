@@ -16,6 +16,17 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2: default to denied until the visitor accepts the cookie
+  // notice. If they already accepted on a previous visit, grant immediately
+  // so tracking isn't needlessly re-blocked on every page load.
+  var eronwaConsent = null;
+  try { eronwaConsent = window.localStorage.getItem('eronwa-cookie-consent'); } catch (e) {}
+  gtag('consent', 'default', {
+    'ad_storage': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'ad_user_data': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'ad_personalization': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'analytics_storage': eronwaConsent === 'granted' ? 'granted' : 'denied'
+  });
   gtag('js', new Date());
   gtag('config', 'AW-18400069519');
 </script>
@@ -120,9 +131,67 @@
     .nav-links{ gap:6px; }
     .nav-links a{ font-size:11px; }
   }
+  /* COOKIE NOTICE */
+  .cookie-banner{
+    position:fixed;
+    left:16px; right:16px; bottom:16px;
+    z-index:600;
+    max-width:640px;
+    margin:0 auto;
+    padding:20px 22px;
+    border-radius:var(--radius-sm);
+    background:linear-gradient(150deg,#0c3468 0%,#071f42 55%,#050f22 90%);
+    color:rgba(255,255,255,.92);
+    box-shadow:0 20px 60px rgba(5,15,34,.4);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:16px;
+    font-size:13.5px;
+    line-height:1.6;
+    transform:translateY(140%);
+    opacity:0;
+    pointer-events:none;
+    transition:transform .4s cubic-bezier(.2,.7,.3,1), opacity .4s ease;
+  }
+  .cookie-banner.is-visible{ transform:translateY(0); opacity:1; pointer-events:auto; }
+  .cookie-banner p{ margin:0; flex:1 1 260px; color:rgba(255,255,255,.85); }
+  .cookie-banner a{ color:#f0d799; font-weight:700; }
+  .cookie-banner-actions{ display:flex; gap:10px; flex:none; }
+  .cookie-btn{
+    min-height:40px;
+    padding:0 18px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    cursor:pointer;
+    border:0;
+  }
+  .cookie-btn-accept{
+    color:var(--navy);
+    background:linear-gradient(180deg,var(--gold2),var(--gold) 70%);
+  }
+  .cookie-btn-decline{
+    color:#fff;
+    background:transparent;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  @media (max-width:520px){
+    .cookie-banner{ flex-direction:column; align-items:stretch; text-align:center; }
+    .cookie-banner-actions{ justify-content:center; }
+  }
 </style>
 </head>
 <body>
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+    <p>We use cookies for basic site function and to measure ad performance. See our <a href="privacy.html#cookies">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+    </div>
+  </div>
   <header class="site-header">
     <div class="nav">
       <a class="brand" href="index.html">
@@ -287,5 +356,36 @@
       E-RON WA is not a law firm and does not provide legal advice.
     </p>
   </footer>
+  <script>
+    (function () {
+      var CONSENT_KEY = 'eronwa-cookie-consent';
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      var acceptBtn = document.getElementById('cookie-accept');
+      var declineBtn = document.getElementById('cookie-decline');
+
+      var existing = null;
+      try { existing = window.localStorage.getItem(CONSENT_KEY); } catch (e) {}
+      if (existing === 'granted' || existing === 'denied') return;
+
+      function updateConsent(state) {
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            'ad_storage': state,
+            'ad_user_data': state,
+            'ad_personalization': state,
+            'analytics_storage': state
+          });
+        }
+        try { window.localStorage.setItem(CONSENT_KEY, state); } catch (e) {}
+        banner.classList.remove('is-visible');
+      }
+
+      acceptBtn.addEventListener('click', function () { updateConsent('granted'); });
+      declineBtn.addEventListener('click', function () { updateConsent('denied'); });
+
+      window.setTimeout(function () { banner.classList.add('is-visible'); }, 400);
+    })();
+  </script>
 </body>
 </html>
