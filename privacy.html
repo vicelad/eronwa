@@ -16,6 +16,17 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2: default to denied until the visitor accepts the cookie
+  // notice. If they already accepted on a previous visit, grant immediately
+  // so tracking isn't needlessly re-blocked on every page load.
+  var eronwaConsent = null;
+  try { eronwaConsent = window.localStorage.getItem('eronwa-cookie-consent'); } catch (e) {}
+  gtag('consent', 'default', {
+    'ad_storage': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'ad_user_data': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'ad_personalization': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'analytics_storage': eronwaConsent === 'granted' ? 'granted' : 'denied'
+  });
   gtag('js', new Date());
   gtag('config', 'AW-18400069519');
 </script>
@@ -120,9 +131,67 @@
     .nav-links{ gap:6px; }
     .nav-links a{ font-size:11px; }
   }
+  /* COOKIE NOTICE */
+  .cookie-banner{
+    position:fixed;
+    left:16px; right:16px; bottom:16px;
+    z-index:600;
+    max-width:640px;
+    margin:0 auto;
+    padding:20px 22px;
+    border-radius:var(--radius-sm);
+    background:linear-gradient(150deg,#0c3468 0%,#071f42 55%,#050f22 90%);
+    color:rgba(255,255,255,.92);
+    box-shadow:0 20px 60px rgba(5,15,34,.4);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:16px;
+    font-size:13.5px;
+    line-height:1.6;
+    transform:translateY(140%);
+    opacity:0;
+    pointer-events:none;
+    transition:transform .4s cubic-bezier(.2,.7,.3,1), opacity .4s ease;
+  }
+  .cookie-banner.is-visible{ transform:translateY(0); opacity:1; pointer-events:auto; }
+  .cookie-banner p{ margin:0; flex:1 1 260px; color:rgba(255,255,255,.85); }
+  .cookie-banner a{ color:#f0d799; font-weight:700; }
+  .cookie-banner-actions{ display:flex; gap:10px; flex:none; }
+  .cookie-btn{
+    min-height:40px;
+    padding:0 18px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    cursor:pointer;
+    border:0;
+  }
+  .cookie-btn-accept{
+    color:var(--navy);
+    background:linear-gradient(180deg,var(--gold2),var(--gold) 70%);
+  }
+  .cookie-btn-decline{
+    color:#fff;
+    background:transparent;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  @media (max-width:520px){
+    .cookie-banner{ flex-direction:column; align-items:stretch; text-align:center; }
+    .cookie-banner-actions{ justify-content:center; }
+  }
 </style>
 </head>
 <body>
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+    <p>We use cookies for basic site function and to measure ad performance. See our <a href="privacy.html#cookies">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+    </div>
+  </div>
   <header class="site-header">
     <div class="nav">
       <a class="brand" href="index.html">
@@ -144,7 +213,7 @@
     <div class="container legal">
       <p class="page-eyebrow">Legal</p>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: August 19, 2026</p>
+      <p class="updated">Last updated: August 22, 2026</p>
 
       <div class="notice-box">
         <strong>Plain-language summary:</strong> this policy explains what information E-RON WA collects when you book or complete a remote online notarization, why it's collected, and how long certain records are legally required to be kept. It is not a substitute for legal advice.
@@ -166,7 +235,7 @@
         <li><strong>Identity verification data</strong> — images of your government-issued ID and the results of the credential analysis and knowledge-based identity verification ("KBA") completed through the notarization platform used for your session.</li>
         <li><strong>Session recordings</strong> — an audio-visual recording of the notarization session itself, as required by Washington State law.</li>
         <li><strong>Payment information</strong> — invoicing and payment for services is handled by third-party booking and payment processors; E-RON WA does not store your full card details.</li>
-        <li><strong>Basic website usage data</strong> — standard technical information (such as browser type) that may be collected by third-party tools embedded on this site, like the booking widget.</li>
+        <li><strong>Basic website usage data</strong> — standard technical information (such as browser type) collected via cookies from Google Ads and third-party tools embedded on this site, like the booking widget. See <a href="#cookies">Cookies and tracking technologies</a> below for details.</li>
       </ul>
 
       <h2>How we use your information</h2>
@@ -194,6 +263,19 @@
         42.45.280 — either directly or through a designated third-party repository. Notarial journal entries
         are retained on a similar basis. These records may be retained beyond a typical business record simply
         because state law requires it, not as a matter of preference.
+      </p>
+
+      <h2 id="cookies">Cookies and tracking technologies</h2>
+      <p>This site uses a small number of cookies and similar browser storage technologies:</p>
+      <ul>
+        <li><strong>Advertising cookies (Google Ads).</strong> This site uses Google's tag (gtag.js) to measure whether visits from Google Ads lead to a booking or inquiry. These cookies are only set once you accept the cookie notice shown on your first visit; if you decline, this tracking stays off. You can review or turn off personalized advertising at any time through <a href="https://myadcenter.google.com" target="_blank" rel="noopener noreferrer">Google's My Ad Center</a>.</li>
+        <li><strong>Booking widget cookies (TidyCal).</strong> The scheduling calendar embedded on the booking page is provided by TidyCal, a third-party service, and may set its own cookies to make scheduling work correctly. These are set by TidyCal, not by E-RON WA directly.</li>
+        <li><strong>Functional browser storage.</strong> The estate planning client booking page uses your browser's temporary session storage to remember that you've entered the correct passcode, so you aren't asked again while browsing that page. This clears when you close your browser tab and isn't a tracking cookie. Separately, your choice on the cookie notice itself (accept or decline) is remembered in your browser so you aren't asked again on every visit.</li>
+        <li><strong>Form processing (Formspree).</strong> Messages submitted through this site's forms are processed by Formspree, which may log standard technical data (such as IP address) as part of delivering the message to E-RON WA.</li>
+      </ul>
+      <p>
+        You can also block or delete cookies at any time through your browser's settings, though doing so may affect
+        how parts of this site &mdash; like the booking calendar &mdash; function.
       </p>
 
       <h2>Data security</h2>
@@ -261,5 +343,36 @@
       E-RON WA is not a law firm and does not provide legal advice.
     </p>
   </footer>
+  <script>
+    (function () {
+      var CONSENT_KEY = 'eronwa-cookie-consent';
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      var acceptBtn = document.getElementById('cookie-accept');
+      var declineBtn = document.getElementById('cookie-decline');
+
+      var existing = null;
+      try { existing = window.localStorage.getItem(CONSENT_KEY); } catch (e) {}
+      if (existing === 'granted' || existing === 'denied') return;
+
+      function updateConsent(state) {
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            'ad_storage': state,
+            'ad_user_data': state,
+            'ad_personalization': state,
+            'analytics_storage': state
+          });
+        }
+        try { window.localStorage.setItem(CONSENT_KEY, state); } catch (e) {}
+        banner.classList.remove('is-visible');
+      }
+
+      acceptBtn.addEventListener('click', function () { updateConsent('granted'); });
+      declineBtn.addEventListener('click', function () { updateConsent('denied'); });
+
+      window.setTimeout(function () { banner.classList.add('is-visible'); }, 400);
+    })();
+  </script>
 </body>
 </html>
