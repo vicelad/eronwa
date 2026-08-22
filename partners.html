@@ -4,18 +4,65 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#050f22" />
-<title>Partner With Us | E-RON WA</title>
+<title>Notary Partner Program for Attorneys & Law Firms | E-RON WA</title>
 <meta
   name="description"
-  content="Priority notary access for attorneys, estate planning professionals, and businesses with regular signing needs. Partner with E-RON WA for faster booking and reduced rates."
+  content="Remote notary partnerships for Washington State attorneys and law firms. Priority scheduling, no booking fee, and reduced per-seal rates for ongoing referrals."
 />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://eronwa.com/partners.html" />
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://eronwa.com/partners.html#service",
+      "name": "Notary Partner Program for Attorneys & Law Firms",
+      "serviceType": "Remote online notarization for legal and estate planning professionals",
+      "description": "An ongoing referral arrangement for attorneys, law firms, title and escrow companies, and financial advisors who need notarizations for clients on a recurring basis, with priority scheduling and reduced per-session rates.",
+      "url": "https://eronwa.com/partners.html",
+      "provider": {
+        "@type": "ProfessionalService",
+        "@id": "https://eronwa.com/#business",
+        "name": "E-RON WA"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Washington"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Estate planning and trust attorneys, general practice and real estate attorneys, title and escrow companies, financial advisors and wealth management firms"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eronwa.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Attorneys & Partners", "item": "https://eronwa.com/partners.html" }
+      ]
+    }
+  ]
+}
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18400069519"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2: default to denied until the visitor accepts the cookie
+  // notice. If they already accepted on a previous visit, grant immediately
+  // so tracking isn't needlessly re-blocked on every page load.
+  var eronwaConsent = null;
+  try { eronwaConsent = window.localStorage.getItem('eronwa-cookie-consent'); } catch (e) {}
+  gtag('consent', 'default', {
+    'ad_storage': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'ad_user_data': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'ad_personalization': eronwaConsent === 'granted' ? 'granted' : 'denied',
+    'analytics_storage': eronwaConsent === 'granted' ? 'granted' : 'denied'
+  });
   gtag('js', new Date());
   gtag('config', 'AW-18400069519');
 </script>
@@ -23,10 +70,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="E-RON WA" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:title" content="Partner With Us | E-RON WA" />
+<meta property="og:title" content="Notary Partner Program for Attorneys & Law Firms | E-RON WA" />
 <meta
   property="og:description"
-  content="Priority notary access for attorneys, estate planning professionals, and businesses with regular signing needs. Partner with E-RON WA for faster booking and reduced rates."
+  content="Remote notary partnerships for Washington State attorneys and law firms. Priority scheduling, no booking fee, and reduced per-seal rates for ongoing referrals."
 />
 <meta property="og:url" content="https://eronwa.com/partners.html" />
 <meta property="og:image" content="https://eronwa.com/assets/og-image.png" />
@@ -35,10 +82,10 @@
 <meta property="og:image:alt" content="E-RON WA — Washington online notary public" />
 <!-- TWITTER -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Partner With Us | E-RON WA" />
+<meta name="twitter:title" content="Notary Partner Program for Attorneys | E-RON WA" />
 <meta
   name="twitter:description"
-  content="Priority notary access and reduced rates for attorneys and estate planning professionals who need a notary regularly."
+  content="Priority scheduling and reduced rates for Washington State attorneys and law firms who need a notary regularly."
 />
 <meta name="twitter:image" content="https://eronwa.com/assets/og-image.png" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -392,9 +439,67 @@
     .nav-links a{ padding:16px 4px; border-bottom:1px solid rgba(255,255,255,.1); font-size:15px; }
     .cta-panel{ padding:40px 26px; }
   }
+  /* COOKIE NOTICE */
+  .cookie-banner{
+    position:fixed;
+    left:16px; right:16px; bottom:16px;
+    z-index:600;
+    max-width:640px;
+    margin:0 auto;
+    padding:20px 22px;
+    border-radius:var(--radius-sm);
+    background:linear-gradient(150deg,#0c3468 0%,#071f42 55%,#050f22 90%);
+    color:rgba(255,255,255,.92);
+    box-shadow:0 20px 60px rgba(5,15,34,.4);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:16px;
+    font-size:13.5px;
+    line-height:1.6;
+    transform:translateY(140%);
+    opacity:0;
+    pointer-events:none;
+    transition:transform .4s cubic-bezier(.2,.7,.3,1), opacity .4s ease;
+  }
+  .cookie-banner.is-visible{ transform:translateY(0); opacity:1; pointer-events:auto; }
+  .cookie-banner p{ margin:0; flex:1 1 260px; color:rgba(255,255,255,.85); }
+  .cookie-banner a{ color:#f0d799; font-weight:700; }
+  .cookie-banner-actions{ display:flex; gap:10px; flex:none; }
+  .cookie-btn{
+    min-height:40px;
+    padding:0 18px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    cursor:pointer;
+    border:0;
+  }
+  .cookie-btn-accept{
+    color:var(--navy);
+    background:linear-gradient(180deg,var(--gold2),var(--gold) 70%);
+  }
+  .cookie-btn-decline{
+    color:#fff;
+    background:transparent;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  @media (max-width:520px){
+    .cookie-banner{ flex-direction:column; align-items:stretch; text-align:center; }
+    .cookie-banner-actions{ justify-content:center; }
+  }
 </style>
 </head>
 <body>
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+    <p>We use cookies for basic site function and to measure ad performance. See our <a href="privacy.html#cookies">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
+      <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+    </div>
+  </div>
   <header class="site-header">
     <div class="nav">
       <a class="brand" href="index.html">
@@ -736,6 +841,37 @@
             submitBtn.textContent = idleLabel;
           });
       });
+    })();
+  </script>
+  <script>
+    (function () {
+      var CONSENT_KEY = 'eronwa-cookie-consent';
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      var acceptBtn = document.getElementById('cookie-accept');
+      var declineBtn = document.getElementById('cookie-decline');
+
+      var existing = null;
+      try { existing = window.localStorage.getItem(CONSENT_KEY); } catch (e) {}
+      if (existing === 'granted' || existing === 'denied') return;
+
+      function updateConsent(state) {
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            'ad_storage': state,
+            'ad_user_data': state,
+            'ad_personalization': state,
+            'analytics_storage': state
+          });
+        }
+        try { window.localStorage.setItem(CONSENT_KEY, state); } catch (e) {}
+        banner.classList.remove('is-visible');
+      }
+
+      acceptBtn.addEventListener('click', function () { updateConsent('granted'); });
+      declineBtn.addEventListener('click', function () { updateConsent('denied'); });
+
+      window.setTimeout(function () { banner.classList.add('is-visible'); }, 400);
     })();
   </script>
 </body>
