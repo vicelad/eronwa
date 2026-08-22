@@ -157,9 +157,10 @@
   .passcode-card h1{ font-size:26px; margin-bottom:10px; }
   .passcode-card p{ color:var(--muted); font-size:14.5px; margin-bottom:24px; }
   .passcode-form{ display:grid; gap:12px; }
+  .passcode-field{ position:relative; }
   .passcode-input{
     width:100%;
-    padding:14px 16px;
+    padding:14px 48px 14px 16px;
     border-radius:var(--radius-sm);
     border:1px solid var(--line);
     background:var(--cream);
@@ -169,6 +170,27 @@
     letter-spacing:.08em;
   }
   .passcode-input:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+  .passcode-toggle{
+    position:absolute;
+    top:50%;
+    right:6px;
+    transform:translateY(-50%);
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:0;
+    border-radius:10px;
+    background:transparent;
+    color:var(--muted);
+    cursor:pointer;
+  }
+  .passcode-toggle:hover{ color:var(--ink); background:rgba(7,29,63,.06); }
+  .passcode-toggle svg{ width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .passcode-toggle .icon-eye-off{ display:none; }
+  .passcode-toggle.is-showing .icon-eye{ display:none; }
+  .passcode-toggle.is-showing .icon-eye-off{ display:block; }
   .passcode-submit{
     width:100%;
     min-height:52px;
@@ -217,18 +239,34 @@
       <h1>Authorized Clients Only</h1>
       <p>Enter the passcode provided by E-RON WA Sales to book your appointment.</p>
       <form class="passcode-form" id="passcode-form" autocomplete="off">
-        <input
-          type="password"
-          id="passcode-input"
-          class="passcode-input"
-          placeholder="Passcode"
-          aria-label="Passcode"
-          required
-        />
+        <div class="passcode-field">
+          <input
+            type="password"
+            id="passcode-input"
+            class="passcode-input"
+            placeholder="Passcode"
+            aria-label="Passcode"
+            autocapitalize="off"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+            required
+          />
+          <button type="button" class="passcode-toggle" id="passcode-toggle" aria-label="Show passcode" aria-pressed="false">
+            <svg class="icon-eye" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <svg class="icon-eye-off" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 3l18 18M10.6 10.6a3 3 0 004.24 4.24M9.9 4.24A10.9 10.9 0 0112 4c6.5 0 10 7 10 7a17.4 17.4 0 01-3.06 4.06M6.06 6.06A17.4 17.4 0 002 11s3.5 7 10 7a10.9 10.9 0 004.16-.82" />
+            </svg>
+          </button>
+        </div>
         <button type="submit" class="passcode-submit">Enter</button>
         <p class="passcode-error" id="passcode-error">That passcode isn't correct. Please try again.</p>
       </form>
       <p class="passcode-help">
+        Not case-sensitive.<br />
         Don't have a passcode? <a href="index.html#contact">Send a message</a> or
         <a href="index.html#book">book through the standard page</a> instead.
       </p>
@@ -324,17 +362,30 @@
       // it deters casual visitors, it is not real security. Anyone who inspects this
       // page's source and can brute-force or guess the passcode against the hash below
       // could get past it. Don't put anything truly sensitive behind this page.
-      // To change the passcode: compute the SHA-256 hex digest of the new passcode
-      // and replace CORRECT_HASH with it.
+      // The check is case-insensitive (input is uppercased before hashing) so clients
+      // typing in lowercase still get in. To change the passcode: compute the SHA-256
+      // hex digest of the new passcode IN UPPERCASE and replace CORRECT_HASH with it.
       var CORRECT_HASH = 'db86cad30e9373d99db372c7e78515dbf9f9aa057c0298ae16055281e46038b2'; // "ESTATE2026"
       var SESSION_KEY = 'eronwa-estate-gate-ok';
 
       var form = document.getElementById('passcode-form');
       var input = document.getElementById('passcode-input');
       var error = document.getElementById('passcode-error');
+      var toggle = document.getElementById('passcode-toggle');
 
       function unlock() {
         document.body.classList.remove('is-locked');
+      }
+
+      if (toggle && input) {
+        toggle.addEventListener('click', function () {
+          var showing = input.type === 'text';
+          input.type = showing ? 'password' : 'text';
+          toggle.setAttribute('aria-pressed', String(!showing));
+          toggle.setAttribute('aria-label', showing ? 'Show passcode' : 'Hide passcode');
+          toggle.classList.toggle('is-showing', !showing);
+          input.focus();
+        });
       }
 
       function sha256Hex(text) {
@@ -358,7 +409,7 @@
           error.classList.add('is-visible');
           return;
         }
-        sha256Hex(input.value.trim()).then(function (hash) {
+        sha256Hex(input.value.trim().toUpperCase()).then(function (hash) {
           if (hash === CORRECT_HASH) {
             error.classList.remove('is-visible');
             try { window.sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
