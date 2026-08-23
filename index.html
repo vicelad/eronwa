@@ -1522,6 +1522,20 @@
       opacity:.85;
     }
     .footer-links a:hover{ opacity:1; color:var(--gold2); }
+    .footer-links button.footer-link-btn{
+      background:transparent;
+      border:0;
+      padding:0;
+      font:inherit;
+      text-decoration:none;
+      color:inherit;
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.02em;
+      opacity:.85;
+      cursor:pointer;
+    }
+    .footer-links button.footer-link-btn:hover{ opacity:1; color:var(--gold2); }
     .footer-disclaimer{
       padding-top:20px;
       border-top:1px solid rgba(255,255,255,.1);
@@ -2293,18 +2307,81 @@
       background:transparent;
       border:1px solid rgba(255,255,255,.3);
     }
+    .cookie-banner-main{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; width:100%; }
+    .cookie-manage-link{
+      background:transparent;
+      border:0;
+      padding:0;
+      color:#f0d799;
+      font-weight:700;
+      font-size:12.5px;
+      text-decoration:underline;
+      cursor:pointer;
+      flex:none;
+    }
+    .cookie-manage-link:hover{ color:#fff; }
+    .cookie-prefs-panel{
+      width:100%;
+      margin-top:16px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.15);
+      display:grid;
+      gap:14px;
+    }
+    .cookie-pref-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+    .cookie-pref-label{ margin:0 0 4px; font-weight:900; font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:#fff; }
+    .cookie-pref-desc{ margin:0; font-size:12.5px; line-height:1.6; color:rgba(255,255,255,.7); max-width:440px; }
+    .cookie-pref-desc a{ color:#f0d799; font-weight:700; }
+    .cookie-toggle{ position:relative; display:inline-flex; align-items:center; flex:none; cursor:pointer; }
+    .cookie-toggle input{ position:absolute; opacity:0; width:1px; height:1px; }
+    .cookie-toggle-track{ position:relative; width:42px; height:24px; border-radius:999px; background:rgba(255,255,255,.25); transition:background .2s ease; }
+    .cookie-toggle-thumb{ position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:transform .2s ease; }
+    .cookie-toggle input:checked + .cookie-toggle-track{ background:linear-gradient(180deg,var(--gold2),var(--gold) 70%); }
+    .cookie-toggle input:checked + .cookie-toggle-track .cookie-toggle-thumb{ transform:translateX(18px); }
+    .cookie-toggle input:focus-visible + .cookie-toggle-track{ outline:2px solid var(--gold2); outline-offset:2px; }
+    .cookie-toggle-locked{ cursor:default; opacity:.75; }
     @media (max-width:520px){
       .cookie-banner{ flex-direction:column; align-items:stretch; text-align:center; }
-      .cookie-banner-actions{ justify-content:center; }
+      .cookie-banner-actions{ flex:1 1 100%; width:100%; flex-wrap:wrap; justify-content:center; }
+      .cookie-pref-row{ flex-direction:column; align-items:center; text-align:center; gap:8px; }
+      .cookie-pref-desc{ max-width:none; }
     }
   </style>
 </head>
 <body>
   <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
-    <p>We use cookies for basic site function and to measure ad performance. See our <a href="privacy.html#cookies">Privacy Policy</a> for details.</p>
-    <div class="cookie-banner-actions">
-      <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
-      <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+    <div class="cookie-banner-main">
+      <p>We use cookies for basic site function and to measure ad performance. See our <a href="privacy.html#cookies">Privacy Policy</a> for details.</p>
+      <div class="cookie-banner-actions">
+        <button type="button" class="cookie-manage-link" id="cookie-manage-toggle" aria-expanded="false" aria-controls="cookie-prefs-panel">Manage preferences</button>
+        <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline all</button>
+        <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-prefs-panel" id="cookie-prefs-panel" hidden>
+      <div class="cookie-pref-row">
+        <div class="cookie-pref-copy">
+          <p class="cookie-pref-label">Necessary</p>
+          <p class="cookie-pref-desc">Keeps the site working — remembers this choice and keeps the estate-planning portal session secure. Cannot be turned off.</p>
+        </div>
+        <label class="cookie-toggle cookie-toggle-locked">
+          <input type="checkbox" checked disabled aria-label="Necessary cookies, always on" />
+          <span class="cookie-toggle-track"><span class="cookie-toggle-thumb"></span></span>
+        </label>
+      </div>
+      <div class="cookie-pref-row">
+        <div class="cookie-pref-copy">
+          <p class="cookie-pref-label">Advertising</p>
+          <p class="cookie-pref-desc">Google Ads cookies used to measure ad performance and personalize ads. See <a href="https://myadcenter.google.com" target="_blank" rel="noopener noreferrer">Google's ad settings</a> to opt out anywhere.</p>
+        </div>
+        <label class="cookie-toggle">
+          <input type="checkbox" id="cookie-toggle-ads" aria-label="Advertising cookies" />
+          <span class="cookie-toggle-track"><span class="cookie-toggle-thumb"></span></span>
+        </label>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-save">Save preferences</button>
+      </div>
     </div>
   </div>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -3181,6 +3258,7 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><button type="button" class="footer-link-btn" id="cookie-prefs-link">Cookie Preferences</button></li>
         <li><a href="terms.html">Terms of Service</a></li>
         <li><a href="partners.html">Attorneys &amp; Partners</a></li>
         <li><a href="estate-clients.html" rel="nofollow">Estate Planning Client Login</a></li>
@@ -3983,12 +4061,17 @@
       if (!banner) return;
       var acceptBtn = document.getElementById('cookie-accept');
       var declineBtn = document.getElementById('cookie-decline');
+      var manageToggle = document.getElementById('cookie-manage-toggle');
+      var prefsPanel = document.getElementById('cookie-prefs-panel');
+      var saveBtn = document.getElementById('cookie-save');
+      var adsToggle = document.getElementById('cookie-toggle-ads');
+      var prefsLink = document.getElementById('cookie-prefs-link');
 
-      var existing = null;
-      try { existing = window.localStorage.getItem(CONSENT_KEY); } catch (e) {}
-      if (existing === 'granted' || existing === 'denied') return;
+      function getStored() {
+        try { return window.localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+      }
 
-      function updateConsent(state) {
+      function applyConsent(state) {
         if (typeof gtag === 'function') {
           gtag('consent', 'update', {
             'ad_storage': state,
@@ -3998,13 +4081,58 @@
           });
         }
         try { window.localStorage.setItem(CONSENT_KEY, state); } catch (e) {}
-        banner.classList.remove('is-visible');
       }
 
-      acceptBtn.addEventListener('click', function () { updateConsent('granted'); });
-      declineBtn.addEventListener('click', function () { updateConsent('denied'); });
+      function openPanel() {
+        if (!prefsPanel) return;
+        prefsPanel.hidden = false;
+        if (manageToggle) {
+          manageToggle.setAttribute('aria-expanded', 'true');
+          manageToggle.textContent = 'Hide preferences';
+        }
+        if (adsToggle) adsToggle.checked = getStored() === 'granted';
+      }
 
-      window.setTimeout(function () { banner.classList.add('is-visible'); }, 400);
+      function closePanel() {
+        if (!prefsPanel) return;
+        prefsPanel.hidden = true;
+        if (manageToggle) {
+          manageToggle.setAttribute('aria-expanded', 'false');
+          manageToggle.textContent = 'Manage preferences';
+        }
+      }
+
+      function hideBanner() {
+        banner.classList.remove('is-visible');
+        closePanel();
+      }
+
+      if (manageToggle) {
+        manageToggle.addEventListener('click', function () {
+          if (prefsPanel.hidden) { openPanel(); } else { closePanel(); }
+        });
+      }
+
+      if (acceptBtn) acceptBtn.addEventListener('click', function () { applyConsent('granted'); hideBanner(); });
+      if (declineBtn) declineBtn.addEventListener('click', function () { applyConsent('denied'); hideBanner(); });
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function () {
+          applyConsent(adsToggle && adsToggle.checked ? 'granted' : 'denied');
+          hideBanner();
+        });
+      }
+
+      if (prefsLink) {
+        prefsLink.addEventListener('click', function () {
+          banner.classList.add('is-visible');
+          openPanel();
+        });
+      }
+
+      var existing = getStored();
+      if (existing !== 'granted' && existing !== 'denied') {
+        window.setTimeout(function () { banner.classList.add('is-visible'); }, 400);
+      }
     })();
   </script>
 </body>
