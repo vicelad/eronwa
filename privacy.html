@@ -126,6 +126,8 @@
   .footer-links{ display:flex; flex-wrap:wrap; gap:20px; padding:0; margin:0; list-style:none; }
   .footer-links a{ text-decoration:none; color:inherit; font-weight:900; font-size:13px; letter-spacing:.02em; opacity:.85; }
   .footer-links a:hover{ opacity:1; color:var(--gold2); }
+  .footer-links button.footer-link-btn{ background:transparent; border:0; padding:0; font:inherit; text-decoration:none; color:inherit; font-weight:900; font-size:13px; letter-spacing:.02em; opacity:.85; cursor:pointer; }
+  .footer-links button.footer-link-btn:hover{ opacity:1; color:var(--gold2); }
   .footer-disclaimer{ padding-top:20px; border-top:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.5); font-size:12px; line-height:1.75; max-width:1160px; width:min(1160px, calc(100% - 34px)); margin:20px auto 0; }
   @media (max-width:680px){
     .nav-links{ gap:6px; }
@@ -178,18 +180,81 @@
     background:transparent;
     border:1px solid rgba(255,255,255,.3);
   }
+  .cookie-banner-main{ display:flex; flex-wrap:wrap; align-items:center; gap:16px; width:100%; }
+  .cookie-manage-link{
+    background:transparent;
+    border:0;
+    padding:0;
+    color:#f0d799;
+    font-weight:700;
+    font-size:12.5px;
+    text-decoration:underline;
+    cursor:pointer;
+    flex:none;
+  }
+  .cookie-manage-link:hover{ color:#fff; }
+  .cookie-prefs-panel{
+    width:100%;
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,.15);
+    display:grid;
+    gap:14px;
+  }
+  .cookie-pref-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+  .cookie-pref-label{ margin:0 0 4px; font-weight:900; font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:#fff; }
+  .cookie-pref-desc{ margin:0; font-size:12.5px; line-height:1.6; color:rgba(255,255,255,.7); max-width:440px; }
+  .cookie-pref-desc a{ color:#f0d799; font-weight:700; }
+  .cookie-toggle{ position:relative; display:inline-flex; align-items:center; flex:none; cursor:pointer; }
+  .cookie-toggle input{ position:absolute; opacity:0; width:1px; height:1px; }
+  .cookie-toggle-track{ position:relative; width:42px; height:24px; border-radius:999px; background:rgba(255,255,255,.25); transition:background .2s ease; }
+  .cookie-toggle-thumb{ position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:transform .2s ease; }
+  .cookie-toggle input:checked + .cookie-toggle-track{ background:linear-gradient(180deg,var(--gold2),var(--gold) 70%); }
+  .cookie-toggle input:checked + .cookie-toggle-track .cookie-toggle-thumb{ transform:translateX(18px); }
+  .cookie-toggle input:focus-visible + .cookie-toggle-track{ outline:2px solid var(--gold2); outline-offset:2px; }
+  .cookie-toggle-locked{ cursor:default; opacity:.75; }
   @media (max-width:520px){
     .cookie-banner{ flex-direction:column; align-items:stretch; text-align:center; }
-    .cookie-banner-actions{ justify-content:center; }
+    .cookie-banner-actions{ flex:1 1 100%; width:100%; flex-wrap:wrap; justify-content:center; }
+    .cookie-pref-row{ flex-direction:column; align-items:center; text-align:center; gap:8px; }
+    .cookie-pref-desc{ max-width:none; }
   }
 </style>
 </head>
 <body>
   <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
-    <p>We use cookies for basic site function and to measure ad performance. See our <a href="privacy.html#cookies">Privacy Policy</a> for details.</p>
-    <div class="cookie-banner-actions">
-      <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>
-      <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept</button>
+    <div class="cookie-banner-main">
+      <p>We use cookies for basic site function and to measure ad performance. See our <a href="privacy.html#cookies">Privacy Policy</a> for details.</p>
+      <div class="cookie-banner-actions">
+        <button type="button" class="cookie-manage-link" id="cookie-manage-toggle" aria-expanded="false" aria-controls="cookie-prefs-panel">Manage preferences</button>
+        <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline all</button>
+        <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-prefs-panel" id="cookie-prefs-panel" hidden>
+      <div class="cookie-pref-row">
+        <div class="cookie-pref-copy">
+          <p class="cookie-pref-label">Necessary</p>
+          <p class="cookie-pref-desc">Keeps the site working — remembers this choice and keeps the estate-planning portal session secure. Cannot be turned off.</p>
+        </div>
+        <label class="cookie-toggle cookie-toggle-locked">
+          <input type="checkbox" checked disabled aria-label="Necessary cookies, always on" />
+          <span class="cookie-toggle-track"><span class="cookie-toggle-thumb"></span></span>
+        </label>
+      </div>
+      <div class="cookie-pref-row">
+        <div class="cookie-pref-copy">
+          <p class="cookie-pref-label">Advertising</p>
+          <p class="cookie-pref-desc">Google Ads cookies used to measure ad performance and personalize ads. See <a href="https://myadcenter.google.com" target="_blank" rel="noopener noreferrer">Google's ad settings</a> to opt out anywhere.</p>
+        </div>
+        <label class="cookie-toggle">
+          <input type="checkbox" id="cookie-toggle-ads" aria-label="Advertising cookies" />
+          <span class="cookie-toggle-track"><span class="cookie-toggle-thumb"></span></span>
+        </label>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-save">Save preferences</button>
+      </div>
     </div>
   </div>
   <header class="site-header">
@@ -213,7 +278,7 @@
     <div class="container legal">
       <p class="page-eyebrow">Legal</p>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: August 22, 2026</p>
+      <p class="updated">Last updated: August 23, 2026</p>
 
       <div class="notice-box">
         <strong>Plain-language summary:</strong> this policy explains what information E-RON WA collects when you book or complete a remote online notarization, why it's collected, and how long certain records are legally required to be kept. It is not a substitute for legal advice.
@@ -266,11 +331,17 @@
       </p>
 
       <h2 id="cookies">Cookies and tracking technologies</h2>
-      <p>This site uses a small number of cookies and similar browser storage technologies:</p>
+      <p>
+        This site groups its cookies into two categories. You can review or change your choice at any time using the
+        <strong>Cookie Preferences</strong> link in the footer of any page.
+      </p>
       <ul>
-        <li><strong>Advertising cookies (Google Ads).</strong> This site uses Google's tag (gtag.js) to measure whether visits from Google Ads lead to a booking or inquiry. These cookies are only set once you accept the cookie notice shown on your first visit; if you decline, this tracking stays off. You can review or turn off personalized advertising at any time through <a href="https://myadcenter.google.com" target="_blank" rel="noopener noreferrer">Google's My Ad Center</a>.</li>
+        <li><strong>Necessary (always on).</strong> Required for the site to work. This covers remembering your cookie preference itself, and the temporary session storage the estate planning client page uses to remember that you've entered the correct passcode so you aren't asked again while browsing that page &mdash; this clears when you close your browser tab. Necessary cookies cannot be turned off.</li>
+        <li><strong>Advertising (Google Ads) &mdash; optional.</strong> This site uses Google's tag (gtag.js) to measure whether visits from Google Ads lead to a booking or inquiry, and, if you allow it, to personalize ads. This is only active if you turn it on in the cookie notice or the Cookie Preferences control; leaving it off keeps this tracking disabled. You can also review or turn off personalized advertising at any time through <a href="https://myadcenter.google.com" target="_blank" rel="noopener noreferrer">Google's My Ad Center</a>.</li>
+      </ul>
+      <p>A few other services used on this site set their own cookies, outside of these two categories:</p>
+      <ul>
         <li><strong>Booking widget cookies (TidyCal).</strong> The scheduling calendar embedded on the booking page is provided by TidyCal, a third-party service, and may set its own cookies to make scheduling work correctly. These are set by TidyCal, not by E-RON WA directly.</li>
-        <li><strong>Functional browser storage.</strong> The estate planning client booking page uses your browser's temporary session storage to remember that you've entered the correct passcode, so you aren't asked again while browsing that page. This clears when you close your browser tab and isn't a tracking cookie. Separately, your choice on the cookie notice itself (accept or decline) is remembered in your browser so you aren't asked again on every visit.</li>
         <li><strong>Form processing (Formspree).</strong> Messages submitted through this site's forms are processed by Formspree, which may log standard technical data (such as IP address) as part of delivering the message to E-RON WA.</li>
       </ul>
       <p>
@@ -331,6 +402,7 @@
         <li><a href="index.html#contact">Contact</a></li>
         <li><a href="index.html#faq">FAQ</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><button type="button" class="footer-link-btn" id="cookie-prefs-link">Cookie Preferences</button></li>
         <li><a href="terms.html">Terms of Service</a></li>
         <li><a href="partners.html">Attorneys &amp; Partners</a></li>
         <li><a href="estate-clients.html" rel="nofollow">Estate Planning Client Login</a></li>
@@ -350,12 +422,17 @@
       if (!banner) return;
       var acceptBtn = document.getElementById('cookie-accept');
       var declineBtn = document.getElementById('cookie-decline');
+      var manageToggle = document.getElementById('cookie-manage-toggle');
+      var prefsPanel = document.getElementById('cookie-prefs-panel');
+      var saveBtn = document.getElementById('cookie-save');
+      var adsToggle = document.getElementById('cookie-toggle-ads');
+      var prefsLink = document.getElementById('cookie-prefs-link');
 
-      var existing = null;
-      try { existing = window.localStorage.getItem(CONSENT_KEY); } catch (e) {}
-      if (existing === 'granted' || existing === 'denied') return;
+      function getStored() {
+        try { return window.localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+      }
 
-      function updateConsent(state) {
+      function applyConsent(state) {
         if (typeof gtag === 'function') {
           gtag('consent', 'update', {
             'ad_storage': state,
@@ -365,13 +442,58 @@
           });
         }
         try { window.localStorage.setItem(CONSENT_KEY, state); } catch (e) {}
-        banner.classList.remove('is-visible');
       }
 
-      acceptBtn.addEventListener('click', function () { updateConsent('granted'); });
-      declineBtn.addEventListener('click', function () { updateConsent('denied'); });
+      function openPanel() {
+        if (!prefsPanel) return;
+        prefsPanel.hidden = false;
+        if (manageToggle) {
+          manageToggle.setAttribute('aria-expanded', 'true');
+          manageToggle.textContent = 'Hide preferences';
+        }
+        if (adsToggle) adsToggle.checked = getStored() === 'granted';
+      }
 
-      window.setTimeout(function () { banner.classList.add('is-visible'); }, 400);
+      function closePanel() {
+        if (!prefsPanel) return;
+        prefsPanel.hidden = true;
+        if (manageToggle) {
+          manageToggle.setAttribute('aria-expanded', 'false');
+          manageToggle.textContent = 'Manage preferences';
+        }
+      }
+
+      function hideBanner() {
+        banner.classList.remove('is-visible');
+        closePanel();
+      }
+
+      if (manageToggle) {
+        manageToggle.addEventListener('click', function () {
+          if (prefsPanel.hidden) { openPanel(); } else { closePanel(); }
+        });
+      }
+
+      if (acceptBtn) acceptBtn.addEventListener('click', function () { applyConsent('granted'); hideBanner(); });
+      if (declineBtn) declineBtn.addEventListener('click', function () { applyConsent('denied'); hideBanner(); });
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function () {
+          applyConsent(adsToggle && adsToggle.checked ? 'granted' : 'denied');
+          hideBanner();
+        });
+      }
+
+      if (prefsLink) {
+        prefsLink.addEventListener('click', function () {
+          banner.classList.add('is-visible');
+          openPanel();
+        });
+      }
+
+      var existing = getStored();
+      if (existing !== 'granted' && existing !== 'denied') {
+        window.setTimeout(function () { banner.classList.add('is-visible'); }, 400);
+      }
     })();
   </script>
 </body>
